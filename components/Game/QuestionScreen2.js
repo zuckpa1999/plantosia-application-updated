@@ -22,6 +22,7 @@ export default function QuestionScreen2({ navigation }) {
     return (
         <SafeAreaView style={styles.container}>
             <Text>{object.surname}</Text>
+            <Text>fsf</Text>
             <TemplateTop navigation={navigation} parentCallback={parentCallback} />
             {/*     QuestionScreen2 ---> 0,  */}
             <View style={styles.greenArea}>
