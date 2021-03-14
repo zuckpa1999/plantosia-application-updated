@@ -1,0 +1,831 @@
+{
+    "easy": [
+        {
+            "id": "1",
+            "question": "What is this part of the plant?",
+            "choices": {
+                "1": "Root",
+                "2": "Stem",
+                "3": "Leaf",
+                "4": "Flower",
+                "5": "Fruit"
+            },
+            "answers": "Root",
+            "image": "../../asset/imgQuestion1.png"
+        },
+        {
+            "id": "2",
+            "question": "What is the function of the root?",
+            "choices": {
+                "1": "Absorb the water",
+                "2": "Absorb the mineral",
+                "3": "Be the foundation of the tree",
+                "4": "All of the above"
+            },
+            "answers": "All of the above",
+            "image": ""
+        },
+        {
+            "id": "3",
+            "question": "What is this part of the plant?",
+            "choices": {
+                "1": "Root",
+                "2": "Stem",
+                "3": "Leaf",
+                "4": "Flower",
+                "5": "Fruit"
+            },
+            "answers": "Stem",
+            "image": ""
+        },
+        {
+            "id": "4",
+            "question": "What is the function of the stem?",
+            "choices": {
+                "1": "Transport the water throughout the plant",
+                "2": "Transport the water throughout the plant",
+                "3": "Raise and hold the branch and the leaf",
+                "4": "All of the above"
+            },
+            "answers": "All of the above",
+            "image": ""
+        },
+        {
+            "id": "5",
+            "question": "What is this part of the plant?",
+            "choices": {
+                "1": "Root",
+                "2": "Stem",
+                "3": "Leaf",
+                "4": "Flower",
+                "5": "Fruit"
+            },
+            "answers": "Leaf",
+            "image": ""
+        },
+        {
+            "id": "6",
+            "question": "What is the function of the leaf?",
+            "choices": {
+                "1": "Making food through photosynthesis",
+                "2": "Breathing and gas exchanging",
+                "3": "All of the above",
+                "4": "None of the above"
+            },
+            "answers": "All of the above",
+            "image": ""
+        },
+        {
+            "id": "7",
+            "question": "What is this part of the plant?",
+            "choices": {
+                "1": "Root",
+                "2": "Stem",
+                "3": "Leaf",
+                "4": "Flower",
+                "5": "Fruit"
+            },
+            "answers": "Flower",
+            "image": ""
+        },
+        {
+            "id": "8",
+            "question": "What is the function of the flower?",
+            "choices": {
+                "1": "For beauty",
+                "2": "Reproduction and seed creation",
+                "3": "Photosynthesis and food creation",
+                "4": "All of the above"
+            },
+            "answers": "Reproduction and seed creation",
+            "image": ""
+        },
+        {
+            "id": "9",
+            "question": "What is this part of the plant?",
+            "choices": {
+                "1": "Root",
+                "2": "Stem",
+                "3": "Leaf",
+                "4": "Flower",
+                "5": "Fruit"
+            },
+            "answers": "Fruit",
+            "image": ""
+        },
+        {
+            "id": "10",
+            "question": "What is the function of the fruit?",
+            "choices": {
+                "1": "Protecting the seed",
+                "2": "Help scatter and disperse the seed",
+                "3": "All of the above",
+                "4": "None of the above"
+            },
+            "answers": "All of the above",
+            "image": ""
+        }
+    ],
+    "hard": [
+        {
+            "Banana": [
+                {
+                    "id": "1",
+                    "question": "What is the root type of a banana?",
+                    "choices": {
+                        "1": "Tap Root",
+                        "2": "Adventitious Root",
+                        "3": "Aerial Root",
+                        "4": "No Root"
+                    },
+                    "answers": "Adventitious Root",
+                    "image": ""
+                },
+                {
+                    "id": "2",
+                    "question": "What is the leaf type of a banana?",
+                    "choices": {
+                        "1": "Simple Leaf",
+                        "2": "Compound Leaf",
+                        "3": "Underground Leaf",
+                        "4": "No Leaf"
+                    },
+                    "answers": "Simple Leaf",
+                    "image": ""
+                },
+                {
+                    "id": "3",
+                    "question": "What is the stem type of a banana",
+                    "choices": {
+                        "1": "Underground Stem",
+                        "2": "Aerial Stem",
+                        "3": "No Stem"
+                    },
+                    "answers": "Underground Stem",
+                    "image": ""
+                },
+                {
+                    "id": "4",
+                    "question": "What is the fruit type of a banana?",
+                    "choices": {
+                        "1": "Dry Fruit",
+                        "2": "Freshy Fruit",
+                        "3": "No Fruit"
+                    },
+                    "answers": "Freshy Fruit",
+                    "image": ""
+                },
+                {
+                    "id": "5",
+                    "question": "Does a banana have a flower?",
+                    "choices": {
+                        "1": "Yes",
+                        "2": "No"
+                    },
+                    "answers": "Yes",
+                    "image": ""
+                },
+                {
+                    "id": "6",
+                    "question": "What is the petal color of a banana?",
+                    "choices": {
+                        "1": "Black",
+                        "2": "Purplish Black",
+                        "3": "Yellowish White",
+                        "4": "Pink"
+                    },
+                    "answers": "Yellowish White",
+                    "image": ""
+                },
+                {
+                    "id": "7",
+                    "question": "What is the height of the banana tree?",
+                    "choices": {
+                        "1": "1 - 4 Meters",
+                        "2": "5 - 9 Meters",
+                        "3": "10 - 14 Meters",
+                        "4": "15 - 19 Meters"
+                    },
+                    "answers": "5 - 9 Meters",
+                    "image": ""
+                },
+                {
+                    "id": "8",
+                    "question": "What is the leaf length of a banana?",
+                    "choices": {
+                        "1": "10 - 30 Centimeters",
+                        "2": "40 - 70 Centimeters",
+                        "3": "100 - 300 Centimeters",
+                        "4": "400 - 700 Centimeters"
+                    },
+                    "answers": "100 - 300 Centimeters",
+                    "image": ""
+                },
+                {
+                    "id": "9",
+                    "question": "What is the phyllotaxy of a banana?",
+                    "choices": {
+                        "1": "Alternate",
+                        "2": "Opposite",
+                        "3": "Spiral",
+                        "4": "No Phyllotaxy"
+                    },
+                    "answers": "Spiral",
+                    "image": ""
+                },
+                {
+                    "id": "10",
+                    "question": "Is banana plant poisonous or dangerous?",
+                    "choices": {
+                        "1": "Yes",
+                        "2": "No"
+                    },
+                    "answers": "No",
+                    "image": ""
+                }
+            ],
+            "Rice": [
+                {
+                    "id": "1",
+                    "question": "What is the root type of a rice?",
+                    "choices": {
+                        "1": "Tap Root",
+                        "2": "Adventitious Root",
+                        "3": "Aerial Root",
+                        "4": "No Root"
+                    },
+                    "answers": "Adventitious Root",
+                    "image": ""
+                },
+                {
+                    "id": "2",
+                    "question": "What is the leaf type of a rice?",
+                    "choices": {
+                        "1": "Simple Leaf",
+                        "2": "Compound Leaf",
+                        "3": "Underground Leaf",
+                        "4": "No Leaf"
+                    },
+                    "answers": "Simple Leaf",
+                    "image": ""
+                },
+                {
+                    "id": "3",
+                    "question": "What is the stem type of a rice",
+                    "choices": {
+                        "1": "Underground Stem",
+                        "2": "Aerial Stem",
+                        "3": "No Stem"
+                    },
+                    "answers": "Aerial Stem",
+                    "image": ""
+                },
+                {
+                    "id": "4",
+                    "question": "What is the fruit type of a rice?",
+                    "choices": {
+                        "1": "Dry Fruit",
+                        "2": "Freshy Fruit",
+                        "3": "No Fruit"
+                    },
+                    "answers": "Dry Fruit",
+                    "image": ""
+                },
+                {
+                    "id": "5",
+                    "question": "Does a rice have a flower?",
+                    "choices": {
+                        "1": "Yes",
+                        "2": "No"
+                    },
+                    "answers": "Yes",
+                    "image": ""
+                },
+                {
+                    "id": "6",
+                    "question": "What is the petal color of a rice?",
+                    "choices": {
+                        "1": "Cream & Yellowish Brown",
+                        "2": "Blue & Reddish White",
+                        "3": "Purple & Pink",
+                        "4": "Yellow & Greenish White"
+                    },
+                    "answers": "Cream & Yellowish Brown",
+                    "image": ""
+                },
+                {
+                    "id": "7",
+                    "question": "What is the height of the พรแำ tree?",
+                    "choices": {
+                        "1": "0.3 - 1.8 Meters",
+                        "2": "2.0 - 2.5 Meters",
+                        "3": "2.8 - 3.4 Meters",
+                        "4": "3.6 - 4.2 Meters"
+                    },
+                    "answers": "0.3 - 1.8 Meters",
+                    "image": ""
+                },
+                {
+                    "id": "8",
+                    "question": "What is the leaf length of a rice?",
+                    "choices": {
+                        "1": "1 -3 Centimeters",
+                        "2": "12 - 65 Centimeters",
+                        "3": "70 - 100 Centimeters",
+                        "4": "105 - 142 Centimeters"
+                    },
+                    "answers": "12 - 65 Centimeters",
+                    "image": ""
+                },
+                {
+                    "id": "9",
+                    "question": "What is the phyllotaxy of a rice?",
+                    "choices": {
+                        "1": "Alternate",
+                        "2": "Opposite",
+                        "3": "Spiral",
+                        "4": "No Phyllotaxy"
+                    },
+                    "answers": "Alternate",
+                    "image": ""
+                },
+                {
+                    "id": "10",
+                    "question": "Is banana plant poisonous or dangerous?",
+                    "choices": {
+                        "1": "Yes",
+                        "2": "No"
+                    },
+                    "answers": "No",
+                    "image": ""
+                }
+            ],
+            "West_Indian_Jasmine": [
+                {
+                    "id": "1",
+                    "question": "What is the root type of a West Indian jasmine?",
+                    "choices": {
+                        "1": "Tap Root",
+                        "2": "Adventitious Root",
+                        "3": "Aerial Root",
+                        "4": "No Root"
+                    },
+                    "answers": "Adventitious Root",
+                    "image": ""
+                },
+                {
+                    "id": "2",
+                    "question": "What is the leaf type of a West Indian jasmine?",
+                    "choices": {
+                        "1": "Simple Leaf",
+                        "2": "Compound Leaf",
+                        "3": "Underground Leaf",
+                        "4": "No Leaf"
+                    },
+                    "answers": "Simple Leaf",
+                    "image": ""
+                },
+                {
+                    "id": "3",
+                    "question": "What is the stem type of a West Indian jasmine",
+                    "choices": {
+                        "1": "Underground Stem",
+                        "2": "Aerial Stem",
+                        "3": "No Stem"
+                    },
+                    "answers": "Aerial Stem",
+                    "image": ""
+                },
+                {
+                    "id": "4",
+                    "question": "What is the fruit type of a West Indian jasmine?",
+                    "choices": {
+                        "1": "Dry Fruit",
+                        "2": "Freshy Fruit",
+                        "3": "No Fruit"
+                    },
+                    "answers": "Dry Fruit",
+                    "image": ""
+                },
+                {
+                    "id": "5",
+                    "question": "Does a West Indian jasmine have a flower?",
+                    "choices": {
+                        "1": "Yes",
+                        "2": "No"
+                    },
+                    "answers": "Yes",
+                    "image": ""
+                },
+                {
+                    "id": "6",
+                    "question": "What is the petal color of a West Indian jasmine?",
+                    "choices": {
+                        "1": "Yellow",
+                        "2": "Orange",
+                        "3": "Pink",
+                        "4": "Red",
+                        "5": "All of the above"
+                    },
+                    "answers": "All of the above",
+                    "image": ""
+                },
+                {
+                    "id": "7",
+                    "question": "What is the height of the  West Indian jasmine plant?",
+                    "choices": {
+                        "1": "0.2 - 1.2 Meters",
+                        "2": "1.2 - 1.8 Meters",
+                        "3": "1.8 - 3.2 Meters",
+                        "4": "3.2 - 4.8 Meters"
+                    },
+                    "answers": "1.2 - 1.8 Meters",
+                    "image": ""
+                },
+                {
+                    "id": "8",
+                    "question": "What is the leaf length of a West Indian jasmine?",
+                    "choices": {
+                        "1": "5 - 7 Centimeters",
+                        "2": "7 - 15 Centimeters",
+                        "3": "20 - 24 Centimeters",
+                        "4": "25 - 40 Centimeters"
+                    },
+                    "answers": "7 - 15 Centimeters",
+                    "image": ""
+                },
+                {
+                    "id": "9",
+                    "question": "What is the phyllotaxy of a West Indian jasmine?",
+                    "choices": {
+                        "1": "Alternate",
+                        "2": "Opposite",
+                        "3": "Spiral",
+                        "4": "No Phyllotaxy"
+                    },
+                    "answers": "Opposite",
+                    "image": ""
+                },
+                {
+                    "id": "10",
+                    "question": "Is banana plant poisonous or dangerous?",
+                    "choices": {
+                        "1": "Yes",
+                        "2": "No"
+                    },
+                    "answers": "No",
+                    "image": ""
+                }
+            ],
+            "Paper_Flower": [
+                {
+                    "id": "1",
+                    "question": "What is the root type of a Paper Flower?",
+                    "choices": {
+                        "1": "Tap Root",
+                        "2": "Adventitious Root",
+                        "3": "Aerial Root",
+                        "4": "No Root"
+                    },
+                    "answers": "Tap Root",
+                    "image": ""
+                },
+                {
+                    "id": "2",
+                    "question": "What is the leaf type of a Paper Flower?",
+                    "choices": {
+                        "1": "Simple Leaf",
+                        "2": "Compound Leaf",
+                        "3": "Underground Leaf",
+                        "4": "No Leaf"
+                    },
+                    "answers": "Simple Leaf",
+                    "image": ""
+                },
+                {
+                    "id": "3",
+                    "question": "What is the stem type of a Paper Flower",
+                    "choices": {
+                        "1": "Underground Stem",
+                        "2": "Aerial Stem",
+                        "3": "No Stem"
+                    },
+                    "answers": "Aerial Stem",
+                    "image": ""
+                },
+                {
+                    "id": "4",
+                    "question": "What is the fruit type of a Paper Flower?",
+                    "choices": {
+                        "1": "Dry Fruit",
+                        "2": "Freshy Fruit",
+                        "3": "No Fruit"
+                    },
+                    "answers": "Dry Fruit",
+                    "image": ""
+                },
+                {
+                    "id": "5",
+                    "question": "Does a Paper Flower have a flower?",
+                    "choices": {
+                        "1": "Yes",
+                        "2": "No"
+                    },
+                    "answers": "Yes",
+                    "image": ""
+                },
+                {
+                    "id": "6",
+                    "question": "What is the petal color of a Paper Flower?",
+                    "choices": {
+                        "1": "Purple",
+                        "2": "Red",
+                        "3": "Pink",
+                        "4": "Orange",
+                        "5": "All of the above"
+                    },
+                    "answers": "All of the above",
+                    "image": ""
+                },
+                {
+                    "id": "7",
+                    "question": "What is the height of the  Paper Flower?",
+                    "choices": {
+                        "1": "1- 6 Meters",
+                        "2": "6- 12 Meters",
+                        "3": "12 - 18 Meters",
+                        "4": "18 - 24 Meters"
+                    },
+                    "answers": "6 - 12 Meters",
+                    "image": ""
+                },
+                {
+                    "id": "8",
+                    "question": "What is the leaf length of a Paper Flower?",
+                    "choices": {
+                        "1": "1 - 5 Centimeters",
+                        "2": "5 - 10 Centimeters",
+                        "3": "10 - 15 Centimeters",
+                        "4": "15 - 20 Centimeters"
+                    },
+                    "answers": "5 - 10 Centimeters",
+                    "image": ""
+                },
+                {
+                    "id": "9",
+                    "question": "What is the phyllotaxy of a Paper Flower?",
+                    "choices": {
+                        "1": "Alternate",
+                        "2": "Opposite",
+                        "3": "Spiral",
+                        "4": "No Phyllotaxy"
+                    },
+                    "answers": "Alternate",
+                    "image": ""
+                },
+                {
+                    "id": "10",
+                    "question": "Is Paper Flower plant poisonous or dangerous?",
+                    "choices": {
+                        "1": "Yes",
+                        "2": "No"
+                    },
+                    "answers": "No",
+                    "image": ""
+                }
+            ],
+            "Velvet_Bean": [
+                {
+                    "id": "1",
+                    "question": "What is the root type of a Velvet bean?",
+                    "choices": {
+                        "1": "Tap Root",
+                        "2": "Adventitious Root",
+                        "3": "Aerial Root",
+                        "4": "No Root"
+                    },
+                    "answers": "Tap Root",
+                    "image": ""
+                },
+                {
+                    "id": "2",
+                    "question": "What is the leaf type of a Velvet bean?",
+                    "choices": {
+                        "1": "Simple Leaf",
+                        "2": "Compound Leaf",
+                        "3": "Underground Leaf",
+                        "4": "No Leaf"
+                    },
+                    "answers": "Compound Leaf",
+                    "image": ""
+                },
+                {
+                    "id": "3",
+                    "question": "What is the stem type of a  Velvet bean",
+                    "choices": {
+                        "1": "Underground Stem",
+                        "2": "Aerial Stem",
+                        "3": "No Stem"
+                    },
+                    "answers": "Aerial Stem",
+                    "image": ""
+                },
+                {
+                    "id": "4",
+                    "question": "What is the fruit type of a Velvet bean?",
+                    "choices": {
+                        "1": "Dry Fruit",
+                        "2": "Freshy Fruit",
+                        "3": "No Fruit"
+                    },
+                    "answers": "Dry Fruit",
+                    "image": ""
+                },
+                {
+                    "id": "5",
+                    "question": "Does a Velvet bean have a flower?",
+                    "choices": {
+                        "1": "Yes",
+                        "2": "No"
+                    },
+                    "answers": "Yes",
+                    "image": ""
+                },
+                {
+                    "id": "6",
+                    "question": "What is the petal color of a Velvet bean?",
+                    "choices": {
+                        "1": "White & Dark Purple",
+                        "2": "Black & Light Purple",
+                        "3": "Purple & Blue",
+                        "4": "Purple & Pink"
+                    },
+                    "answers": "White & Dark Purple",
+                    "image": ""
+                },
+                {
+                    "id": "7",
+                    "question": "What is the height of the  Velvet bean tree?",
+                    "choices": {
+                        "1": "1- 3 Meters",
+                        "2": "3 - 5 Meters",
+                        "3": "5 - 7 Meters",
+                        "4": "7 - 9 Meters"
+                    },
+                    "answers": "5 - 7 Meters",
+                    "image": ""
+                },
+                {
+                    "id": "8",
+                    "question": "What is the leaf length of a Velvet bean?",
+                    "choices": {
+                        "1": "5 - 15 Centimeters",
+                        "2": "15 - 30 Centimeters",
+                        "3": "30 - 45 Centimeters",
+                        "4": "45 - 60 Centimeters"
+                    },
+                    "answers": "15 - 30 Centimeters",
+                    "image": ""
+                },
+                {
+                    "id": "9",
+                    "question": "What is the phyllotaxy of a Velvet bean?",
+                    "choices": {
+                        "1": "Alternate",
+                        "2": "Opposite",
+                        "3": "Spiral",
+                        "4": "No Phyllotaxy"
+                    },
+                    "answers": "Alternate",
+                    "image": ""
+                },
+                {
+                    "id": "10",
+                    "question": "Is Velvet bean plant poisonous or dangerous?",
+                    "choices": {
+                        "1": "Yes",
+                        "2": "No"
+                    },
+                    "answers": "Yes",
+                    "image": ""
+                }
+            ],
+            "Coconut": [
+                {
+                    "id": "1",
+                    "question": "What is the root type of a coconut?",
+                    "choices": {
+                        "1": "Tap Root",
+                        "2": "Adventitious Root",
+                        "3": "Aerial Root",
+                        "4": "No Root"
+                    },
+                    "answers": "Adventitious Root",
+                    "image": ""
+                },
+                {
+                    "id": "2",
+                    "question": "What is the leaf type of a coconut?",
+                    "choices": {
+                        "1": "Simple Leaf",
+                        "2": "Compound Leaf",
+                        "3": "Underground Leaf",
+                        "4": "No Leaf"
+                    },
+                    "answers": "Compound Leaf",
+                    "image": ""
+                },
+                {
+                    "id": "3",
+                    "question": "What is the stem type of a  coconut",
+                    "choices": {
+                        "1": "Underground Stem",
+                        "2": "Aerial Stem",
+                        "3": "No Stem"
+                    },
+                    "answers": "Aerial Stem",
+                    "image": ""
+                },
+                {
+                    "id": "4",
+                    "question": "What is the fruit type of a coconut?",
+                    "choices": {
+                        "1": "Dry Fruit",
+                        "2": "Freshy Fruit",
+                        "3": "No Fruit"
+                    },
+                    "answers": "Freshy Fruit",
+                    "image": ""
+                },
+                {
+                    "id": "5",
+                    "question": "Does a coconut  have a flower?",
+                    "choices": {
+                        "1": "Yes",
+                        "2": "No"
+                    },
+                    "answers": "Yes",
+                    "image": ""
+                },
+                {
+                    "id": "6",
+                    "question": "What is the petal color of a coconut?",
+                    "choices": {
+                        "1": "Reddish Brown",
+                        "2": "Yellowish Brown",
+                        "3": "Reddish White",
+                        "4": "Yellowish White"
+                    },
+                    "answers": "Yellowish White",
+                    "image": ""
+                },
+                {
+                    "id": "7",
+                    "question": "What is the height of the  coconut tree?",
+                    "choices": {
+                        "1": "1- 9 Meters",
+                        "2": "9 - 18 Meters",
+                        "3": "18 - 27 Meters",
+                        "4": "27 - 36 Meters"
+                    },
+                    "answers": " 9 - 18 Meters",
+                    "image": ""
+                },
+                {
+                    "id": "8",
+                    "question": "What is the leaf length of coconut?",
+                    "choices": {
+                        "1": "30 - 60 Centimeters",
+                        "2": "60 - 90 Centimeters",
+                        "3": "90 - 120 Centimeters",
+                        "4": "120 - 150 Centimeters"
+                    },
+                    "answers": "60 - 90 Centimeters",
+                    "image": ""
+                },
+                {
+                    "id": "9",
+                    "question": "What is the phyllotaxy of a coconut?",
+                    "choices": {
+                        "1": "Alternate",
+                        "2": "Opposite",
+                        "3": "Spiral",
+                        "4": "No Phyllotaxy"
+                    },
+                    "answers": "Alternate",
+                    "image": ""
+                },
+                {
+                    "id": "10",
+                    "question": "Is coconut plant poisonous or dangerous?",
+                    "choices": {
+                        "1": "Yes",
+                        "2": "No"
+                    },
+                    "answers": "No",
+                    "image": ""
+                }
+            ]
+        }
+    ]
+}
