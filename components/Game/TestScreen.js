@@ -6,11 +6,18 @@ import {
     responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
 import TemplateTop from './templateTop'
-export default function TestScreen({ navigation }) {
+export default function TestScreen({ navigation }, props) {
 
-
+    // 2 version 
+    //if props.answer : true ? boolean
+    // need global variable to store coin and XP **
+    // right answer banner1 , mascot1, coin + 20, XP + 50
+    // wrong answer, banner 2, mascot 2, coin + 20, XP + 50
     const [modalVisible, setModalVisible] = useState(false);
-
+    //const banner1 = require('../../asset/banner_modal1.png')
+    //const banner2 = require('../../asset/banner_modal2.png')
+    //
+    //let img = true ? banner1 : banner2
     return (
         <SafeAreaView style={styles.container}>
 
@@ -32,14 +39,32 @@ export default function TestScreen({ navigation }) {
 
                                     style={{ marginTop: '-39%' }}
                                     source={require('../../asset/banner_modal.png')}
+
+
                                 />
+
+
+
                                 <Image
 
 
                                     source={require('../../asset/mascott.png')}
                                 />
-                                <Text style={styles.modalText}>ถูกต้อง</Text>
 
+                                <View style={{ backgroundColor: 'white', width: responsiveScreenWidth(40), height: responsiveScreenHeight(7), borderRadius: 30, borderColor: '#099846', borderWidth: 4, marginTop: '3%', paddingTop: '6%' }}>
+                                    <Text style={{ textAlign: 'center', fontSize: 24, fontWeight: '700', marginBottom: '11%' }}>  <Image style={styles.image} source={require('../../asset/dollar_2.png')} />   + 20</Text>
+
+
+                                </View>
+
+                                <View style={{ backgroundColor: 'white', width: responsiveScreenWidth(40), height: responsiveScreenHeight(7), borderRadius: 30, borderColor: '#099846', borderWidth: 4, marginTop: '3%', paddingTop: '5%' }}>
+
+                                    <Text style={{ textAlign: 'center', fontSize: 24, fontWeight: '700', marginBottom: '11%' }}>XP + 50</Text>
+
+                                </View>
+                                <TouchableOpacity style={styles.solutionContainer}>
+                                    <Text style={styles.solutionButton}>เฉลย</Text>
+                                </TouchableOpacity>
                                 <Pressable
                                     style={[styles.button, styles.buttonClose]}
                                     onPress={() => setModalVisible(!modalVisible)}
@@ -75,6 +100,13 @@ const styles = StyleSheet.create({
         // backgroundColor: '#94F098',
         // display: 'flex',
     },
+    image: {
+        flex: 1,
+        // width: null,
+        // height: null,
+        resizeMode: 'contain',
+
+    },
     choiceContainer: {
         backgroundColor: '#FCB65F',
         borderRadius: 13,
@@ -107,7 +139,22 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start'
 
     },
+    solutionContainer: {
+        backgroundColor: '#099846',
+        borderRadius: 10,
+        height: responsiveScreenHeight(5), // 50% of Screen height,
+        width: responsiveScreenWidth(38),// 50% of Screen width
 
+
+        marginTop: '15%'
+    },
+    solutionButton: {
+        textAlign: 'center',
+        // marginTop: '7%',
+        color: 'white',
+        fontWeight: '800',
+        fontSize: 30
+    },
     banner: {
         height: responsiveScreenHeight(6), // 50% of Screen height,
         width: responsiveScreenWidth(90), // 50% of Screen width
@@ -158,9 +205,9 @@ const styles = StyleSheet.create({
     buttonOpen: {
         backgroundColor: "#F194FF",
     },
-    buttonClose: {
-        backgroundColor: "#2196F3",
-    },
+    // buttonClose: {
+    //     backgroundColor: "#2196F3",
+    // },
     textStyle: {
         color: "white",
         fontWeight: "bold",
