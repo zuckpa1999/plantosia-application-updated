@@ -6,18 +6,24 @@ import {
     responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
 import TemplateTop from './templateTop'
-export default function TestScreen({ navigation }, props) {
+export default function TestScreen({ navigation }) {
+    // assumer we get props
 
+    let answer = false
     // 2 version 
     //if props.answer : true ? boolean
     // need global variable to store coin and XP **
     // right answer banner1 , mascot1, coin + 20, XP + 50
     // wrong answer, banner 2, mascot 2, coin + 20, XP + 50
     const [modalVisible, setModalVisible] = useState(false);
-    //const banner1 = require('../../asset/banner_modal1.png')
-    //const banner2 = require('../../asset/banner_modal2.png')
+    const bannerRight = require('../../asset/ปกถูก.png')
+    const bannerWrong = require('../../asset/ปกผิด.png')
+    const mascotRight = require('../../asset/ตอบถูก.png')
+    const mascotWrong = require('../../asset/ตอบผิด.png')
     //
-    //let img = true ? banner1 : banner2
+    let banner = answer ? bannerRight : bannerWrong
+    let mascot = answer ? mascotRight : mascotWrong
+
     return (
         <SafeAreaView style={styles.container}>
 
@@ -37,8 +43,8 @@ export default function TestScreen({ navigation }, props) {
                             <View style={styles.modalView}>
                                 <Image
 
-                                    style={{ marginTop: '-39%' }}
-                                    source={require('../../asset/banner_modal.png')}
+                                    style={answer ? { marginTop: '-42%', width: 375, height: 135 } : { marginTop: '-42%', width: 375, height: 115 }}
+                                    source={banner}
 
 
                                 />
@@ -47,19 +53,19 @@ export default function TestScreen({ navigation }, props) {
 
                                 <Image
 
-
-                                    source={require('../../asset/mascott.png')}
+                                    style={answer ? { width: 150, height: 90 } : { width: 130, height: 92 }}
+                                    source={mascot}
                                 />
 
                                 <View style={{ backgroundColor: 'white', width: responsiveScreenWidth(40), height: responsiveScreenHeight(7), borderRadius: 30, borderColor: '#099846', borderWidth: 4, marginTop: '3%', paddingTop: '6%' }}>
-                                    <Text style={{ textAlign: 'center', fontSize: 24, fontWeight: '700', marginBottom: '11%' }}>  <Image style={styles.image} source={require('../../asset/dollar_2.png')} />   + 20</Text>
+                                    <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: '700', marginBottom: '11%' }}> <Image style={styles.image} source={require('../../asset/dollar_2.png')} /> + 20</Text>
 
 
                                 </View>
 
                                 <View style={{ backgroundColor: 'white', width: responsiveScreenWidth(40), height: responsiveScreenHeight(7), borderRadius: 30, borderColor: '#099846', borderWidth: 4, marginTop: '3%', paddingTop: '5%' }}>
 
-                                    <Text style={{ textAlign: 'center', fontSize: 24, fontWeight: '700', marginBottom: '11%' }}>XP + 50</Text>
+                                    <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: '700', marginBottom: '11%' }}> XP + 50</Text>
 
                                 </View>
                                 <TouchableOpacity style={styles.solutionContainer}>
