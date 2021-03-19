@@ -10,8 +10,10 @@ import GameScreen2 from './components/Game/GameScreen2.js'
 import GameScreen3 from './components/Game/GameScreen3.js'
 import GameScreen4 from './components/Game/GameScreen4.js'
 import GameScreen5 from './components/Game/GameScreen5.js'
+import GameScreen5_2 from './components/Game/GameScreen5_2.js'
 import GameScreen6 from './components/Game/GameScreen6.js'
 import GameScreen7 from './components/Game/GameScreen7.js'
+import GameScreen7_2 from './components/Game/GameScreen7_2.js'
 import QuestionScreen from './components/Game/QuestionScreen.js'
 
 import QuestionScreen2 from './components/Game/QuestionScreen2.js'
@@ -50,13 +52,15 @@ export default function App() {
       }}>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Game" component={GameScreen} />
-        <Stack.Screen name="Test" component={TestScreen} />
+        {/* <Stack.Screen name="Test" component={TestScreen} /> */}
         <Stack.Screen name="Game2" component={GameScreen2} />
         <Stack.Screen name="Game3" component={GameScreen3} />
         <Stack.Screen name="Game4" component={GameScreen4} />
         <Stack.Screen name="Game5" component={GameScreen5} />
+        <Stack.Screen name="Game5_2" component={GameScreen5_2} />
         <Stack.Screen name="Game6" component={GameScreen6} />
         <Stack.Screen name="Game7" component={GameScreen7} />
+        <Stack.Screen name="Game7_2" component={GameScreen7_2} />
         <Stack.Screen name="Question" component={QuestionScreen} />
         <Stack.Screen name="Question2" component={QuestionScreen2} />
         <Stack.Screen name="Question3" component={QuestionScreen3} />

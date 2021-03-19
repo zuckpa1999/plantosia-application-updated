@@ -1,14 +1,53 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-native';
 import {
     responsiveScreenHeight,
     responsiveScreenWidth,
     responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
-import GameScreen3 from './GameScreen3.js'
+import * as ImagePicker from 'expo-image-picker'
 export default function GameScreen2({ navigation }) {
+    const [selectedImage, setSelectedImage] = React.useState(null)
+    let selectImage = async () => {
+        const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync()
+
+        if (permissionResult.granted === false) {
+            alert('Permission to access camera roll is required!')
+            return
+        }
+        const pickerResult = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            allowsEditing: true,
+            aspect: [3, 3],
+            quality: 1,
+            base64: true,
+        })
+
+        if (pickerResult.cancelled === true) {
+            alert('fe')
+            return
+        }
+        setSelectedImage(pickerResult)
+    }
+
+    const uploadImage = async (selectedImage) => {
+
+        fetch('http://192.168.1.102:3102/uploads', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            // send our base64 string as POST request
+            body: JSON.stringify({
+                imgsource: selectedImage.base64,
+            }),
+        })
+
+        navigation.navigate('Game3')
 
 
+    }
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.top}>
@@ -33,15 +72,23 @@ export default function GameScreen2({ navigation }) {
  <Text style={{ color: '#87D38A' }}>ใบ</Text>  ของพืช</Text>
                 </View>
                 <Image
-                    style={styles.cameraArea}
-                    source={require('../../asset/cameraArea.png')}
+                    style={selectedImage ? styles.thumbnail : styles.cameraArea}
+                    source={selectedImage ? selectedImage : require('../../asset/cameraArea.png')}
                 />
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <TouchableOpacity onPress={selectImage}>
+                        <Image
+                            style={{ marginTop: '2%' }}
+                            source={require('../../asset/uploadCloud.png')}
 
-                <Image
+                        />
+                    </TouchableOpacity>
+                    <Image
 
-                    source={require('../../asset/camera_2.png')}
-                />
-                <TouchableOpacity onPress={() => navigation.navigate('Game3')}>
+                        source={require('../../asset/camera_2.png')}
+                    />
+                </View>
+                <TouchableOpacity onPress={() => uploadImage(selectedImage)}>
                     <Image
                         style={styles.nextButton}
                         source={require('../../asset/nextButton.png')}
@@ -135,5 +182,10 @@ const styles = StyleSheet.create({
     cameraArea: {
         marginTop: '10%',
         marginBottom: '10%'
-    }
+    },
+    thumbnail: {
+        width: 300,
+        height: 300,
+        resizeMode: 'contain',
+    },
 });

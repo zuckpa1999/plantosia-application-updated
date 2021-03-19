@@ -31,7 +31,7 @@ export default function GameScreen({ navigation }) {
                 <View style={styles.box}>
                     <Text style={styles.msg}>มาถ่ายรูปพืชเพื่อนเริ่มเล่นเกมกันเถอะ!</Text>
                 </View>
-                <TouchableOpacity onPress={() => navigation.navigate('Test')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Game2')}>
                     <Image
                         style={styles.nextButton}
                         source={require('../../asset/nextButton.png')}

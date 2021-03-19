@@ -5,9 +5,49 @@ import {
     responsiveScreenWidth,
     responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
-import GameScreen6 from './GameScreen6.js'
-export default function GameScreen3({ navigation }) {
+import * as ImagePicker from 'expo-image-picker'
+export default function GameScreen5({ navigation }) {
+    const [selectedImage, setSelectedImage] = React.useState(null)
+    let selectImage = async () => {
+        const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync()
 
+        if (permissionResult.granted === false) {
+            alert('Permission to access camera roll is required!')
+            return
+        }
+        const pickerResult = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            allowsEditing: true,
+            aspect: [3, 3],
+            quality: 1,
+            base64: true,
+        })
+
+        if (pickerResult.cancelled === true) {
+            alert('fe')
+            return
+        }
+        setSelectedImage(pickerResult)
+    }
+
+    const uploadImage = async (selectedImage) => {
+
+        fetch('http://192.168.1.102:3102/uploads', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            // send our base64 string as POST request
+            body: JSON.stringify({
+                imgsource: selectedImage.base64,
+            }),
+        })
+
+
+
+
+    }
 
     return (
         <SafeAreaView style={styles.container}>
@@ -29,23 +69,32 @@ export default function GameScreen3({ navigation }) {
                     source={require('../../asset/fruitLogo.png')}
                 />
                 <View style={styles.box}>
-                    <Text style={styles.msg}>อันดับสุดท้าย, ถ่ายรูปส่วน
+                    <Text style={styles.msg}>ต่อไป, ถ่ายรูปส่วน
  <Text style={{ color: '#87D38A' }}> ผล</Text>  ของพืช</Text>
                 </View>
                 <Image
-                    style={styles.cameraArea}
-                    source={require('../../asset/cameraArea.png')}
+                    style={selectedImage ? styles.thumbnail : styles.cameraArea}
+                    source={selectedImage ? selectedImage : require('../../asset/cameraArea.png')}
                 />
 
-                <Image
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <TouchableOpacity onPress={selectImage}>
+                        <Image
+                            style={{ marginTop: '2%' }}
+                            source={require('../../asset/uploadCloud.png')}
 
-                    source={require('../../asset/camera_2.png')}
-                />
+                        />
+                    </TouchableOpacity>
+                    <Image
+
+                        source={require('../../asset/camera_2.png')}
+                    />
+                </View>
                 <View style={styles.box2}>
                     <Text style={styles.msg2}>ถ้าพืชต้นนี้  <Text style={{ color: 'red' }}>ไม่มีส่วนผล </Text>
 สามารถกดถัดไปเพื่อ <Text style={{ color: 'red' }}>ข้าม</Text> ได้เลย</Text>
                 </View>
-                <TouchableOpacity onPress={() => navigation.navigate('Game6')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Game5_2')}>
                     <Image
                         style={styles.nextButton}
                         source={require('../../asset/nextButton.png')}
@@ -158,5 +207,10 @@ const styles = StyleSheet.create({
     cameraArea: {
         marginTop: '10%',
         marginBottom: '10%'
-    }
+    },
+    thumbnail: {
+        width: 300,
+        height: 300,
+        resizeMode: 'contain',
+    },
 });
