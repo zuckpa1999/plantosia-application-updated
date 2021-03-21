@@ -14,19 +14,6 @@ import { Card, ListItem, Button, Icon } from 'react-native-elements'
 
 
 export default function QuestionScreen({ navigation }) {
-    // const classes = useStyles();
-    // const users = [
-    //     {
-    //         name: 'brynn',
-    //         avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg'
-    //     },
-    //     {
-    //         name: 'brynn',
-    //         avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg'
-    //     }
-    // ]
-    // const windowWidth = useWindowDimensions().width;
-    // const windowHeight = useWindowDimensions().height;
 
     return (
         <SafeAreaView style={styles.container}>

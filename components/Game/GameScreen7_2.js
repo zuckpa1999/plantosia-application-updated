@@ -8,7 +8,7 @@ import {
 
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
 
-// @material-ui/core
+
 
 
 

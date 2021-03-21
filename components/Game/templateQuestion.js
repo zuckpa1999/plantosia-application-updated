@@ -15,16 +15,7 @@ export default function templateQuestion(props, { parentCallback }) {
     let question = questions.easy[props.index].question
     let configQuestion = questions.easy[props.index].choices
 
-    // let selectThisChoice = (value) => {
-    //     setAnswer(value)
-    // }
-    // let sendBack = (x) => {
-    //     if (props.parentCallback) {
 
-
-    //         props.parentCallback(x)
-    //     }
-    // }
     return (
         <View style={styles.overAll}>
             <View style={styles.banner} >
