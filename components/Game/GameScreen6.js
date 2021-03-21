@@ -9,7 +9,7 @@ import GlobalStateUserImage from '../../contexts/GlobalStateUserImage'
 export default function GameScreen6({ navigation }) {
     const [stateImage, setStateImage] = useContext(GlobalStateUserImage)
 
-    let upload = async () => {
+    let upload = () => {
 
 
 
@@ -17,17 +17,17 @@ export default function GameScreen6({ navigation }) {
         // then pass array
 
         /* for (let i = 0; i < stateImage.length; i++) { */
-        fetch('http://192.168.1.102:3100/uploads', {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            // send our base64 string as POST request
-            body: JSON.stringify({
-                imgsource: [stateImage[0].base64, stateImage[1].base64]
-            })
-        })
+        /*         fetch('http://192.168.1.102:3100/uploads', {
+                    method: 'POST',
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    // send our base64 string as POST request
+                    body: JSON.stringify({
+                        imgsource: [stateImage[0].base64, stateImage[1].base64]
+                    })
+                }) */
 
         /*  arr.push(stateImage[i].base64) */
         /* } */
@@ -76,7 +76,7 @@ export default function GameScreen6({ navigation }) {
                     }}>QUIZ</Text></Text>
 
                 </View>
-                <TouchableOpacity onPress={() => upload()}>
+                <TouchableOpacity onPress={() => navigation.navigate('Game7')}>
                     <Image
                         style={styles.nextButton}
                         source={require('../../asset/nextButton.png')}

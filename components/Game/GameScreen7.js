@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
         width: 300, height: 200
     },
     ThaiName: {
-        fontFamily: 'Bai Jamjuree',
+
         fontStyle: 'normal',
         fontWeight: '600',
         fontSize: 25,
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
         marginTop: '6%'
     },
     similarity: {
-        fontFamily: 'Bai Jamjuree',
+
         fontStyle: 'normal',
         fontWeight: 'normal',
         fontSize: 25,

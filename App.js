@@ -41,55 +41,57 @@ import GlobalStateUserQuestion from './contexts/GlobalStateUserQuestion.js'
 export default function App() {
   const Stack = createStackNavigator();
   const [stateImage, setStateImage] = useState([]);
-  const [stateQuestion, setStateQuestion] = useState({});
+  const [stateQuestion, setStateQuestion] = useState({ XP: 0, COIN: 0, countCorrectAnswer: 0 });
   return (
 
     // <View style={styles.container}>
     //   <Text>Open up App.js to start working on your app!</Text>
     //   <StatusBar style="auto" />
     // </View>
-    <GlobalStateUserImage.Provider value={[stateImage, setStateImage]}>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home" screenOptions={{
-          headerShown: false
-        }}>
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Game" component={GameScreen} />
-          {/* <Stack.Screen name="Test" component={TestScreen} /> */}
-          <Stack.Screen name="Game2" component={GameScreen2} />
-          <Stack.Screen name="Game3" component={GameScreen3} />
-          <Stack.Screen name="Game4" component={GameScreen4} />
-          <Stack.Screen name="Game5" component={GameScreen5} />
-          <Stack.Screen name="Game5_2" component={GameScreen5_2} />
-          <Stack.Screen name="Game6" component={GameScreen6} />
-          <Stack.Screen name="Game7" component={GameScreen7} />
-          <Stack.Screen name="Game7_2" component={GameScreen7_2} />
-          <Stack.Screen name="Question" component={QuestionScreen} />
-          <Stack.Screen name="Question2" component={QuestionScreen2} />
-          <Stack.Screen name="Question3" component={QuestionScreen3} />
-          <Stack.Screen name="Question4" component={QuestionScreen4} />
-          <Stack.Screen name="Question5" component={QuestionScreen5} />
-          <Stack.Screen name="Question6" component={QuestionScreen6} />
-          <Stack.Screen name="Question7" component={QuestionScreen7} />
-          <Stack.Screen name="Question8" component={QuestionScreen8} />
-          <Stack.Screen name="Question9" component={QuestionScreen9} />
-          <Stack.Screen name="Question10" component={QuestionScreen10} />
-          <Stack.Screen name="Question11" component={QuestionScreen11} />
-          <Stack.Screen name="Question12" component={QuestionScreen12} />
-          <Stack.Screen name="Question13" component={QuestionScreen13} />
-          <Stack.Screen name="TextSearch" component={TextSearchScreen} />
-          <Stack.Screen name="ImageSearch" component={ImageSearchScreen} />
-          <Stack.Screen name="ImageSearch2" component={ImageSearchScreen2} />
-          <Stack.Screen name="ImageSearch3" component={ImageSearchScreen3} />
-          <Stack.Screen name="ImageSearch4" component={ImageSearchScreen4} />
-          <Stack.Screen name="ImageSearch5" component={ImageSearchScreen5} />
-          <Stack.Screen name="PlantGarden" component={PlantGardenScreen} />
-          <Stack.Screen name="Setting" component={SettingScreen} />
+    <GlobalStateUserQuestion.Provider value={[stateQuestion, setStateQuestion]}>
+      <GlobalStateUserImage.Provider value={[stateImage, setStateImage]}>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Question" screenOptions={{
+            headerShown: false
+          }}>
+            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="Game" component={GameScreen} />
+            {/* <Stack.Screen name="Test" component={TestScreen} /> */}
+            <Stack.Screen name="Game2" component={GameScreen2} />
+            <Stack.Screen name="Game3" component={GameScreen3} />
+            <Stack.Screen name="Game4" component={GameScreen4} />
+            <Stack.Screen name="Game5" component={GameScreen5} />
+            <Stack.Screen name="Game5_2" component={GameScreen5_2} />
+            <Stack.Screen name="Game6" component={GameScreen6} />
+            <Stack.Screen name="Game7" component={GameScreen7} />
+            <Stack.Screen name="Game7_2" component={GameScreen7_2} />
+            <Stack.Screen name="Question" component={QuestionScreen} />
+            <Stack.Screen name="Question2" component={QuestionScreen2} />
+            <Stack.Screen name="Question3" component={QuestionScreen3} />
+            <Stack.Screen name="Question4" component={QuestionScreen4} />
+            <Stack.Screen name="Question5" component={QuestionScreen5} />
+            <Stack.Screen name="Question6" component={QuestionScreen6} />
+            <Stack.Screen name="Question7" component={QuestionScreen7} />
+            <Stack.Screen name="Question8" component={QuestionScreen8} />
+            <Stack.Screen name="Question9" component={QuestionScreen9} />
+            <Stack.Screen name="Question10" component={QuestionScreen10} />
+            <Stack.Screen name="Question11" component={QuestionScreen11} />
+            <Stack.Screen name="Question12" component={QuestionScreen12} />
+            <Stack.Screen name="Question13" component={QuestionScreen13} />
+            <Stack.Screen name="TextSearch" component={TextSearchScreen} />
+            <Stack.Screen name="ImageSearch" component={ImageSearchScreen} />
+            <Stack.Screen name="ImageSearch2" component={ImageSearchScreen2} />
+            <Stack.Screen name="ImageSearch3" component={ImageSearchScreen3} />
+            <Stack.Screen name="ImageSearch4" component={ImageSearchScreen4} />
+            <Stack.Screen name="ImageSearch5" component={ImageSearchScreen5} />
+            <Stack.Screen name="PlantGarden" component={PlantGardenScreen} />
+            <Stack.Screen name="Setting" component={SettingScreen} />
 
 
-        </Stack.Navigator>
-      </NavigationContainer>
-    </GlobalStateUserImage.Provider>
+          </Stack.Navigator>
+        </NavigationContainer>
+      </GlobalStateUserImage.Provider>
+    </GlobalStateUserQuestion.Provider>
 
   );
 }

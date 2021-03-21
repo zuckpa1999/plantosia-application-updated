@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image, Dimensions, Alert } from 'react-native';
 import {
     responsiveScreenHeight,
@@ -10,28 +10,25 @@ import { Card, ListItem, Button, Icon } from 'react-native-elements'
 import questions from '../../config/questions.json'
 import TemplateQuestion from './templateQuestion.js'
 import TemplateTop from './templateTop.js'
+import GlobalStateUserQuestion from '../../contexts/GlobalStateUserQuestion'
 export default function QuestionScreen2({ navigation }) {
-    const [object, setObject] = useState({ name: 'vvv', surname: 'fefef' })
-    // setValue('44')
-    const [Answer, setAnswer] = useState('zzczssxzzzzczx')
-    let parentCallback = (value) => {
-        Alert.alert('ffs')
-        setAnswer(value)
-    }
+
+    const [stateQuestion, setStateQuestion] = useContext(GlobalStateUserQuestion)
+
 
     return (
         <SafeAreaView style={styles.container}>
-            <Text>{object.surname}</Text>
-            <Text>fsf</Text>
-            <TemplateTop navigation={navigation} parentCallback={parentCallback} />
+
+
+            <TemplateTop navigation={navigation} />
             {/*     QuestionScreen2 ---> 0,  */}
             <View style={styles.greenArea}>
 
                 <TemplateQuestion index={0} />
-                <TouchableOpacity style={styles.confirmButtonContainer} onPress={() => navigation.navigate('Question3', object)}>
+                <TouchableOpacity style={styles.confirmButtonContainer} onPress={() => navigation.navigate('Question3')}>
                     <Text style={styles.confirmButton}>Confirm</Text>
                 </TouchableOpacity>
-                <Text>{Answer}</Text>
+
             </View>
 
         </SafeAreaView >
