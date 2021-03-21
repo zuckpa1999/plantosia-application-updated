@@ -16,7 +16,14 @@ Plantosia is a project aimed to increase awareness of plantology for kids from a
 - React Native
 - React Native Navigation
 - Java script
--etc
+- etc
+
+## Dependencies
+- axios
+- expo
+- python-shell
+- react-native-responsive-dimensions
+- material-ui
 
 ### Backend
 - Node.js
