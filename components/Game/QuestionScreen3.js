@@ -12,10 +12,10 @@ import TemplateQuestion from './templateQuestion.js'
 import TemplateTop from './templateTop.js'
 export default function QuestionScreen3({ route, navigation }) {
     // let object = route.params
-    const [object, setObject] = useState(route.params)
+
     return (
         <SafeAreaView style={styles.container}>
-            <Text>{object.name}</Text>
+
             <TemplateTop navigation={navigation} />
             {/*     QuestionScreen2 ---> 0,  */}
             <View style={styles.greenArea}>

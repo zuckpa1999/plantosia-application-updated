@@ -16,6 +16,9 @@ export default function QuestionScreen2({ navigation }) {
     const [stateQuestion, setStateQuestion] = useContext(GlobalStateUserQuestion)
 
 
+    // GlobalStateUserQuestion
+    //    store - userAnswer (string of the choice), userResult(correct, incorrect)
+    //
     return (
         <SafeAreaView style={styles.container}>
 

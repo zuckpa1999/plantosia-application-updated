@@ -8,8 +8,11 @@ import {
 
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
 import questions from '../../config/questions.json'
-export default function templateQuestion(props, { parentCallback }) {
-    let imageQuestion = questions.easy[props.index].image
+import { Images } from '../../Images'
+export default function templateQuestion(props) {
+    /* let imageQuestion = questions.easy[props.index].image */
+    let index = props.index
+    const img = Images[index];
     let indexQuestion = questions.easy[props.index].id
     let numQuestion = questions.easy.length
     let question = questions.easy[props.index].question
@@ -34,14 +37,16 @@ export default function templateQuestion(props, { parentCallback }) {
             <Image
                 style={{ marginTop: '2%' }}
 
-                source={require('../../asset/imgQuestion1.png')}
+                /* source={require('../../asset/imgQuestion1.png')} */
+
+                source={img}
             />
 
             <Text style={{ fontWeight: '700', marginTop: '6%', fontSize: 19 }}>{question}</Text>
             <View style={styles.questionFooter}>
                 {Object.keys(configQuestion).map((key) => (
                     // onPress={() => selectThisChoice(configQuestion[key])}
-                    <TouchableOpacity style={styles.choiceContainer} onPress={() => parentCallback(configQuestion[key])}>
+                    <TouchableOpacity style={styles.choiceContainer} >
                         <Text key={key} style={styles.choiceOption}>{configQuestion[key]}</Text>
                     </TouchableOpacity>
                 ))}
