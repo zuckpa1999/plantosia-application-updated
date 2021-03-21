@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
 import { Button, Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-native';
 import {
     responsiveScreenHeight,
@@ -6,8 +6,10 @@ import {
     responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
 import * as ImagePicker from 'expo-image-picker'
+import GlobalStateUserImage from '../../contexts/GlobalStateUserImage'
 export default function GameScreen3({ navigation }) {
     const [selectedImage, setSelectedImage] = React.useState(null)
+    const [stateImage, setStateImage] = useContext(GlobalStateUserImage)
     let selectImage = async () => {
         const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync()
 
@@ -48,7 +50,11 @@ export default function GameScreen3({ navigation }) {
 
 
     }
+    let storeImageAndGoNext = (selectedImage) => {
 
+        setStateImage([...stateImage, selectedImage])
+        navigation.navigate('Game4')
+    }
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.top}>
@@ -84,12 +90,14 @@ export default function GameScreen3({ navigation }) {
 
                         />
                     </TouchableOpacity>
-                    <Image
+                    <TouchableOpacity onPress={() => print()}>
+                        <Image
 
-                        source={require('../../asset/camera_2.png')}
-                    />
+                            source={require('../../asset/camera_2.png')}
+                        />
+                    </TouchableOpacity>
                 </View>
-                <TouchableOpacity onPress={() => navigation.navigate('Game4')}>
+                <TouchableOpacity onPress={() => storeImageAndGoNext(selectedImage)}>
                     <Image
                         style={styles.nextButton}
                         source={require('../../asset/nextButton.png')}

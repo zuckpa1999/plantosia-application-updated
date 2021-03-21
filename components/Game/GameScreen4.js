@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
 import { Button, Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-native';
 import {
     responsiveScreenHeight,
@@ -6,8 +6,10 @@ import {
     responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
 import * as ImagePicker from 'expo-image-picker'
+import GlobalStateUserImage from '../../contexts/GlobalStateUserImage'
 export default function GameScreen4({ navigation }) {
     const [selectedImage, setSelectedImage] = React.useState(null)
+    const [stateImage, setStateImage] = useContext(GlobalStateUserImage)
     let selectImage = async () => {
         const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync()
 
@@ -48,7 +50,11 @@ export default function GameScreen4({ navigation }) {
 
 
     }
+    let storeImageAndGoNext = (selectedImage) => {
 
+        setStateImage([...stateImage, selectedImage])
+        navigation.navigate('Game5')
+    }
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.top}>
@@ -94,7 +100,7 @@ export default function GameScreen4({ navigation }) {
                     <Text style={styles.msg2}>ถ้าพืชต้นนี้  <Text style={{ color: 'red' }}>ไม่มีส่วนผล </Text>
 สามารถกดถัดไปเพื่อ <Text style={{ color: 'red' }}>ข้าม</Text> ได้เลย</Text>
                 </View>
-                <TouchableOpacity onPress={() => navigation.navigate('Game5')}>
+                <TouchableOpacity onPress={() => storeImageAndGoNext(selectedImage)}>
                     <Image
                         style={styles.nextButton}
                         source={require('../../asset/nextButton.png')}

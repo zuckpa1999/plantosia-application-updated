@@ -1,12 +1,46 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
 import { Button, Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-native';
 import {
     responsiveScreenHeight,
     responsiveScreenWidth,
     responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
-
+import GlobalStateUserImage from '../../contexts/GlobalStateUserImage'
 export default function GameScreen6({ navigation }) {
+    const [stateImage, setStateImage] = useContext(GlobalStateUserImage)
+
+    let upload = async () => {
+
+
+
+        // obj.base64.push to array
+        // then pass array
+
+        /* for (let i = 0; i < stateImage.length; i++) { */
+        fetch('http://192.168.1.102:3100/uploads', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            // send our base64 string as POST request
+            body: JSON.stringify({
+                imgsource: [stateImage[0].base64, stateImage[1].base64]
+            })
+        })
+
+        /*  arr.push(stateImage[i].base64) */
+        /* } */
+
+
+
+
+
+
+    }
+
+
+
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.top}>
@@ -29,7 +63,9 @@ export default function GameScreen6({ navigation }) {
                 <View style={styles.box}>
                     <Text style={styles.msg}>เย่! ถ่ายรูปพืชเสร็จแล้ว</Text>
                 </View>
-
+                <Text>{stateImage.length}</Text>
+                {/* <Text>{JSON.stringify({ stateImage })}</Text> */}
+                {/* <Text>{stateImage}</Text> */}
                 <Image
 
                     source={require('../../asset/BrocMascot.png')}
@@ -40,7 +76,7 @@ export default function GameScreen6({ navigation }) {
                     }}>QUIZ</Text></Text>
 
                 </View>
-                <TouchableOpacity onPress={() => navigation.navigate('Game7')}>
+                <TouchableOpacity onPress={() => upload()}>
                     <Image
                         style={styles.nextButton}
                         source={require('../../asset/nextButton.png')}

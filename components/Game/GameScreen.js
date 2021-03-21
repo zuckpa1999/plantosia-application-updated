@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
 import { Button, Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-native';
 import {
     responsiveScreenHeight,
     responsiveScreenWidth,
     responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
-import GameScreen2 from './GameScreen2.js'
+import GlobalStateUserImage from '../../contexts/GlobalStateUserImage'
 export default function GameScreen({ navigation }) {
 
+    const [stateImage, setStateImage] = useContext(GlobalStateUserImage)
+    //setStateImage([...stateImage, 'vdvs'])
+
+    const resetGlobalStateUserImage = () => {
+        setStateImage([])
+    }
 
     return (
         <SafeAreaView style={styles.container}>
@@ -24,13 +30,19 @@ export default function GameScreen({ navigation }) {
                 />
             </View>
             <View style={styles.greenArea}>
-                <Image
-                    style={styles.mascot}
-                    source={require('../../asset/BrocMascotArtboard3.png')}
-                />
+                <TouchableOpacity onPress={() => resetGlobalStateUserImage()} >
+
+                    <Image
+                        style={styles.mascot}
+                        source={require('../../asset/BrocMascotArtboard3.png')}
+                    />
+                </TouchableOpacity>
                 <View style={styles.box}>
                     <Text style={styles.msg}>มาถ่ายรูปพืชเพื่อนเริ่มเล่นเกมกันเถอะ!</Text>
                 </View>
+
+                {/* <Text>{state.a}</Text> */}
+
                 <TouchableOpacity onPress={() => navigation.navigate('Game2')}>
                     <Image
                         style={styles.nextButton}

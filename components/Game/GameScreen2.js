@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Button, Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-native';
 import {
     responsiveScreenHeight,
@@ -6,8 +6,12 @@ import {
     responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
 import * as ImagePicker from 'expo-image-picker'
+import GlobalStateUserImage from '../../contexts/GlobalStateUserImage'
 export default function GameScreen2({ navigation }) {
+
     const [selectedImage, setSelectedImage] = React.useState(null)
+    const [stateImage, setStateImage] = useContext(GlobalStateUserImage)
+    /* const [stateImage, setStateImage] = useContext(GlobalStateUserImage) */
     let selectImage = async () => {
         const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync()
 
@@ -31,8 +35,13 @@ export default function GameScreen2({ navigation }) {
     }
 
     const uploadImage = async (selectedImage) => {
+        // obj.base64.push to array
+        // then pass array
+        let arr = [selectedImage.base64, selectedImage.base64]
+        for (let i = 0; i < arr.length; i++) {
 
-        fetch('http://192.168.1.102:3102/uploads', {
+        }
+        fetch('http://192.168.1.102:3100/uploads', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -40,7 +49,7 @@ export default function GameScreen2({ navigation }) {
             },
             // send our base64 string as POST request
             body: JSON.stringify({
-                imgsource: selectedImage.base64,
+                imgsource: arr
             }),
         })
 
@@ -48,6 +57,17 @@ export default function GameScreen2({ navigation }) {
 
 
     }
+    let storeImageAndGoNext = (selectedImage) => {
+
+        setStateImage([...stateImage, selectedImage])
+        navigation.navigate('Game3')
+    }
+
+    let print = () => {
+
+        alert(stateImage.length)
+    }
+
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.top}>
@@ -83,12 +103,15 @@ export default function GameScreen2({ navigation }) {
 
                         />
                     </TouchableOpacity>
-                    <Image
+                    <TouchableOpacity onPress={() => print()} >
+                        <Image
 
-                        source={require('../../asset/camera_2.png')}
-                    />
+                            source={require('../../asset/camera_2.png')}
+                        />
+                    </TouchableOpacity>
                 </View>
-                <TouchableOpacity onPress={() => uploadImage(selectedImage)}>
+                {/* <TouchableOpacity onPress={() => uploadImage(selectedImage)}> */}
+                <TouchableOpacity onPress={() => storeImageAndGoNext(selectedImage)}>
                     <Image
                         style={styles.nextButton}
                         source={require('../../asset/nextButton.png')}

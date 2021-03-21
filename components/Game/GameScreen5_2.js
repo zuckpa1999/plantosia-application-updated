@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
 import { Button, Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-native';
 import {
     responsiveScreenHeight,
@@ -6,8 +6,10 @@ import {
     responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
 import * as ImagePicker from 'expo-image-picker'
+import GlobalStateUserImage from '../../contexts/GlobalStateUserImage'
 export default function GameScreen5_2({ navigation }) {
     const [selectedImage, setSelectedImage] = React.useState(null)
+    const [stateImage, setStateImage] = useContext(GlobalStateUserImage)
     let selectImage = async () => {
         const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync()
 
@@ -30,9 +32,39 @@ export default function GameScreen5_2({ navigation }) {
         setSelectedImage(pickerResult)
     }
 
-    const uploadImage = async (selectedImage) => {
+    /*  const uploadImage = async (selectedImage) => {
+ 
+         fetch('http://192.168.1.102:3102/uploads', {
+             method: 'POST',
+             headers: {
+                 Accept: 'application/json',
+                 'Content-Type': 'application/json',
+             },
+             // send our base64 string as POST request
+             body: JSON.stringify({
+                 imgsource: selectedImage.base64,
+             }),
+         })
+ 
+ 
+ 
+ 
+     } */
+    let storeImageAndGoNext = (selectedImage) => {
 
-        fetch('http://192.168.1.102:3102/uploads', {
+        /* setStateImage([...stateImage, selectedImage]) */
+        navigation.navigate('Game6')
+
+    }
+
+    const uploadImage = async (selectedImage) => {
+        // obj.base64.push to array
+        // then pass array
+        let arr = [selectedImage.base64, selectedImage.base64]
+        for (let i = 0; i < arr.length; i++) {
+
+        }
+        fetch('http://192.168.1.102:3100/uploads', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -40,11 +72,11 @@ export default function GameScreen5_2({ navigation }) {
             },
             // send our base64 string as POST request
             body: JSON.stringify({
-                imgsource: selectedImage.base64,
+                imgsource: arr
             }),
         })
 
-
+        /*  navigation.navigate('Game3') */
 
 
     }
@@ -93,7 +125,7 @@ export default function GameScreen5_2({ navigation }) {
                     <Text style={styles.msg2}>ถ้าพืชต้นนี้  <Text style={{ color: 'red' }}>ไม่มีส่วนผล </Text>
 สามารถกดถัดไปเพื่อ <Text style={{ color: 'red' }}>ข้าม</Text> ได้เลย</Text>
                 </View>
-                <TouchableOpacity onPress={() => navigation.navigate('Game6')}>
+                <TouchableOpacity onPress={() => storeImageAndGoNext(selectedImage)}>
                     <Image
                         style={styles.nextButton}
                         source={require('../../asset/nextButton.png')}
