@@ -10,9 +10,10 @@ import { Card, ListItem, Button, Icon } from 'react-native-elements'
 import questions from '../../config/questions.json'
 import TemplateQuestion from './templateQuestion.js'
 import TemplateTop from './templateTop.js'
+import TemplateAnswerScreen from './templateAnswer.js'
 import GlobalStateUserQuestion from '../../contexts/GlobalStateUserQuestion'
 
-export default function QuestionScreen2({ navigation }) {
+export default function SolutionScreen2({ navigation }) {
     /*   const [stateQuestion, setStateQuestion] = useState({ XP: 0, COIN: 0, countCorrectAnswer: 0, userAnswer: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'] }); */
     const [stateQuestion, setStateQuestion] = useContext(GlobalStateUserQuestion)
     // assumer we get props
@@ -36,6 +37,11 @@ export default function QuestionScreen2({ navigation }) {
     // GlobalStateUserQuestion
     //    store - userAnswer (string of the choice), userResult(correct, incorrect)
     //
+    let testGlobalState = () => {
+
+        setStateQuestion({ COIN: stateQuestion.COIN, XP: stateQuestion.XP, countCorrectAnswer: stateQuestion.countCorrectAnswer })
+        alert(stateQuestion.countCorrectAnswer)
+    }
 
     let confirm = () => {
 
@@ -61,74 +67,24 @@ export default function QuestionScreen2({ navigation }) {
 
 
             <TemplateTop navigation={navigation} />
+
             {/*     QuestionScreen2 ---> 0,  */}
             <View style={styles.greenArea}>
 
-                <TemplateQuestion index={0} />
-                <TouchableOpacity onPress={() => testGlobalState()}><Text>Hit me</Text></TouchableOpacity>
+
+
                 {/*  <TouchableOpacity style={styles.confirmButtonContainer} onPress={() => navigation.navigate('Question3')}>
                     <Text style={styles.confirmButton}>Confirm</Text>
                 </TouchableOpacity> */}
-                <Modal
-                    animationType="slide"
-                    transparent={true}
-                    visible={modalVisible}
-                    onRequestClose={() => {
-                        Alert.alert("Modal has been clou6u6sed.");
-                        setModalVisible(!modalVisible);
-                    }}
-                >
-                    <View style={styles.centeredView}>
-                        <View style={styles.modalView}>
-                            <Image
 
-                                style={answer ? { marginTop: '-42%', width: 375, height: 135 } : { marginTop: '-42%', width: 375, height: 115 }}
-                                source={banner}
+                <TemplateAnswerScreen index={0} />
 
-
-                            />
-
-                            <Image
-
-                                style={answer ? { width: 150, height: 90 } : { width: 130, height: 92 }}
-                                source={mascot}
-                            />
-
-                            <View style={{ backgroundColor: 'white', width: responsiveScreenWidth(40), height: responsiveScreenHeight(7), borderRadius: 30, borderColor: '#099846', borderWidth: 4, marginTop: '3%', paddingTop: '6%' }}>
-                                <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: '700', marginBottom: '11%' }}> <Image style={styles.image} source={require('../../asset/dollar_2.png')} /> + 20</Text>
-
-
-                            </View>
-
-                            <View style={{ backgroundColor: 'white', width: responsiveScreenWidth(40), height: responsiveScreenHeight(7), borderRadius: 30, borderColor: '#099846', borderWidth: 4, marginTop: '3%', paddingTop: '5%' }}>
-
-                                <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: '700', marginBottom: '11%' }}> XP + 50</Text>
-
-                            </View>
-                            <Text>XP :{stateQuestion.XP}</Text>
-                            <Text>COIN:{stateQuestion.COIN}</Text>
-                            <TouchableOpacity style={styles.solutionContainer} onPress={() => {
-                                setModalVisible(!modalVisible)
-                                navigation.navigate('Solution2')
-                            }}>
-                                <Text style={styles.solutionButton}>เฉลย</Text>
-                            </TouchableOpacity>
-                            <Pressable
-                                style={[styles.button, styles.buttonClose]}
-                                onPress={() => setModalVisible(!modalVisible)}
-                            >
-                                {/* <Text style={styles.textStyle}>Hide Modal</Text> */}
-                            </Pressable>
-                        </View>
-                    </View>
-                </Modal>
-                <Pressable
-                    style={styles.confirmButtonContainer}
-                    onPress={() => confirm()}
-                >
-                    <Text style={styles.confirmButton}>Confirm</Text>
-                </Pressable>
-
+                <TouchableOpacity onPress={() => navigation.navigate('Question3')}>
+                    <Image
+                        style={styles.nextButton}
+                        source={require('../../asset/nextButton.png')}
+                    />
+                </TouchableOpacity>
             </View>
 
         </SafeAreaView >
@@ -218,6 +174,11 @@ const styles = StyleSheet.create({
 
         marginTop: '15%'
     },
+    nextButton: {
+
+        left: 120,
+        top: -70
+    }
 
 
 

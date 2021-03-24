@@ -5,8 +5,10 @@ import {
     responsiveScreenWidth,
     responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
-import TemplateTop from './templateTop'
-export default function TemplateAnswerScreen({ navigation }) {
+import questions from '../../config/questions.json'
+
+import { Images } from '../../Images.js'
+export default function TemplateAnswerScreen(props) {
 
     // let imageQuestion = questions.easy[props.index].image
     // let indexQuestion = questions.easy[props.index].id
@@ -14,14 +16,16 @@ export default function TemplateAnswerScreen({ navigation }) {
     // let question = questions.easy[props.index].question
     // let configQuestion = questions.easy[props.index].choices
 
-
+    let index = props.index
+    const img = Images[index];
+    let question = questions.easy[props.index].question
     let iQ = 1
     let nQ = 10
 
     return (
         <SafeAreaView style={styles.container}>
 
-            <TemplateTop navigation={navigation} />
+            {/* <TemplateTop navigation={navigation} /> */}
             <View style={styles.greenArea}>
                 <View style={styles.banner} >
                     <View></View>
@@ -44,22 +48,22 @@ export default function TemplateAnswerScreen({ navigation }) {
                 <Image
 
                     style={{ marginTop: '5%' }}
-                    source={require('../../asset/imgQuestion1.png')}
+                    source={img}
                 />
-                {/* <Text style={{ fontWeight: '700', marginTop: '6%', fontSize: 19 }}>{question}</Text> */}
-                <Text style={{ fontWeight: '700', marginTop: '6%', fontSize: 19 }}>นี่คือส่วนใดของพืช?</Text>
+                <Text style={{ fontWeight: '700', marginTop: '6%', fontSize: 19 }}>{question}</Text>
+                {/* <Text style={{ fontWeight: '700', marginTop: '6%', fontSize: 19 }}>นี่คือส่วนใดของพืช?</Text> */}
                 <Text style={{ fontWeight: '700', marginTop: '6%', fontSize: 19 }}>คำตอบ:</Text>
                 <TouchableOpacity style={styles.choiceContainer} >
                     {/* <Text style={styles.choiceOption}>{configQuestion[key]}</Text> */}
                     <Text style={styles.choiceOption}>ราก</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => navigation.navigate('Test')}>
+                {/*   <TouchableOpacity onPress={() => navigation.navigate('Test')}>
                     <Image
                         style={styles.nextButton}
                         source={require('../../asset/nextButton.png')}
                     />
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </View>
 
 

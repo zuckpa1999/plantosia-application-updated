@@ -17,6 +17,7 @@ import GameScreen7_2 from './components/Game/GameScreen7_2.js'
 import QuestionScreen from './components/Game/QuestionScreen.js'
 
 import QuestionScreen2 from './components/Game/QuestionScreen2.js'
+import SolutionScreen2 from './components/Game/SolutionScreen2.js'
 import QuestionScreen3 from './components/Game/QuestionScreen3.js'
 import QuestionScreen4 from './components/Game/QuestionScreen4.js'
 import QuestionScreen5 from './components/Game/QuestionScreen5.js'
@@ -67,6 +68,7 @@ export default function App() {
             <Stack.Screen name="Game7_2" component={GameScreen7_2} />
             <Stack.Screen name="Question" component={QuestionScreen} />
             <Stack.Screen name="Question2" component={QuestionScreen2} />
+            <Stack.Screen name="Solution2" component={SolutionScreen2} />
             <Stack.Screen name="Question3" component={QuestionScreen3} />
             <Stack.Screen name="Question4" component={QuestionScreen4} />
             <Stack.Screen name="Question5" component={QuestionScreen5} />
