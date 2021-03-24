@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image, Dimensions, Alert } from 'react-native';
 import {
     responsiveScreenHeight,
@@ -9,6 +9,7 @@ import {
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
 import questions from '../../config/questions.json'
 import { Images } from '../../Images'
+import GlobalStateUserQuestion from '../../contexts/GlobalStateUserQuestion'
 export default function templateQuestion(props) {
     /* let imageQuestion = questions.easy[props.index].image */
     let index = props.index
@@ -17,7 +18,7 @@ export default function templateQuestion(props) {
     let numQuestion = questions.easy.length
     let question = questions.easy[props.index].question
     let configQuestion = questions.easy[props.index].choices
-
+    const [stateQuestion, setStateQuestion] = useContext(GlobalStateUserQuestion)
 
     return (
         <View style={styles.overAll}>
@@ -46,13 +47,14 @@ export default function templateQuestion(props) {
             <View style={styles.questionFooter}>
                 {Object.keys(configQuestion).map((key) => (
                     // onPress={() => selectThisChoice(configQuestion[key])}
-                    <TouchableOpacity style={styles.choiceContainer} >
+                    <TouchableOpacity style={styles.choiceContainer} onPress={() => { setStateQuestion({ COIN: stateQuestion.COIN, XP: stateQuestion.XP, countCorrectAnswer: stateQuestion.countCorrectAnswer, userAnswer: [configQuestion[key], '2', '3', '4', '5', '6', '7', '8', '9', '10'] }) }}>
                         <Text key={key} style={styles.choiceOption}>{configQuestion[key]}</Text>
                     </TouchableOpacity>
                 ))}
 
             </View>
-        </View>
+            <Text>{stateQuestion.userAnswer[index]}</Text>
+        </View >
     )
 }
 

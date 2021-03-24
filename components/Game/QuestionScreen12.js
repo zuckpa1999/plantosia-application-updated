@@ -11,7 +11,7 @@ import questions from '../../config/questions.json'
 import TemplateQuestion from './templateQuestion.js'
 import TemplateTop from './templateTop.js'
 export default function QuestionScreen12({ navigation }) {
-
+    const [stateQ, setStateImage] = useContext(GlobalStateUserQuestion)
     return (
         <SafeAreaView style={styles.container}>
 

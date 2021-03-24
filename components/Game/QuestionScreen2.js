@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image, Dimensions, Alert } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image, Dimensions, Alert, Modal, Pressable } from 'react-native';
 import {
     responsiveScreenHeight,
     responsiveScreenWidth,
@@ -11,14 +11,54 @@ import questions from '../../config/questions.json'
 import TemplateQuestion from './templateQuestion.js'
 import TemplateTop from './templateTop.js'
 import GlobalStateUserQuestion from '../../contexts/GlobalStateUserQuestion'
+
 export default function QuestionScreen2({ navigation }) {
-
+    /*   const [stateQuestion, setStateQuestion] = useState({ XP: 0, COIN: 0, countCorrectAnswer: 0, userAnswer: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'] }); */
     const [stateQuestion, setStateQuestion] = useContext(GlobalStateUserQuestion)
-
+    // assumer we get props
+    let answerToQuestion = questions.easy[0].answers
+    /* let answer */
+    const [answer, setAnswer] = useState(false)
+    // 2 version 
+    //if props.answer : true ? boolean
+    // need global variable to store coin and XP **
+    // right answer banner1 , mascot1, coin + 20, XP + 50
+    // wrong answer, banner 2, mascot 2, coin + 20, XP + 50
+    const [modalVisible, setModalVisible] = useState(false);
+    const bannerRight = require('../../asset/ปกถูก.png')
+    const bannerWrong = require('../../asset/ปกผิด.png')
+    const mascotRight = require('../../asset/ตอบถูก.png')
+    const mascotWrong = require('../../asset/ตอบผิด.png')
+    //
+    let banner = answer ? bannerRight : bannerWrong
+    let mascot = answer ? mascotRight : mascotWrong
 
     // GlobalStateUserQuestion
     //    store - userAnswer (string of the choice), userResult(correct, incorrect)
     //
+    let testGlobalState = () => {
+
+        setStateQuestion({ COIN: stateQuestion.COIN, XP: stateQuestion.XP, countCorrectAnswer: stateQuestion.countCorrectAnswer })
+        alert(stateQuestion.countCorrectAnswer)
+    }
+
+    let confirm = () => {
+
+        // if  pickedChoice  = coroect answer answer
+        //  answer = true /false
+        /*    alert(stateQuestion.userAnswer[0])
+           alert(answerToQuestion) */
+        /* answer = stateQuestion.userAnswer[0] === answerToQuestion ? true : false */
+        if (stateQuestion.userAnswer[0] === answerToQuestion) {
+            setAnswer(true)
+        }
+        else {
+            setAnswer(false)
+        }
+
+        setModalVisible(true)
+
+    }
     return (
         <SafeAreaView style={styles.container}>
 
@@ -28,9 +68,66 @@ export default function QuestionScreen2({ navigation }) {
             <View style={styles.greenArea}>
 
                 <TemplateQuestion index={0} />
-                <TouchableOpacity style={styles.confirmButtonContainer} onPress={() => navigation.navigate('Question3')}>
+                <TouchableOpacity onPress={() => testGlobalState()}><Text>Hit me</Text></TouchableOpacity>
+                {/*  <TouchableOpacity style={styles.confirmButtonContainer} onPress={() => navigation.navigate('Question3')}>
                     <Text style={styles.confirmButton}>Confirm</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                        Alert.alert("Modal has been clou6u6sed.");
+                        setModalVisible(!modalVisible);
+                    }}
+                >
+                    <View style={styles.centeredView}>
+                        <View style={styles.modalView}>
+                            <Image
+
+                                style={answer ? { marginTop: '-42%', width: 375, height: 135 } : { marginTop: '-42%', width: 375, height: 115 }}
+                                source={banner}
+
+
+                            />
+
+
+
+                            <Image
+
+                                style={answer ? { width: 150, height: 90 } : { width: 130, height: 92 }}
+                                source={mascot}
+                            />
+
+                            <View style={{ backgroundColor: 'white', width: responsiveScreenWidth(40), height: responsiveScreenHeight(7), borderRadius: 30, borderColor: '#099846', borderWidth: 4, marginTop: '3%', paddingTop: '6%' }}>
+                                <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: '700', marginBottom: '11%' }}> <Image style={styles.image} source={require('../../asset/dollar_2.png')} /> + 20</Text>
+
+
+                            </View>
+
+                            <View style={{ backgroundColor: 'white', width: responsiveScreenWidth(40), height: responsiveScreenHeight(7), borderRadius: 30, borderColor: '#099846', borderWidth: 4, marginTop: '3%', paddingTop: '5%' }}>
+
+                                <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: '700', marginBottom: '11%' }}> XP + 50</Text>
+
+                            </View>
+                            <TouchableOpacity style={styles.solutionContainer} onPress={() => setModalVisible(!modalVisible)}>
+                                <Text style={styles.solutionButton}>เฉลย</Text>
+                            </TouchableOpacity>
+                            <Pressable
+                                style={[styles.button, styles.buttonClose]}
+                                onPress={() => setModalVisible(!modalVisible)}
+                            >
+                                {/* <Text style={styles.textStyle}>Hide Modal</Text> */}
+                            </Pressable>
+                        </View>
+                    </View>
+                </Modal>
+                <Pressable
+                    style={styles.confirmButtonContainer}
+                    onPress={() => confirm()}
+                >
+                    <Text style={styles.confirmButton}>Confirm</Text>
+                </Pressable>
 
             </View>
 
@@ -78,7 +175,49 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start'
 
     },
+    modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        height: responsiveScreenHeight(50), // 50% of Screen height
+        width: responsiveScreenWidth(73), // 50% of Screen width
+        borderWidth: 8,
+        borderColor: 'white',
+        elevation: 5,
+        backgroundColor: '#94F098'
 
+    },
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+    },
+    solutionButton: {
+        textAlign: 'center',
+        // marginTop: '7%',
+        color: 'white',
+        fontWeight: '800',
+        fontSize: 30
+    },
+    solutionContainer: {
+        backgroundColor: '#099846',
+        borderRadius: 10,
+        height: responsiveScreenHeight(5), // 50% of Screen height,
+        width: responsiveScreenWidth(38),// 50% of Screen width
+
+
+        marginTop: '15%'
+    },
 
 
 

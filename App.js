@@ -41,7 +41,7 @@ import GlobalStateUserQuestion from './contexts/GlobalStateUserQuestion.js'
 export default function App() {
   const Stack = createStackNavigator();
   const [stateImage, setStateImage] = useState([]);
-  const [stateQuestion, setStateQuestion] = useState({ XP: 0, COIN: 0, countCorrectAnswer: 0 });
+  const [stateQuestion, setStateQuestion] = useState({ XP: 0, COIN: 0, countCorrectAnswer: 0, userAnswer: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'] });
   return (
 
     // <View style={styles.container}>
