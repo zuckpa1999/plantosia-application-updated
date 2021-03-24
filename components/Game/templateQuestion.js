@@ -19,6 +19,9 @@ export default function templateQuestion(props) {
     let question = questions.easy[props.index].question
     let configQuestion = questions.easy[props.index].choices
     const [stateQuestion, setStateQuestion] = useContext(GlobalStateUserQuestion)
+    const [currentChoice, setCurrentChoice] = useState(null)
+
+
 
     return (
         <View style={styles.overAll}>
@@ -47,7 +50,10 @@ export default function templateQuestion(props) {
             <View style={styles.questionFooter}>
                 {Object.keys(configQuestion).map((key) => (
                     // onPress={() => selectThisChoice(configQuestion[key])}
-                    <TouchableOpacity style={styles.choiceContainer} onPress={() => { setStateQuestion({ COIN: stateQuestion.COIN, XP: stateQuestion.XP, countCorrectAnswer: stateQuestion.countCorrectAnswer, userAnswer: [configQuestion[key], '2', '3', '4', '5', '6', '7', '8', '9', '10'] }) }}>
+                    <TouchableOpacity style={currentChoice === configQuestion[key] ? styles.choiceContainer2 : styles.choiceContainer} onPress={() => {
+                        setStateQuestion({ COIN: stateQuestion.COIN, XP: stateQuestion.XP, countCorrectAnswer: stateQuestion.countCorrectAnswer, userAnswer: [configQuestion[key], '2', '3', '4', '5', '6', '7', '8', '9', '10'] })
+                        setCurrentChoice(configQuestion[key])
+                    }}>
                         <Text key={key} style={styles.choiceOption}>{configQuestion[key]}</Text>
                     </TouchableOpacity>
                 ))}
@@ -82,6 +88,15 @@ const styles = StyleSheet.create({
         borderRadius: 13,
         borderWidth: 3,
         borderColor: 'white',
+        height: responsiveScreenHeight(9), // 50% of Screen height,
+        width: responsiveScreenWidth(43),// 50% of Screen width
+        margin: '1%'
+    },
+    choiceContainer2: {
+        backgroundColor: 'white',
+        borderRadius: 13,
+        borderWidth: 3,
+        borderColor: '#FCB65F',
         height: responsiveScreenHeight(9), // 50% of Screen height,
         width: responsiveScreenWidth(43),// 50% of Screen width
         margin: '1%'
