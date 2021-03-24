@@ -22,7 +22,7 @@ export default function QuestionScreen2({ navigation }) {
     // 2 version 
     //if props.answer : true ? boolean
     // need global variable to store coin and XP **
-    // right answer banner1 , mascot1, coin + 20, XP + 50
+    // right answer banner1 , mascot1, coin + 5, XP + 30
     // wrong answer, banner 2, mascot 2, coin + 20, XP + 50
     const [modalVisible, setModalVisible] = useState(false);
     const bannerRight = require('../../asset/ปกถูก.png')
@@ -51,9 +51,11 @@ export default function QuestionScreen2({ navigation }) {
         /* answer = stateQuestion.userAnswer[0] === answerToQuestion ? true : false */
         if (stateQuestion.userAnswer[0] === answerToQuestion) {
             setAnswer(true)
+            setStateQuestion({ COIN: stateQuestion.COIN + 20, XP: stateQuestion.XP + 50, countCorrectAnswer: stateQuestion.countCorrectAnswer + 1, userAnswer: stateQuestion.userAnswer })
         }
         else {
             setAnswer(false)
+            setStateQuestion({ COIN: stateQuestion.COIN + 5, XP: stateQuestion.XP + 30, countCorrectAnswer: stateQuestion.countCorrectAnswer, userAnswer: stateQuestion.userAnswer })
         }
 
         setModalVisible(true)
@@ -110,6 +112,8 @@ export default function QuestionScreen2({ navigation }) {
                                 <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: '700', marginBottom: '11%' }}> XP + 50</Text>
 
                             </View>
+                            <Text>XP :{stateQuestion.XP}</Text>
+                            <Text>COIN:{stateQuestion.COIN}</Text>
                             <TouchableOpacity style={styles.solutionContainer} onPress={() => setModalVisible(!modalVisible)}>
                                 <Text style={styles.solutionButton}>เฉลย</Text>
                             </TouchableOpacity>
