@@ -12,11 +12,12 @@ import TemplateQuestion from './templateQuestion.js'
 import TemplateTop from './templateTop.js'
 import TemplateAnswerScreen from './templateAnswer.js'
 import GlobalStateUserQuestion from '../../contexts/GlobalStateUserQuestion'
-
+//+1
 export default function SolutionScreen2({ navigation }) {
     /*   const [stateQuestion, setStateQuestion] = useState({ XP: 0, COIN: 0, countCorrectAnswer: 0, userAnswer: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'] }); */
     const [stateQuestion, setStateQuestion] = useContext(GlobalStateUserQuestion)
     // assumer we get props
+    //+1
     let answerToQuestion = questions.easy[0].answers
     /* let answer */
     const [answer, setAnswer] = useState(false)
@@ -37,11 +38,7 @@ export default function SolutionScreen2({ navigation }) {
     // GlobalStateUserQuestion
     //    store - userAnswer (string of the choice), userResult(correct, incorrect)
     //
-    let testGlobalState = () => {
 
-        setStateQuestion({ COIN: stateQuestion.COIN, XP: stateQuestion.XP, countCorrectAnswer: stateQuestion.countCorrectAnswer })
-        alert(stateQuestion.countCorrectAnswer)
-    }
 
     let confirm = () => {
 
@@ -50,6 +47,7 @@ export default function SolutionScreen2({ navigation }) {
         /*    alert(stateQuestion.userAnswer[0])
            alert(answerToQuestion) */
         /* answer = stateQuestion.userAnswer[0] === answerToQuestion ? true : false */
+        // +1
         if (stateQuestion.userAnswer[0] === answerToQuestion) {
             setAnswer(true)
             setStateQuestion({ COIN: stateQuestion.COIN + 20, XP: stateQuestion.XP + 50, countCorrectAnswer: stateQuestion.countCorrectAnswer + 1, userAnswer: stateQuestion.userAnswer })
@@ -76,9 +74,9 @@ export default function SolutionScreen2({ navigation }) {
                 {/*  <TouchableOpacity style={styles.confirmButtonContainer} onPress={() => navigation.navigate('Question3')}>
                     <Text style={styles.confirmButton}>Confirm</Text>
                 </TouchableOpacity> */}
-
+                {/* +1 */}
                 <TemplateAnswerScreen index={0} />
-
+                {/* +1 */}
                 <TouchableOpacity onPress={() => navigation.navigate('Question3')}>
                     <Image
                         style={styles.nextButton}
@@ -91,6 +89,8 @@ export default function SolutionScreen2({ navigation }) {
     )
 }
 
+
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -98,8 +98,6 @@ const styles = StyleSheet.create({
         alignItems: 'center'
 
     },
-
-
     confirmButtonContainer: {
         backgroundColor: '#099846',
         borderRadius: 10,
@@ -115,7 +113,6 @@ const styles = StyleSheet.create({
         marginTop: '7%',
         color: 'white',
         fontWeight: '800'
-
     },
     greenArea: {
 
@@ -129,7 +126,6 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'flex-start'
-
     },
     modalView: {
         margin: 20,

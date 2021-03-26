@@ -10,14 +10,15 @@ import { Card, ListItem, Button, Icon } from 'react-native-elements'
 import questions from '../../config/questions.json'
 import TemplateQuestion from './templateQuestion.js'
 import TemplateTop from './templateTop.js'
+import TemplateAnswerScreen from './templateAnswer.js'
 import GlobalStateUserQuestion from '../../contexts/GlobalStateUserQuestion'
-
-export default function QuestionScreen7({ navigation }) {
+//+1
+export default function SolutionScreen8({ navigation }) {
     /*   const [stateQuestion, setStateQuestion] = useState({ XP: 0, COIN: 0, countCorrectAnswer: 0, userAnswer: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'] }); */
     const [stateQuestion, setStateQuestion] = useContext(GlobalStateUserQuestion)
     // assumer we get props
-    let index = 5
-    let answerToQuestion = questions.easy[index].answers
+    //+1
+    let answerToQuestion = questions.easy[6].answers
     /* let answer */
     const [answer, setAnswer] = useState(false)
     // 2 version 
@@ -37,102 +38,38 @@ export default function QuestionScreen7({ navigation }) {
     // GlobalStateUserQuestion
     //    store - userAnswer (string of the choice), userResult(correct, incorrect)
     //
+    // f
 
-    let confirm = () => {
-
-        // if  pickedChoice  = coroect answer answer
-        //  answer = true /false
-        /*    alert(stateQuestion.userAnswer[0])
-           alert(answerToQuestion) */
-        /* answer = stateQuestion.userAnswer[0] === answerToQuestion ? true : false */
-        if (stateQuestion.userAnswer[0] === answerToQuestion) {
-            setAnswer(true)
-            setStateQuestion({ COIN: stateQuestion.COIN + 20, XP: stateQuestion.XP + 50, countCorrectAnswer: stateQuestion.countCorrectAnswer + 1, userAnswer: stateQuestion.userAnswer })
-        }
-        else {
-            setAnswer(false)
-            setStateQuestion({ COIN: stateQuestion.COIN + 5, XP: stateQuestion.XP + 30, countCorrectAnswer: stateQuestion.countCorrectAnswer, userAnswer: stateQuestion.userAnswer })
-        }
-
-        setModalVisible(true)
-
-    }
     return (
         <SafeAreaView style={styles.container}>
 
 
             <TemplateTop navigation={navigation} />
+
             {/*     QuestionScreen2 ---> 0,  */}
             <View style={styles.greenArea}>
 
-                <TemplateQuestion index={index} />
 
 
-                <Modal
-                    animationType="slide"
-                    transparent={true}
-                    visible={modalVisible}
-                    onRequestClose={() => {
-                        Alert.alert("Modal has been clou6u6sed.");
-                        setModalVisible(!modalVisible);
-                    }}
-                >
-                    <View style={styles.centeredView}>
-                        <View style={styles.modalView}>
-                            <Image
-
-                                style={answer ? { marginTop: '-42%', width: 375, height: 135 } : { marginTop: '-42%', width: 375, height: 115 }}
-                                source={banner}
-
-
-                            />
-
-                            <Image
-
-                                style={answer ? { width: 150, height: 90 } : { width: 130, height: 92 }}
-                                source={mascot}
-                            />
-
-                            <View style={{ backgroundColor: 'white', width: responsiveScreenWidth(40), height: responsiveScreenHeight(7), borderRadius: 30, borderColor: '#099846', borderWidth: 4, marginTop: '3%', paddingTop: '6%' }}>
-                                <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: '700', marginBottom: '11%' }}> <Image style={styles.image} source={require('../../asset/dollar_2.png')} /> + 20</Text>
-
-
-                            </View>
-
-                            <View style={{ backgroundColor: 'white', width: responsiveScreenWidth(40), height: responsiveScreenHeight(7), borderRadius: 30, borderColor: '#099846', borderWidth: 4, marginTop: '3%', paddingTop: '5%' }}>
-
-                                <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: '700', marginBottom: '11%' }}> XP + 50</Text>
-
-                            </View>
-                            <Text>XP :{stateQuestion.XP}</Text>
-                            <Text>COIN:{stateQuestion.COIN}</Text>
-                            <TouchableOpacity style={styles.solutionContainer} onPress={() => {
-                                setModalVisible(!modalVisible)
-                                navigation.navigate('Solution7')
-                            }}>
-                                <Text style={styles.solutionButton}>เฉลย</Text>
-                            </TouchableOpacity>
-                            <Pressable
-                                style={[styles.button, styles.buttonClose]}
-                                onPress={() => setModalVisible(!modalVisible)}
-                            >
-
-                            </Pressable>
-                        </View>
-                    </View>
-                </Modal>
-                <Pressable
-                    style={styles.confirmButtonContainer}
-                    onPress={() => confirm()}
-                >
+                {/*  <TouchableOpacity style={styles.confirmButtonContainer} onPress={() => navigation.navigate('Question3')}>
                     <Text style={styles.confirmButton}>Confirm</Text>
-                </Pressable>
-
+                </TouchableOpacity> */}
+                {/* +1 */}
+                <TemplateAnswerScreen index={6} />
+                {/* +1 */}
+                <TouchableOpacity onPress={() => navigation.navigate('Question9')}>
+                    <Image
+                        style={styles.nextButton}
+                        source={require('../../asset/nextButton.png')}
+                    />
+                </TouchableOpacity>
             </View>
 
         </SafeAreaView >
     )
 }
+
+
 
 const styles = StyleSheet.create({
     container: {
@@ -141,8 +78,6 @@ const styles = StyleSheet.create({
         alignItems: 'center'
 
     },
-
-
     confirmButtonContainer: {
         backgroundColor: '#099846',
         borderRadius: 10,
@@ -158,7 +93,6 @@ const styles = StyleSheet.create({
         marginTop: '7%',
         color: 'white',
         fontWeight: '800'
-
     },
     greenArea: {
 
@@ -172,7 +106,6 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'flex-start'
-
     },
     modalView: {
         margin: 20,
@@ -217,6 +150,11 @@ const styles = StyleSheet.create({
 
         marginTop: '15%'
     },
+    nextButton: {
+
+        left: 120,
+        top: -70
+    }
 
 
 

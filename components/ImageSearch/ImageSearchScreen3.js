@@ -46,6 +46,7 @@ export default function ImageSearchScreen3({ navigation }) {
         }
     }
 
+
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.top}>
@@ -78,9 +79,9 @@ export default function ImageSearchScreen3({ navigation }) {
                 </View>
                 <Image
                     source={selectedImage ? selectedImage : require('../../asset/cameraArea.png')}
-                // source={require('../../asset/cameraArea.png')}
+                    style={selectedImage ? styles.thumbnail : styles.cameraArea}
                 />
-                <TouchableOpacity onPress={selectAndUploadImage} >
+                <TouchableOpacity onPress={() => selectAndUploadImage()} >
                     <Image
 
                         style={{ marginTop: '10%' }}
@@ -183,5 +184,14 @@ const styles = StyleSheet.create({
 
         left: 120,
         top: 150,
-    }
+    },
+    cameraArea: {
+        marginTop: '10%',
+        marginBottom: '10%'
+    },
+    thumbnail: {
+        width: 300,
+        height: 300,
+        resizeMode: 'contain',
+    },
 });

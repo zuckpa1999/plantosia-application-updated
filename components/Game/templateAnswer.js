@@ -16,12 +16,11 @@ export default function TemplateAnswerScreen(props) {
     // let question = questions.easy[props.index].question
     // let configQuestion = questions.easy[props.index].choices
 
-    let index = props.index
+    let index = props.index + 1
     const img = Images[index];
     let question = questions.easy[props.index].question
     let iQ = 1
     let nQ = 10
-
     return (
         <SafeAreaView style={styles.container}>
 
@@ -31,7 +30,7 @@ export default function TemplateAnswerScreen(props) {
                     <View></View>
                     <Text style={{
                         textAlign: 'center', fontSize: 23, fontWeight: '600', marginLeft: '9%'
-                    }}>Questions {iQ} / {nQ}</Text>
+                    }}>Questions {index} / {nQ}</Text>
                     < TouchableOpacity >
                         <Image
                             style={{ width: 50, height: 50, marginBottom: "100%", marginLeft: '-3%' }}

@@ -16,7 +16,8 @@ export default function QuestionScreen2({ navigation }) {
     /*   const [stateQuestion, setStateQuestion] = useState({ XP: 0, COIN: 0, countCorrectAnswer: 0, userAnswer: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'] }); */
     const [stateQuestion, setStateQuestion] = useContext(GlobalStateUserQuestion)
     // assumer we get props
-    let answerToQuestion = questions.easy[0].answers
+    let index = 0
+    let answerToQuestion = questions.easy[index].answers
     /* let answer */
     const [answer, setAnswer] = useState(false)
     // 2 version 
@@ -64,11 +65,9 @@ export default function QuestionScreen2({ navigation }) {
             {/*     QuestionScreen2 ---> 0,  */}
             <View style={styles.greenArea}>
 
-                <TemplateQuestion index={0} />
-                <TouchableOpacity onPress={() => testGlobalState()}><Text>Hit me</Text></TouchableOpacity>
-                {/*  <TouchableOpacity style={styles.confirmButtonContainer} onPress={() => navigation.navigate('Question3')}>
-                    <Text style={styles.confirmButton}>Confirm</Text>
-                </TouchableOpacity> */}
+                <TemplateQuestion index={index} />
+
+
                 <Modal
                     animationType="slide"
                     transparent={true}
@@ -117,7 +116,7 @@ export default function QuestionScreen2({ navigation }) {
                                 style={[styles.button, styles.buttonClose]}
                                 onPress={() => setModalVisible(!modalVisible)}
                             >
-                                {/* <Text style={styles.textStyle}>Hide Modal</Text> */}
+
                             </Pressable>
                         </View>
                     </View>

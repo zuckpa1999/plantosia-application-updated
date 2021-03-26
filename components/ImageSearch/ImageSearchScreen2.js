@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Button, Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-native';
 import {
     responsiveScreenHeight,
@@ -6,10 +6,12 @@ import {
     responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
 import { Camera } from 'expo-camera';
+import GlobalStateImageSearch from '../../contexts/GlobalStateImageSearch.js'
 export default function ImageSearchScreen2({ navigation }) {
     const [hasPermission, setHasPermission] = useState(null);
     const [cameraRef, setCameraRef] = useState(null)
     const [type, setType] = useState(Camera.Constants.Type.back);
+    const [statePic, setPicstatePic] = useContext(GlobalStateImageSearch);
     useEffect(() => {
         (async () => {
             const { status } = await Camera.requestPermissionsAsync();
@@ -55,11 +57,12 @@ export default function ImageSearchScreen2({ navigation }) {
                 </View>
 
                 <Image
-                    // source={selectedImage ? pickerResult : require('../../asset/cameraArea.png')}
-                    source={require('../../asset/cameraArea.png')}
+                    style={statePic ? styles.thumbnail : styles.cameraArea}
+                    source={statePic ? statePic : require('../../asset/cameraArea.png')}
+                /*     source={require('../../asset/cameraArea.png')} */
                 />
                 <TouchableOpacity onPress={() => navigation.navigate('ImageSearch4')}>
-                    <Image
+                    < Image
                         style={{ marginTop: '10%' }}
                         source={require('../../asset/camera_2.png')}
 
@@ -163,5 +166,14 @@ const styles = StyleSheet.create({
 
         left: 120,
         top: 80,
-    }
+    },
+    cameraArea: {
+        marginTop: '10%',
+        marginBottom: '10%'
+    },
+    thumbnail: {
+        width: 300,
+        height: 300,
+        resizeMode: 'contain',
+    },
 });

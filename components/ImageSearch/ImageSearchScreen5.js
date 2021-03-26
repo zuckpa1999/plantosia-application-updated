@@ -53,7 +53,7 @@ export default function ImageSearchScreen5({ navigation }) {
                         source={require('../../asset/การค้นหาด้วยรูป.png')}
                     />
                 </View>
-
+                <Text>fefe</Text>
 
                 {/* <TouchableOpacity onPress={() => navigation.navigate('Game2')}>
                     <Image

@@ -18,7 +18,7 @@ export default function QuestionScreen12({ navigation }) {
             <TemplateTop navigation={navigation} />
             {/*     QuestionScreen2 ---> 0,  */}
             <View style={styles.greenArea}>
-
+                <Text>fefefzxczxc   </Text>
                 <TemplateQuestion index={10} />
                 <TouchableOpacity style={styles.confirmButtonContainer} onPress={() => navigation.navigate('Question13')}>
                     <Text style={styles.confirmButton}>Confirm</Text>

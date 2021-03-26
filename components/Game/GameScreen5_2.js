@@ -11,6 +11,7 @@ export default function GameScreen5_2({ navigation }) {
     const [selectedImage, setSelectedImage] = React.useState(null)
     const [stateImage, setStateImage] = useContext(GlobalStateUserImage)
     let selectImage = async () => {
+
         const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync()
 
         if (permissionResult.granted === false) {
