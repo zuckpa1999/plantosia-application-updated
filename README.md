@@ -22,6 +22,7 @@ Plantosia is a project aimed to increase awareness of plantology for kids from a
 - axios
 - expo
 - python-shell
+A simple way to run Python scripts from Node.js with basic but efficient inter-process communication and better error handling.
 - react-native-responsive-dimensions
 - material-ui
 
