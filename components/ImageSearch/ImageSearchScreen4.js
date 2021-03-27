@@ -32,6 +32,19 @@ export default function ImageSearchScreen4({ navigation }) {
 
         })
         setPicstatePic(photo)
+
+        fetch('http://192.168.1.102:3100/uploads', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            // send our base64 string as POST request
+            body: JSON.stringify({
+                imgsource: photo.base64,
+            }),
+        })
+
         navigation.navigate('ImageSearch2')
         alert(Object.keys(photo))
 
