@@ -12,6 +12,14 @@ def read_in():
     # Since our input would only be having one line, parse our JSON data from that
 	# print('5')
 	# print('hello nookko')
+	print('filee')
+	print(lines)
+	print('fefe')
+	# `['"./upload/17179.png"\\n', '"./upload/17179.png"\\n']`,
+	print(lines)
+	#  './upload/17179.png',
+	print(json.loads(lines[0]))
+	print('efef')
 	return json.loads(lines[0])
 
 
@@ -35,6 +43,9 @@ def main():
 	# print('16606.png')
 	# print(type('16606.png'))
 	# get img or load image
+	#print('print line')
+	#print(lines)
+
 	test = lines
 	img = cv2.imread(test)
 	# print(lines)
@@ -44,8 +55,7 @@ def main():
 	height, width, _ = img.shape
 
 	# (img, scaling, the size of the image, no mead/ subtration,swap to rgb coor, no crop )
-	blob = cv2.dnn.blobFromImage(
-	img, 1/255, (416, 416), (0, 0, 0), swapRB=True, crop=False)
+	blob = cv2.dnn.blobFromImage(img, 1/255, (416, 416), (0, 0, 0), swapRB=True, crop=False)
 
 	#  set input from the blob into network
 	net.setInput(blob)
@@ -93,6 +103,7 @@ def main():
 	
 	print(label)
 	print(confidence)
+	
 	# show  image 
 	# cv2.imshow('Image', img)
 	# cv2.waitKey(0)

@@ -32,7 +32,7 @@ export default function ImageSearchScreen3({ navigation }) {
         setSelectedImage(pickerResult)
         // make sure a image was taken: .
         if (!pickerResult.cancelled) {
-            fetch('http://192.168.1.102:3102/uploads', {
+            fetch('http://192.168.1.102:3100/uploads', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
