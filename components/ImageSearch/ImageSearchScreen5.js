@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-native';
+import { Card } from 'react-native-elements'
 import {
     responsiveScreenHeight,
     responsiveScreenWidth,
@@ -24,7 +25,8 @@ export default function ImageSearchScreen5({ navigation }) {
     }
 
     return (
-        <SafeAreaView style={styles.container}>
+
+        <View style={styles.container}>
             <View style={styles.top}>
                 <TouchableOpacity onPress={navigation.goBack}>
                     <Image
@@ -53,7 +55,44 @@ export default function ImageSearchScreen5({ navigation }) {
                         source={require('../../asset/การค้นหาด้วยรูป.png')}
                     />
                 </View>
-                <Text>fefe</Text>
+                <Image
+                    style={{ marginLeft: '2%' }}
+                    source={require('../../asset/banner123.png')}
+                />
+                {/*   height: responsiveScreenHeight(5), // 50% of Screen height,
+        width: responsiveScreenWidth(38),// 50% of Screen width */}
+                <View style={{ borderColor: '#EEAC59', borderWidth: '7px', borderRadius: '20px', flexDirection: 'row', flexWrap: 'wrap' }}>
+                    <Image
+                        style={styles.thumbnail}
+                        source={require('../../backend/upload/14778.png')}
+                    />
+                </View>
+                <Image
+                    style={{ marginLeft: '2%' }}
+                    source={require('../../asset/banner123.png')}
+                />
+                <Card style={styles.cardContainer}>
+
+                    <Image
+                        source={require('../../asset/Rectangle.png')}
+                        // style={{ width: 300, height: 200 }}
+                        style={styles.image}
+                    />
+                    <View style={styles.ImageDetail}>
+                        <View>
+                            <Text style={styles.ThaiName}>กล้วยหอม</Text>
+                            <Text style={styles.EnglishName}>Musa Sapientum</Text>
+                        </View>
+
+                        <View style={styles.similarColumn}>
+                            <Text style={styles.similarity}>ความคล้าย</Text>
+                            <Text style={styles.percentage}>72%</Text>
+                        </View>
+                    </View>
+                </Card>
+
+
+
 
                 {/* <TouchableOpacity onPress={() => navigation.navigate('Game2')}>
                     <Image
@@ -66,8 +105,8 @@ export default function ImageSearchScreen5({ navigation }) {
 
 
 
+        </View>
 
-        </SafeAreaView >
 
     )
 }
@@ -146,5 +185,129 @@ const styles = StyleSheet.create({
 
         left: 120,
         top: 80,
-    }
+    },
+    thumbnail: {
+        width: 30,
+        height: responsiveScreenHeight(20),
+        flex: 1,
+        borderRadius: 13
+    },
+    image: {
+        width: 300, height: 200
+    },
+    ThaiName: {
+
+        fontStyle: 'normal',
+        fontWeight: '600',
+        fontSize: 25,
+        lineHeight: 30
+
+    },
+    EnglishName: {
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: 20,
+        lineHeight: 30,
+        marginTop: '6%'
+    },
+    similarity: {
+
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: 25,
+        lineHeight: 30
+    },
+    similarColumn: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        lineHeight: 29
+    },
+    percentage: {
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: 30,
+        lineHeight: 45,
+        color: '#87D38A'
+    },
+    ImageDetail: {
+        // display: 'flex'
+        marginTop: '3%',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    top: {
+        flexDirection: 'row',
+        // justifyContent: 'center',
+        justifyContent: 'space-between',
+        marginBottom: '3%',
+        display: 'flex',
+    },
+    plantosiaLogo: {
+        marginTop: '1%',
+
+        marginRight: '5%'
+        // height: responsiveScreenHeight(6.5), // 50% of Screen height
+        // width: responsiveScreenWidth(58), // 50% of Screen width
+
+    },
+    backButton: {
+        right: 90,
+        marginRight: '-4%'
+    },
+    greenArea: {
+
+        backgroundColor: '#94F098',
+        // width: 385,
+        // height: 740,
+        height: responsiveScreenHeight(85), // 50% of Screen height
+        width: responsiveScreenWidth(91), // 50% of Screen width
+        borderRadius: 20,
+        // top: 20,
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'flex-start'
+
+    },
+    box: {
+        marginTop: '20%',
+        // marginBottom: '9%',
+        width: 300,
+        height: 75,
+        backgroundColor: 'white',
+        borderRadius: 20,
+        position: 'relative',
+        top: -47
+
+    },
+    box2: {
+        marginTop: '5%',
+        // marginBottom: '9%',
+        width: 333,
+        height: 160,
+        backgroundColor: 'white',
+        borderRadius: 20,
+        position: 'relative',
+        // top: -47
+    },
+    msg: {
+        textAlign: 'center',
+        fontWeight: '700',
+        padding: 25,
+        fontSize: 27,
+
+    },
+    msg2: {
+
+        textAlign: 'center',
+        fontWeight: '700',
+        padding: 15,
+        fontSize: 25,
+    },
+    cardContainer: {
+        marginBottom: '10%'
+    },
+    result: {
+        width: 200,
+        height: 200
+    },
 });
