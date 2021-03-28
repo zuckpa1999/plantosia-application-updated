@@ -64,7 +64,7 @@ export default function ImageSearchScreen5({ navigation }) {
                 <View style={{ borderColor: '#EEAC59', borderWidth: '7px', borderRadius: '20px', flexDirection: 'row', flexWrap: 'wrap' }}>
                     <Image
                         style={styles.thumbnail}
-                        source={require('../../backend/upload/14778.png')}
+                        source={require('../../backend/upload/image.jpg')}
                     />
                 </View>
                 <Image
@@ -91,7 +91,15 @@ export default function ImageSearchScreen5({ navigation }) {
                     </View>
                 </Card>
 
-
+                <TouchableOpacity
+                    activeOpacity={0.7}
+                    onPress={() => navigation.navigate('Game')}
+                >
+                    <Image
+                        style={styles.startGame}
+                        source={require('../../asset/หน้าหลัก.png')}
+                    />
+                </TouchableOpacity>
 
 
                 {/* <TouchableOpacity onPress={() => navigation.navigate('Game2')}>
@@ -304,7 +312,7 @@ const styles = StyleSheet.create({
         fontSize: 25,
     },
     cardContainer: {
-        marginBottom: '10%'
+        marginBottom: '400%'
     },
     result: {
         width: 200,
