@@ -55,23 +55,23 @@ export default function ImageSearchScreen5({ navigation }) {
                         source={require('../../asset/การค้นหาด้วยรูป.png')}
                     />
                 </View>
-                <Image
+                {/*  <Image
                     style={{ marginLeft: '2%' }}
                     source={require('../../asset/banner123.png')}
-                />
+                /> */}
                 {/*   height: responsiveScreenHeight(5), // 50% of Screen height,
         width: responsiveScreenWidth(38),// 50% of Screen width */}
-                <View style={{ borderColor: '#EEAC59', borderWidth: '7px', borderRadius: '20px', flexDirection: 'row', flexWrap: 'wrap' }}>
+                {/*                 <View style={{ borderColor: '#EEAC59', borderWidth: '7px', borderRadius: '20px', flexDirection: 'row', flexWrap: 'wrap' }}>
                     <Image
                         style={styles.thumbnail}
                         source={require('../../backend/upload/image.jpg')}
                     />
-                </View>
-                <Image
+                </View> */}
+                {/*   <Image
                     style={{ marginLeft: '2%' }}
                     source={require('../../asset/banner123.png')}
-                />
-                <Card style={styles.cardContainer}>
+                /> */}
+                {/*       <Card style={styles.cardContainer}>
 
                     <Image
                         source={require('../../asset/Rectangle.png')}
@@ -89,7 +89,7 @@ export default function ImageSearchScreen5({ navigation }) {
                             <Text style={styles.percentage}>72%</Text>
                         </View>
                     </View>
-                </Card>
+                </Card> */}
 
                 <TouchableOpacity
                     activeOpacity={0.7}
@@ -133,6 +133,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         // justifyContent: 'center',
         justifyContent: 'space-between',
+        marginTop: '8%',
         marginBottom: '3%',
         display: 'flex',
     },
@@ -243,13 +244,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
-    top: {
-        flexDirection: 'row',
-        // justifyContent: 'center',
-        justifyContent: 'space-between',
-        marginBottom: '3%',
-        display: 'flex',
-    },
+    /*   top: {
+          flexDirection: 'row',
+          // justifyContent: 'center',
+          justifyContent: 'space-between',
+          marginBottom: '3%',
+          display: 'flex',
+      }, */
     plantosiaLogo: {
         marginTop: '1%',
 
