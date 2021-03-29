@@ -16,24 +16,50 @@ export default function GameScreen6({ navigation }) {
         // obj.base64.push to array
         // then pass array
 
-        /* for (let i = 0; i < stateImage.length; i++) { */
-        /*         fetch('http://192.168.1.102:3100/uploads', {
-                    method: 'POST',
-                    headers: {
-                        Accept: 'application/json',
-                        'Content-Type': 'application/json',
-                    },
-                    // send our base64 string as POST request
-                    body: JSON.stringify({
-                        imgsource: [stateImage[0].base64, stateImage[1].base64]
-                    })
-                }) */
 
+        /*       for (let i = 0; i < stateImage.length; i++) {
+                  fetch('http://192.168.1.102:3100/uploads', {
+                      method: 'POST',
+                      headers: {
+                          Accept: 'application/json',
+                          'Content-Type': 'application/json',
+                      },
+                      // send our base64 string as POST request
+                      body: JSON.stringify({
+                          imgsource: [stateImage[0].base64, stateImage[1].base64]
+                      })
+                  })
+       */
         /*  arr.push(stateImage[i].base64) */
         /* } */
 
 
 
+
+        /*     } */
+
+
+
+        // obj.base64.push to array
+        // then pass array
+        let imagesWithBase64 = []
+        for (let i = 0; i < stateImage.length; i++) {
+            imagesWithBase64.push(stateImage[i].base64)
+        }
+
+        fetch('http://192.168.1.102:3100/uploadImageGame', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            // send our base64 string as POST request
+            body: JSON.stringify({
+                imgsource: imagesWithBase64
+            }),
+        })
+        navigation.navigate('Game7')
+        /*  navigation.navigate('Game3') */
 
 
 
@@ -76,7 +102,7 @@ export default function GameScreen6({ navigation }) {
                     }}>QUIZ</Text></Text>
 
                 </View>
-                <TouchableOpacity onPress={() => navigation.navigate('Game7')}>
+                <TouchableOpacity onPress={() => upload()}>
                     <Image
                         style={styles.nextButton}
                         source={require('../../asset/nextButton.png')}

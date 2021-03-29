@@ -14,48 +14,55 @@ app.get('/info', function (req, res) {
 	// setTimeout(res.send({ title: x }), 30000);
 	res.send({ title: x })
 });
-app.post('/uploads', (req, res) => {
+app.post('/uploadImageGame', (req, res) => {
 	/* 	for (let i = 0; i < req.body.length; i++) { */
-
 	console.log('xxxxx')
-	console.log(req.body.imgsource[0])
+	console.log(req.body.length)
+	console.log(req.body.imgsource.length)
+	/* 	console.log(req.body.imgsource[0])
+		console.log(req.body.imgsource) */
 	/* for (let i = 0; i < req.body.imgsource.length; i++) { */
 	let file_name = Math.floor(Math.random() * 50000);
 	let file = `./upload/${file_name}.png`
-	// let x = `./0.png`
 
 
-	fs.writeFile(file, req.body.imgsource, 'base64', (err) => {
-		if (err) throw err
-	})
+
+	/* 	fs.writeFile(file, req.body.imgsource, 'base64', (err) => {
+			if (err) throw err
+		}) */
 	/* } */
 
-	/* } */
+
 	// file_name = file_name + 1
 	res.status(200)
-	/* c */
-	console.log('received')
-	console.log('test input')
-	console.log(file)
-	// 
-	console.log(JSON.stringify(file))
+
+	/* 	console.log('received')
+		console.log('test input')
+		console.log(file)
+		// 
+		console.log(JSON.stringify(file)) */
 	// send as a list instead
 	// get all the file's name in an array
-	pyshell.send(JSON.stringify(file));
+	/* pyshell.send(JSON.stringify(file)); */
 
 
 	// pyshell.send(JSON.stringify([1, 2, 3, 4, 5]));
 	// console.log('test print from node')
 	// console.log(JSON.stringify([1, 2, 3, 4, 5]))
-	pyshell.on('message', function (message) {
-		// received a message sent from the Python script (a simple "print" statement)
-		console.log('msg?');
-		console.log(message);
-		x.push(message)
-	});
+
+
+	/* 	pyshell.on('message', function (message) {
+			// received a message sent from the Python script (a simple "print" statement)
+			console.log('msg?');
+			console.log(message);
+			x.push(message)
+	
+	
+	
+		}); */
 
 	// end the input stream and allow the process to exit
-	pyshell.end(function (err) {
+	/* pyshell.end(function (err) {
 		if (err) {
 			throw err;
 		};
@@ -65,7 +72,7 @@ app.post('/uploads', (req, res) => {
 		console.log(x);
 	}
 	)
-
+ */
 
 })
 

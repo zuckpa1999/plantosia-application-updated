@@ -52,7 +52,7 @@ export default function GameScreen5_2({ navigation }) {
  
      } */
     let storeImageAndGoNext = (selectedImage) => {
-
+        if (selectedImage !== null) setStateImage([...stateImage, selectedImage])
         /* setStateImage([...stateImage, selectedImage]) */
         navigation.navigate('Game6')
 
