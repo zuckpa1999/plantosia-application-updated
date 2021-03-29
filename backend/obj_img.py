@@ -12,14 +12,14 @@ def read_in():
     # Since our input would only be having one line, parse our JSON data from that
 	# print('5')
 	# print('hello nookko')
-	print('filee')
-	print(lines)
-	print('fefe')
+	#print('filee')
+	#print(lines)
+	#print('fefe')
 	# `['"./upload/17179.png"\\n', '"./upload/17179.png"\\n']`,
-	print(lines)
+	#print(lines)
 	#  './upload/17179.png',
-	print(json.loads(lines[0]))
-	print('efef')
+	#print(json.loads(lines[0]))
+	#print('efef')
 	return json.loads(lines[0])
 
 

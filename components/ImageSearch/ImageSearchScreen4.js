@@ -33,7 +33,7 @@ export default function ImageSearchScreen4({ navigation }) {
         })
         setPicstatePic(photo)
 
-        fetch('http://192.168.1.102:3100/uploads', {
+        fetch('http://192.168.1.102:3100/uploadImageSearch', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
