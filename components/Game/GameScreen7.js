@@ -100,6 +100,10 @@ const styles = StyleSheet.create({
     image: {
         width: 300, height: 200
     },
+    result: {
+        width: 100,
+        height: 100
+    },
     ThaiName: {
 
         fontStyle: 'normal',
@@ -197,7 +201,7 @@ const styles = StyleSheet.create({
     msg: {
         textAlign: 'center',
         fontWeight: '700',
-        padding: 25,
+        padding: 21,
         fontSize: 27,
 
     },
@@ -228,5 +232,15 @@ const styles = StyleSheet.create({
     cameraArea: {
         marginTop: '10%',
         marginBottom: '10%'
+    },
+    parent: {
+        width: '100%',
+        flexDirection: 'row',
+        flexWrap: 'wrap'
+    },
+    child: {
+        width: '48%',
+        margin: '1%',
+        aspectRatio: 1,
     }
 });

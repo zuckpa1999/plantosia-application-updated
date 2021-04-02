@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image, Dimensions } from 'react-native';
 import {
     responsiveScreenHeight,
@@ -14,7 +14,7 @@ import { Card, ListItem, Button, Icon } from 'react-native-elements'
 
 
 export default function QuestionScreen({ navigation }) {
-
+    const [currentChoice, setCurrentChoice] = useState(null)
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.top}>
@@ -35,19 +35,23 @@ export default function QuestionScreen({ navigation }) {
 
                 <Text style={styles.text} >เลือกระดับความยากของเกม</Text>
                 <View style={styles.choice}>
-                    <Button
-                        style={styles.button}
-                        title="Learn More"
-                        color="#841584"
-                        accessibilityLabel="Learn more about this purple button"
-                    />
-                    <Button
-                        style={styles.button}
-                        title="Learn More"
-                        color="#841584"
-                        accessibilityLabel="Learn more about this purple button"
-                    />
+                    <TouchableOpacity style={currentChoice === 'ง่าย' ? styles.easyContainerPicked : styles.easyContainer} onPress={() => {
+                        setCurrentChoice('ง่าย')
 
+                    }}  >
+                        <Text style={styles.easyText}>ง่าย</Text>
+
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={currentChoice === 'ยาก' ? styles.hardContainerPicked : styles.hardContainer} onPress={() => {
+                        setCurrentChoice('ยาก')
+
+                    }} >
+                        <Text style={styles.hardText} >ยาก</Text>
+
+                    </TouchableOpacity>
+
+                    <Text>{currentChoice}</Text>
                 </View>
                 <TouchableOpacity onPress={() => navigation.navigate('Question2')}>
                     <Image
@@ -86,7 +90,48 @@ const styles = StyleSheet.create({
 
     },
     choice: {
-        marginTop: '10%'
+        marginTop: '10%',
+    },
+    easyContainer: {
+        backgroundColor: '#446CCD',
+        borderRadius: 5,
+        height: responsiveScreenHeight(8), // 50% of Screen height,
+        width: responsiveScreenWidth(65) // 50% of Screen width
+    },
+    easyContainerPicked: {
+        opacity: 0.4,
+        backgroundColor: '#446CCD',
+        borderRadius: 5,
+        height: responsiveScreenHeight(8), // 50% of Screen height,
+        width: responsiveScreenWidth(65) // 50% of Screen width
+    },
+    easyText: {
+        textAlign: 'center',
+        marginTop: '7%',
+        color: 'white',
+        fontSize: responsiveScreenFontSize(2.5)
+    },
+
+    hardContainer: {
+        backgroundColor: '#EB5757',
+        borderRadius: 5,
+        height: responsiveScreenHeight(8), // 50% of Screen height,
+        width: responsiveScreenWidth(65), // 50% of Screen width
+        marginTop: '3%'
+    },
+    hardContainerPicked: {
+        opacity: 0.4,
+        backgroundColor: '#EB5757',
+        borderRadius: 5,
+        height: responsiveScreenHeight(8), // 50% of Screen height,
+        width: responsiveScreenWidth(65), // 50% of Screen width
+        marginTop: '3%'
+    },
+    hardText: {
+        textAlign: 'center',
+        marginTop: '7%',
+        color: 'white',
+        fontSize: responsiveScreenFontSize(2.5)
     },
     EnglishName: {
         fontStyle: 'normal',
@@ -104,6 +149,7 @@ const styles = StyleSheet.create({
         marginTop: '4%',
         height: responsiveScreenHeight(10), // 50% of Screen height,
         width: responsiveScreenWidth(60), // 50% of Screen width
+
         // width: 280,
         // height: 80
     },

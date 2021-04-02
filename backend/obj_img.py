@@ -161,10 +161,10 @@ def main():
 		print(higestAccuracy_Plant)
 		#print('count')
 		#print(count)
-		#print('dict_occurance')
-		#print(dict_occurance['Musa Sapientum'])
-		#print('dict_accuracy')
-		#print(dict_accuracy['Musa Sapientum'])
+		print('dict_occurance')
+		print(dict_occurance)
+		print('dict_accuracy')
+		print(dict_accuracy)
 		#if(count > math.floor(len(lines)*0.7)):
 			
 		#print(dictionary)

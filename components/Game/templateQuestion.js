@@ -112,9 +112,10 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         // flexDirection: 'column',
         // alignItems: 'flex-end'
-        marginTop: '17%',
-        fontWeight: '600',
-        fontSize: 18,
+        marginTop: '12%',
+        fontWeight: '800',
+        fontSize: 14,
+        padding: 2
     },
 
     banner: {
