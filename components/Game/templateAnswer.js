@@ -46,7 +46,7 @@ export default function TemplateAnswerScreen(props) {
 
                 <Image
 
-                    style={{ marginTop: '5%' }}
+                    style={{ marginTop: '5%', height: responsiveScreenHeight(25), width: responsiveScreenWidth(80) }}
                     source={img}
                 />
                 <Text style={{ fontWeight: '700', marginTop: '6%', fontSize: 19 }}>{question}</Text>

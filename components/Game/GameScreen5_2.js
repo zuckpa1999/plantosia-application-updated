@@ -99,7 +99,7 @@ export default function GameScreen5_2({ navigation }) {
             <View style={styles.greenArea}>
                 <Image
                     style={styles.leaf}
-                    source={require('../../asset/tree.png')}
+                    source={require('../../asset/wholePlant.png')}
                 />
                 <View style={styles.box}>
                     <Text style={styles.msg}>อันดับสุดท้าย, ถ่ายรูปส่วน

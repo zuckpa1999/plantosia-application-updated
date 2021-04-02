@@ -39,7 +39,7 @@ export default function templateQuestion(props) {
             </View>
 
             <Image
-                style={{ marginTop: '2%' }}
+                style={{ marginTop: '2%', height: responsiveScreenHeight(25), width: responsiveScreenWidth(80) }}
 
                 /* source={require('../../asset/imgQuestion1.png')} */
 

@@ -82,10 +82,10 @@ export default function GameScreen6({ navigation }) {
                 />
             </View>
             <View style={styles.greenArea}>
-                <Image
+                {/*  <Image
                     style={styles.leaf}
                     source={require('../../asset/fruitLogo.png')}
-                />
+                /> */}
                 <View style={styles.box}>
                     <Text style={styles.msg}>เย่! ถ่ายรูปพืชเสร็จแล้ว</Text>
                 </View>
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
 
     },
     box: {
-        marginTop: '5%',
+        marginTop: '20%',
         // marginBottom: '9%',
         width: 333,
         height: 100,
