@@ -28,7 +28,7 @@ A simple way to run Python scripts from Node.js with basic but efficient inter-p
 
 ### Backend
 - Node.js
-- Express
+- Express.js
 
 
 ### Object Detection
