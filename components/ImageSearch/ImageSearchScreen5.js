@@ -55,65 +55,60 @@ export default function ImageSearchScreen5({ navigation }) {
                         source={require('../../asset/การค้นหาด้วยรูป.png')}
                     />
                 </View>
-                {/*  <Image
-                    style={{ marginLeft: '2%' }}
-                    source={require('../../asset/banner123.png')}
-                /> */}
+                <Image
+                    style={{ marginLeft: '2%', top: -40 }}
+                    source={require('../../asset/Group_68.png')}
+                />
                 {/*   height: responsiveScreenHeight(5), // 50% of Screen height,
         width: responsiveScreenWidth(38),// 50% of Screen width */}
-                {/*                 <View style={{ borderColor: '#EEAC59', borderWidth: '7px', borderRadius: '20px', flexDirection: 'row', flexWrap: 'wrap' }}>
+                <View style={{ borderColor: '#EEAC59', borderWidth: '7px', borderRadius: '20px', flexDirection: 'row', flexWrap: 'wrap' }}>
                     <Image
                         style={styles.thumbnail}
-                        source={require('../../backend/upload/image.jpg')}
+                        source={require('../../backend/upload/299.png')}
                     />
-                </View> */}
-                {/*   <Image
+                </View>
+                <Image
                     style={{ marginLeft: '2%' }}
-                    source={require('../../asset/banner123.png')}
-                /> */}
-                {/*       <Card style={styles.cardContainer}>
+                    source={require('../../asset/ผลลัพธ์.png')}
+                />
 
-                    <Image
-                        source={require('../../asset/Rectangle.png')}
-                        // style={{ width: 300, height: 200 }}
-                        style={styles.image}
-                    />
-                    <View style={styles.ImageDetail}>
-                        <View>
+
+                <View style={{ backgroundColor: "#eee", borderRadius: 20, overflow: "hidden", width: 340, height: 250 }}>
+                    <View>
+                        <Image
+                            source={require('../../asset/Rectangle.png')}
+                            style={styles.ImageDetail}
+                        />
+                    </View>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', padding: 20 }}>
+                        <View style={{ paddingRight: 60 }}>
                             <Text style={styles.ThaiName}>กล้วยหอม</Text>
                             <Text style={styles.EnglishName}>Musa Sapientum</Text>
                         </View>
-
                         <View style={styles.similarColumn}>
                             <Text style={styles.similarity}>ความคล้าย</Text>
                             <Text style={styles.percentage}>72%</Text>
                         </View>
                     </View>
-                </Card> */}
+                </View>
+
 
                 <TouchableOpacity
                     activeOpacity={0.7}
                     onPress={() => navigation.navigate('Game')}
+                    style={{ marginBottom: '100%' }}
+
                 >
                     <Image
                         style={styles.startGame}
                         source={require('../../asset/หน้าหลัก.png')}
                     />
                 </TouchableOpacity>
-
-
-                {/* <TouchableOpacity onPress={() => navigation.navigate('Game2')}>
-                    <Image
-                        style={styles.nextButton}
-                        source={require('../../asset/nextButton.png')}
-                    />
-                </TouchableOpacity> */}
-
             </View>
 
 
 
-        </View>
+        </View >
 
 
     )
@@ -160,7 +155,7 @@ const styles = StyleSheet.create({
         // top: 20,
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
 
     },
     bannerDetail: {
@@ -188,7 +183,7 @@ const styles = StyleSheet.create({
 
     },
     banner: {
-        marginTop: '-5%'
+        marginTop: '-3%'
     },
     nextButton: {
 
@@ -196,9 +191,9 @@ const styles = StyleSheet.create({
         top: 80,
     },
     thumbnail: {
-        width: 30,
+        width: responsiveScreenWidth(70),
         height: responsiveScreenHeight(20),
-        flex: 1,
+
         borderRadius: 13
     },
     image: {
@@ -241,8 +236,8 @@ const styles = StyleSheet.create({
     ImageDetail: {
         // display: 'flex'
         marginTop: '3%',
-        flexDirection: 'row',
-        justifyContent: 'space-between'
+        /*         flexDirection: 'row',
+                justifyContent: 'space-between' */
     },
     /*   top: {
           flexDirection: 'row',
@@ -312,11 +307,14 @@ const styles = StyleSheet.create({
         padding: 15,
         fontSize: 25,
     },
-    cardContainer: {
-        marginBottom: '400%'
-    },
+    /*  cardContainer: {
+         marginBottom: '400%'
+     }, */
     result: {
         width: 200,
         height: 200
     },
+    startGame: {
+
+    }
 });

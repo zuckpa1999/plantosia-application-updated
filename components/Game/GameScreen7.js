@@ -92,7 +92,7 @@ export default function GameScreen7({ navigation }) {
                     </View>
                 </View>
 
-                <TouchableOpacity onPress={() => navigation.navigate('Game7_2')} style={{ marginBottom: '20%' }}>
+                <TouchableOpacity onPress={() => navigation.navigate('Game7_2')} style={{ marginBottom: '20l%' }}>
                     <Image
                         style={styles.nextButton}
                         source={require('../../asset/nextBig.png')}
