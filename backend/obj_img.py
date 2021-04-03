@@ -74,8 +74,8 @@ def main():
 	dict_accuracy = {'Ixora Coccinea' : [], 'Bougainvillea' : [], 'Cocos Nucifera' : [], 'Mucuna Pruriens' : [], 'Musa Sapientum' : [], 'Oryza Sativa' : [] }
 	dictionary = {}
 	count = 0
-	print('length lines')
-	print(len(lines))
+	#print('length lines')
+	#print(len(lines))
 	if(len(lines) > 1):
 		for i in lines:
 			test = i
@@ -163,10 +163,10 @@ def main():
 			print(higestAccuracy_Plant)
 			#print('count')
 			#print(count)
-			print('dict_occurance')
-			print(dict_occurance)
-			print('dict_accuracy')
-			print(dict_accuracy)
+			#print('dict_occurance')
+			#print(dict_occurance)
+			#print('dict_accuracy')
+			#print(dict_accuracy)
 		#if(count > math.floor(len(lines)*0.7)):
 			
 		#print(dictionary)

@@ -9,6 +9,7 @@ import axios from 'axios'
 import * as ImagePicker from 'expo-image-picker'
 export default function ImageSearchScreen3({ navigation }) {
     const [selectedImage, setSelectedImage] = React.useState(null)
+    const [data, setData] = useState(null)
     const selectAndUploadImage = async () => {
         const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync()
 
@@ -44,8 +45,21 @@ export default function ImageSearchScreen3({ navigation }) {
                 }),
             })
         }
-    }
 
+    }
+    const fetchInfo = async () => {
+
+        await axios.get(`http://192.168.1.102:3100/info`)
+            .then(res => {
+
+                setData(res.data.title)
+            })
+
+        alert(data)
+        /*   alert('bkabka')
+          alert(Object.keys(data)) */
+        alert(Object.keys(data))
+    }
 
     return (
         <SafeAreaView style={styles.container}>
@@ -81,6 +95,7 @@ export default function ImageSearchScreen3({ navigation }) {
                     source={selectedImage ? selectedImage : require('../../asset/cameraArea.png')}
                     style={selectedImage ? styles.thumbnail : styles.cameraArea}
                 />
+
                 <TouchableOpacity onPress={() => selectAndUploadImage()} >
                     <Image
 
@@ -89,7 +104,19 @@ export default function ImageSearchScreen3({ navigation }) {
 
                     />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate('ImageSearch5')}>
+                <Button
+                    onPress={() => fetchInfo()}
+                    title="clickme"
+                    color="#841584"
+                    accessibilityLabel="Learn more about this purple button"
+                />
+
+                <TouchableOpacity onPress={() => {
+
+                    navigation.navigate('ImageSearch5', { plantName: data[0], confidence: data[1] })
+
+                }
+                }>
                     <Image
                         style={styles.nextButton}
                         source={require('../../asset/nextButton.png')}

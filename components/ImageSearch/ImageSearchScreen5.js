@@ -7,10 +7,11 @@ import {
     responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
 import { Camera } from 'expo-camera';
-export default function ImageSearchScreen5({ navigation }) {
+export default function ImageSearchScreen5({ navigation, route }) {
     const [hasPermission, setHasPermission] = useState(null);
     const [cameraRef, setCameraRef] = useState(null)
     const [type, setType] = useState(Camera.Constants.Type.back);
+    const { plantName, confidence } = route.params
     useEffect(() => {
         (async () => {
             const { status } = await Camera.requestPermissionsAsync();
@@ -84,11 +85,11 @@ export default function ImageSearchScreen5({ navigation }) {
                     <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', padding: 15 }}>
                         <View style={{ paddingRight: 60 }}>
                             <Text style={styles.ThaiName}>กล้วยหอม</Text>
-                            <Text style={styles.EnglishName}>Musa Sapientum</Text>
+                            <Text style={styles.EnglishName}>{plantName}</Text>
                         </View>
                         <View style={styles.similarColumn}>
                             <Text style={styles.similarity}>ความคล้าย</Text>
-                            <Text style={styles.percentage}>72%</Text>
+                            <Text style={styles.percentage}>{confidence}</Text>
                         </View>
                     </View>
                 </View>
