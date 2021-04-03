@@ -48,7 +48,7 @@ def main():
 	lines = read_in()
 
 	# parse the yolov3's weight and config file to a variable
-	net = cv2.dnn.readNet('../../yolo-weight/yolov3_training_last.weights', 'yolov3_testing.cfg')
+	net = cv2.dnn.readNet('../../yolo-weight/yolov3.weights', 'yolov3_testing_1.cfg')
 	# classes of object
 	classes = []
 	#extract othe classes from a file
