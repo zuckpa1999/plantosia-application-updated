@@ -29,6 +29,7 @@ export default function ImageSearchScreen5({ navigation }) {
         <View style={styles.container}>
             <View style={styles.top}>
                 <TouchableOpacity onPress={navigation.goBack}>
+
                     <Image
                         style={styles.backButton}
                         source={require('../../asset/backButton.png')}
@@ -76,11 +77,11 @@ export default function ImageSearchScreen5({ navigation }) {
                 <View style={{ backgroundColor: "#eee", borderRadius: 20, overflow: "hidden", width: 340, height: 250 }}>
                     <View>
                         <Image
-                            source={require('../../asset/Rectangle.png')}
+                            source={require('../../asset/12.png')}
                             style={styles.ImageDetail}
                         />
                     </View>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', padding: 20 }}>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', padding: 15 }}>
                         <View style={{ paddingRight: 60 }}>
                             <Text style={styles.ThaiName}>กล้วยหอม</Text>
                             <Text style={styles.EnglishName}>Musa Sapientum</Text>
@@ -235,9 +236,13 @@ const styles = StyleSheet.create({
     },
     ImageDetail: {
         // display: 'flex'
-        marginTop: '3%',
+
         /*         flexDirection: 'row',
                 justifyContent: 'space-between' */
+        /*  width: 350,
+         height: 160, */
+        height: responsiveScreenHeight(17),
+        width: responsiveScreenWidth(85)
     },
     /*   top: {
           flexDirection: 'row',
