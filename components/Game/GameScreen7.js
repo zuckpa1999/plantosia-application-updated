@@ -40,31 +40,59 @@ export default function GameScreen7({ navigation }) {
 
 
                 <Image
-                    source={require('../../asset/result.png')}
+                    source={require('../../asset/ผลลัพธ์.png')}
                     style={styles.result}
                 />
-                <Text style={{ top: -58, fontWeight: '600', fontSize: 17 }}>ผลลัพธ์</Text>
-                <Card style={styles.cardContainer}>
 
-                    <Image
-                        source={require('../../asset/Rectangle.png')}
-                        // style={{ width: 300, height: 200 }}
-                        style={styles.image}
-                    />
-                    <View style={styles.ImageDetail}>
+
+
+
+
+
+                {/*     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+                    <View style={{ backgroundColor: "#eee", borderRadius: 10, overflow: "hidden" }}>
                         <View>
-                            <Text style={styles.ThaiName}>กล้วยหอม</Text>
-                            <Text style={styles.EnglishName}>Musa Sapientum</Text>
+                            <Image
+                                source={require('../../asset/Rectangle.png')}
+                                style={{
+                                    height: 135,
+                                    width: 155
+                                }}
+                            />
                         </View>
-
-                        <View style={styles.similarColumn}>
-                            <Text style={styles.similarity}>ความคล้าย</Text>
-                            <Text style={styles.percentage}>72%</Text>
+                        <View style={{ padding: 10, width: 155 }}>
+                            <Text>Title</Text>
+                            <Text style={{ color: "#777", paddingTop: 5 }}>
+                                Description of the image
+            </Text>
                         </View>
                     </View>
-                </Card>
+                </View> */}
 
-                <TouchableOpacity onPress={() => navigation.navigate('Game7_2')}>
+
+                <View style={{ flex: 1 }}>
+                    <View style={{ backgroundColor: "#eee", borderRadius: 20, overflow: "hidden", marginBottom: 20, width: 340, height: 250 }}>
+                        <View>
+                            <Image
+                                source={require('../../asset/Rectangle.png')}
+                                style={styles.ImageDetail}
+                            />
+                        </View>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', padding: 20 }}>
+                            <View style={{ paddingRight: 60 }}>
+                                <Text style={styles.ThaiName}>กล้วยหอม</Text>
+                                <Text style={styles.EnglishName}>Musa Sapientum</Text>
+                            </View>
+                            <View style={styles.similarColumn}>
+                                <Text style={styles.similarity}>ความคล้าย</Text>
+                                <Text style={styles.percentage}>72%</Text>
+                            </View>
+                        </View>
+
+                    </View>
+                </View>
+
+                <TouchableOpacity onPress={() => navigation.navigate('Game7_2')} style={{ marginBottom: '20%' }}>
                     <Image
                         style={styles.nextButton}
                         source={require('../../asset/nextBig.png')}
@@ -90,31 +118,31 @@ const styles = StyleSheet.create({
         // backgroundColor: '#94F098',
         // display: 'flex',
     },
-    // cardContainer: {
-    //     marginBottom: '10%'
-    // },
+
     // result: {
     //     width: 200,
     //     height: 200
     // },
     image: {
-        width: 300, height: 200
+
+
+
     },
     result: {
-        width: 100,
-        height: 100
+        /*   width: 100,
+          height: 100 */
     },
     ThaiName: {
 
         fontStyle: 'normal',
-        fontWeight: '600',
-        fontSize: 25,
-        lineHeight: 30
+        fontWeight: '300',
+        fontSize: 30,
+        lineHeight: 40
 
     },
     EnglishName: {
         fontStyle: 'normal',
-        fontWeight: 'normal',
+        fontWeight: '300',
         fontSize: 20,
         lineHeight: 30,
         marginTop: '6%'
@@ -124,8 +152,11 @@ const styles = StyleSheet.create({
         fontStyle: 'normal',
         fontWeight: 'normal',
         fontSize: 25,
-        lineHeight: 30
+        lineHeight: 35
     },
+
+
+
     similarColumn: {
         flexDirection: 'column',
         alignItems: 'center',
@@ -133,16 +164,19 @@ const styles = StyleSheet.create({
     },
     percentage: {
         fontStyle: 'normal',
-        fontWeight: 'normal',
+        fontWeight: '700',
         fontSize: 30,
         lineHeight: 45,
         color: '#87D38A'
     },
     ImageDetail: {
         // display: 'flex'
-        marginTop: '3%',
+
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        resizeMode: 'contain',
+
+
     },
     top: {
         flexDirection: 'row',
