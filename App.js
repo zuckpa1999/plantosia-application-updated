@@ -48,6 +48,7 @@ import SettingScreen from './components/Setting/SettingScreen.js'
 import GlobalStateUserImage from './contexts/GlobalStateUserImage.js'
 import GlobalStateUserQuestion from './contexts/GlobalStateUserQuestion.js'
 import GlobalStateImageSearch from './contexts/GlobalStateImageSearch.js'
+import congratsScreen from './components/Game/congratsScreen'
 export default function App() {
   const Stack = createStackNavigator();
   const [stateImage, setStateImage] = useState([]);
@@ -63,9 +64,10 @@ export default function App() {
       <GlobalStateUserQuestion.Provider value={[stateQuestion, setStateQuestion]}>
         <GlobalStateUserImage.Provider value={[stateImage, setStateImage]}>
           <NavigationContainer>
-            <Stack.Navigator initialRouteName="Home" screenOptions={{
+            <Stack.Navigator initialRouteName="congrats" screenOptions={{
               headerShown: false
             }}>
+              <Stack.Screen name="congrats" component={congratsScreen} />
               <Stack.Screen name="Home" component={HomeScreen} />
               <Stack.Screen name="Game" component={GameScreen} />
               {/* <Stack.Screen name="Test" component={TestScreen} /> */}

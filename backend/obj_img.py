@@ -74,6 +74,8 @@ def main():
 	dict_accuracy = {'Ixora Coccinea' : [], 'Bougainvillea' : [], 'Cocos Nucifera' : [], 'Mucuna Pruriens' : [], 'Musa Sapientum' : [], 'Oryza Sativa' : [] }
 	dictionary = {}
 	count = 0
+	print('length lines')
+	print(len(lines))
 	if(len(lines) > 1):
 		for i in lines:
 			test = i
@@ -152,19 +154,19 @@ def main():
 				dict_occurance['Oryza Sativa'] = dict_occurance['Oryza Sativa'] + 1
 				dict_accuracy['Oryza Sativa'].append(confidence)
 		
-		# return the key of dictionary that has highest the highest occurance
-		highestOccurance_Plant = max(dict_occurance, key=dict_occurance.get)
-		#print('highestOccurance_Plant')
-		print(highestOccurance_Plant)
-		higestAccuracy_Plant = max(dict_accuracy[highestOccurance_Plant])
-		#print('higestAccuracy_Plant')
-		print(higestAccuracy_Plant)
-		#print('count')
-		#print(count)
-		print('dict_occurance')
-		print(dict_occurance)
-		print('dict_accuracy')
-		print(dict_accuracy)
+			# return the key of dictionary that has highest the highest occurance
+			highestOccurance_Plant = max(dict_occurance, key=dict_occurance.get)
+			#print('highestOccurance_Plant')
+			print(highestOccurance_Plant)
+			higestAccuracy_Plant = max(dict_accuracy[highestOccurance_Plant])
+			#print('higestAccuracy_Plant')
+			print(higestAccuracy_Plant)
+			#print('count')
+			#print(count)
+			print('dict_occurance')
+			print(dict_occurance)
+			print('dict_accuracy')
+			print(dict_accuracy)
 		#if(count > math.floor(len(lines)*0.7)):
 			
 		#print(dictionary)

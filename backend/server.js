@@ -98,7 +98,7 @@ app.post('/uploadImageSearch', (req, res) => {
 	// file_name = file_name + 1
 	res.status(200)
 	/* c */
-	console.log('received')
+	console.log('receiveddwdw')
 	console.log('test input')
 	console.log(file)
 	// 
@@ -106,7 +106,7 @@ app.post('/uploadImageSearch', (req, res) => {
 	// send as a list instead
 	// get all the file's name in an array
 	pyshell.send(JSON.stringify(file));
-	pyshell.send(JSON.stringify(file));
+	/* pyshell.send(JSON.stringify(file)); */
 
 	// pyshell.send(JSON.stringify([1, 2, 3, 4, 5]));
 	// console.log('test print from node')
