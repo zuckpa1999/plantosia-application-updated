@@ -4,7 +4,7 @@ const app = express()
 const fs = require('fs')
 var { PythonShell } = require('python-shell');
 var pyshell = new PythonShell('obj_img.py');
-
+let uploadImageName
 var x = []
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -14,6 +14,10 @@ app.get('/info', function (req, res) {
 	// setTimeout(res.send({ title: x }), 30000);
 	res.send({ title: x })
 });
+
+app.get('/uploadedImage', (req, res) => {
+	res.send({ uploadImageName: uploadImageName })
+})
 app.post('/uploadImageGame', (req, res) => {
 	/* 	for (let i = 0; i < req.body.length; i++) { */
 	console.log('xxxxx')
@@ -96,7 +100,9 @@ app.post('/uploadImageSearch', (req, res) => {
 
 	/* } */
 	// file_name = file_name + 1
+	uploadImageName = file_name
 	res.status(200)
+
 	/* c */
 	console.log('receiveddwdw')
 	console.log('test input')

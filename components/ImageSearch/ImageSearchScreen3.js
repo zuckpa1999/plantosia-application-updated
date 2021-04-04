@@ -10,6 +10,7 @@ import * as ImagePicker from 'expo-image-picker'
 export default function ImageSearchScreen3({ navigation }) {
     const [selectedImage, setSelectedImage] = React.useState(null)
     const [data, setData] = useState(null)
+    let fileName = 'blabla'
     const selectAndUploadImage = async () => {
         const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync()
 
@@ -55,10 +56,16 @@ export default function ImageSearchScreen3({ navigation }) {
                 setData(res.data.title)
             })
 
-        alert(data)
+        await axios.get(`http://192.168.1.102:3100/uploadedImage`)
+            .then(res => {
+
+                fileName = res.data.uploadImageName
+            })
+        /*   alert(data) */
+        alert(fileName)
         /*   alert('bkabka')
           alert(Object.keys(data)) */
-        alert(Object.keys(data))
+        /*  alert(Object.keys(data)) */
     }
 
     return (
@@ -113,7 +120,7 @@ export default function ImageSearchScreen3({ navigation }) {
 
                 <TouchableOpacity onPress={() => {
 
-                    navigation.navigate('ImageSearch5', { plantName: data[0], confidence: data[1] })
+                    navigation.navigate('ImageSearch5', { plantName: data[0], confidence: data[1], fileName: fileName })
 
                 }
                 }>

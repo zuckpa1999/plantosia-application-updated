@@ -11,7 +11,7 @@ export default function ImageSearchScreen5({ navigation, route }) {
     const [hasPermission, setHasPermission] = useState(null);
     const [cameraRef, setCameraRef] = useState(null)
     const [type, setType] = useState(Camera.Constants.Type.back);
-    const { plantName, confidence } = route.params
+    const { plantName, confidence, fileName } = route.params
     useEffect(() => {
         (async () => {
             const { status } = await Camera.requestPermissionsAsync();
@@ -66,7 +66,9 @@ export default function ImageSearchScreen5({ navigation, route }) {
                 <View style={{ borderColor: '#EEAC59', borderWidth: '7px', borderRadius: '20px', flexDirection: 'row', flexWrap: 'wrap' }}>
                     <Image
                         style={styles.thumbnail}
-                        source={require('../../backend/upload/299.png')}
+
+                        source={require('../../backend/upload/1030.png')}
+                    /* source={require(`../../backend/upload/${fileName}.png`)} */
                     />
                 </View>
                 <Image
