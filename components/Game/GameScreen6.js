@@ -89,10 +89,15 @@ export default function GameScreen6({ navigation }) {
         /*  alert(Object.keys(data)) */
 
 
-        navigation.navigate('Game7', {
-            plantName: data[0], confidence: data[1]
-        })
-
+        if (data.length >= 2) {
+            navigation.navigate('Game7', {
+                plantName: data[0], confidence: data[1]
+            })
+        }
+        else {
+            navigation.navigate('Game7_2')
+        }
+        /*  navigation.navigate('Game7_2') */
     }
 
 
