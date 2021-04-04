@@ -13,9 +13,9 @@ import { Card, ListItem, Button, Icon } from 'react-native-elements'
 
 
 
-export default function GameScreen7({ navigation }) {
+export default function GameScreen7({ navigation, route }) {
 
-
+    const { plantName, confidence } = route.params
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.top}>
@@ -74,18 +74,18 @@ export default function GameScreen7({ navigation }) {
                     <View style={{ backgroundColor: "#eee", borderRadius: 20, overflow: "hidden", marginBottom: 20, width: 340, height: 250 }}>
                         <View>
                             <Image
-                                source={require('../../asset/Rectangle.png')}
+                                source={require('../../asset/12.png')}
                                 style={styles.ImageDetail}
                             />
                         </View>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', padding: 20 }}>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', padding: 15 }}>
                             <View style={{ paddingRight: 60 }}>
                                 <Text style={styles.ThaiName}>กล้วยหอม</Text>
-                                <Text style={styles.EnglishName}>Musa Sapientum</Text>
+                                <Text style={styles.EnglishName}>{plantName}</Text>
                             </View>
                             <View style={styles.similarColumn}>
                                 <Text style={styles.similarity}>ความคล้าย</Text>
-                                <Text style={styles.percentage}>72%</Text>
+                                <Text style={styles.percentage}>{confidence}</Text>
                             </View>
                         </View>
 
@@ -172,10 +172,11 @@ const styles = StyleSheet.create({
     ImageDetail: {
         // display: 'flex'
 
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        resizeMode: 'contain',
-
+        /*  flexDirection: 'row',
+         justifyContent: 'space-between',
+         resizeMode: 'contain', */
+        height: responsiveScreenHeight(17),
+        width: responsiveScreenWidth(85)
 
     },
     top: {

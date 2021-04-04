@@ -12,6 +12,7 @@ export default function ImageSearchScreen5({ navigation, route }) {
     const [cameraRef, setCameraRef] = useState(null)
     const [type, setType] = useState(Camera.Constants.Type.back);
     const { plantName, confidence, fileName } = route.params
+
     useEffect(() => {
         (async () => {
             const { status } = await Camera.requestPermissionsAsync();

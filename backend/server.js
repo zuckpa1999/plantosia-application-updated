@@ -5,6 +5,7 @@ const fs = require('fs')
 var { PythonShell } = require('python-shell');
 var pyshell = new PythonShell('obj_img.py');
 let uploadImageName
+let ImageUrl
 var x = []
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -14,6 +15,12 @@ app.get('/info', function (req, res) {
 	// setTimeout(res.send({ title: x }), 30000);
 	res.send({ title: x })
 });
+
+app.get('/gameImageData', function (req, res) {
+	// setTimeout(res.send({ title: x }), 30000);
+	res.send({ data: x })
+});
+
 
 app.get('/uploadedImage', (req, res) => {
 	res.send({ uploadImageName: uploadImageName })
@@ -90,6 +97,7 @@ app.post('/uploadImageSearch', (req, res) => {
 	/* for (let i = 0; i < req.body.imgsource.length; i++) { */
 	let file_name = Math.floor(Math.random() * 50000);
 	let file = `./upload/${file_name}.png`
+
 	// let x = `./0.png`
 
 

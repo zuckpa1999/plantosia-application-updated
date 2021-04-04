@@ -6,10 +6,11 @@ import {
     responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
 import GlobalStateUserImage from '../../contexts/GlobalStateUserImage'
+import axios from 'axios'
 export default function GameScreen6({ navigation }) {
     const [stateImage, setStateImage] = useContext(GlobalStateUserImage)
-
-    let upload = () => {
+    const [data, setData] = useState(null)
+    let upload = async () => {
 
 
 
@@ -47,7 +48,7 @@ export default function GameScreen6({ navigation }) {
             imagesWithBase64.push(stateImage[i].base64)
         }
 
-        fetch('http://192.168.1.102:3100/uploadImageGame', {
+        await fetch('http://192.168.1.102:3100/uploadImageGame', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -58,10 +59,39 @@ export default function GameScreen6({ navigation }) {
                 imgsource: imagesWithBase64
             }),
         })
-        navigation.navigate('Game7')
+        alert('done')
+        /* alert(data)
+
+        navigation.navigate('Game7', {
+            plantName: data[0], confidence: data[1]
+        }) */
         /*  navigation.navigate('Game3') */
 
 
+
+    }
+
+
+    const fetchInfo = async () => {
+
+        await axios.get(`http://192.168.1.102:3100/gameImageData`)
+            .then(res => {
+
+                setData(res.data.data)
+            })
+
+
+        /*   alert(data) */
+        alert('fe')
+        alert(data)
+        /*   alert('bkabka')
+          alert(Object.keys(data)) */
+        /*  alert(Object.keys(data)) */
+
+
+        navigation.navigate('Game7', {
+            plantName: data[0], confidence: data[1]
+        })
 
     }
 
@@ -92,17 +122,20 @@ export default function GameScreen6({ navigation }) {
                 <Text>{stateImage.length}</Text>
                 {/* <Text>{JSON.stringify({ stateImage })}</Text> */}
                 {/* <Text>{stateImage}</Text> */}
-                <Image
 
-                    source={require('../../asset/BrocMascot.png')}
-                />
+                <TouchableOpacity onPress={() => upload()}>
+                    <Image
+
+                        source={require('../../asset/BrocMascot.png')}
+                    />
+                </TouchableOpacity>
                 <View style={styles.box2}>
                     <Text style={styles.msg2}>{`เข้าสู่ขั้นตอนต่อไปกันเถอะ\n`}<Text style={{
                         color: 'red', fontSize: 60
                     }}>QUIZ</Text></Text>
 
                 </View>
-                <TouchableOpacity onPress={() => upload()}>
+                <TouchableOpacity onPress={() => fetchInfo()}>
                     <Image
                         style={styles.nextButton}
                         source={require('../../asset/nextButton.png')}
