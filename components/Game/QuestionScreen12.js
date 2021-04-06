@@ -49,19 +49,32 @@ export default function QuestionScreen12({ navigation }) {
                             <View style={{ borderRadius: '5%', width: responsiveScreenWidth(80), height: responsiveScreenHeight(35), backgroundColor: 'white', flexDirection: 'column', alignItems: 'center', marginBottom: '3%' }}>
                                 <Image
                                     style={{ marginTop: '3%', width: responsiveScreenWidth(34), height: responsiveScreenHeight(12) }}
-                                    source={Images[element.id]}
+                                    source={Images[element.id - 1]}
                                 />
                                 <View style={{ width: responsiveScreenWidth(70), height: responsiveScreenHeight(18), backgroundColor: '#FFF8CA' }}>
                                     <View style={{ flexDirection: 'row', paddingTop: '5%' }}>
                                         <Image source={stateQuestion.userAnswer[element.id - 1] === element.answers ? require('../../asset/Yes.png') : require('../../asset/No.png')} />
                                         <View style={{ paddingLeft: '5%' }}>
                                             <Text style={{ fontSize: responsiveScreenFontSize(2), fontWeight: 'bold' }}>{element.question}</Text>
-                                            <Text style={{ fontSize: responsiveScreenFontSize(2.5), fontWeight: 'bold' }} > เฉลย :</Text>
-                                            <View style={styles.choiceContainer}>
+                                            <Text style={{ fontSize: responsiveScreenFontSize(2.5), fontWeight: 'bold', marginBottom: '2%' }} > เฉลย :</Text>
+
+                                            {/* Object.keys(element.choices).map((id) => (<Text>{element[id]}</Text>)) */}
+                                            {/*  < View style={styles.choiceContainer}>
                                                 <Text style={styles.choiceOption}>{element.answers}</Text>
-                                            </View>
+                                            </View> */}
+
                                         </View>
+
                                     </View>
+                                    {element.answers === "ถูกทุกข้อข้างต้น" ? Object.keys(element.choices).map((id) => (element.choices[id] !== "ถูกทุกข้อข้างต้น" && element.choices[id] !== "ผิดทุกข้อข้างต้น" ?
+                                        <View style={{
+                                            width: responsiveScreenWidth(65), height: responsiveScreenHeight(3), backgroundColor: '#FFED9E',
+                                            margin: '1%'
+                                        }}>
+                                            <Text style={{ fontSize: responsiveScreenFontSize(2), fontWeight: 'bold', textAlign: 'center' }}>{element.choices[id]}</Text>
+                                        </View> : null)) : < View style={styles.choiceContainer}>
+                                        <Text style={styles.choiceOption}>{element.answers}</Text>
+                                    </View>}
                                 </View>
 
                             </View>
@@ -140,7 +153,9 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderColor: 'white',
         height: responsiveScreenHeight(9), // 50% of Screen height,
-        width: responsiveScreenWidth(43),// 50% of Screen width
+        width: responsiveScreenWidth(43),// 50% of Screen width,
+        marginLeft: '21%'
+
 
     }, choiceOption: {
         textAlign: 'center',
