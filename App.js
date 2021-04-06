@@ -49,9 +49,11 @@ import GlobalStateUserImage from './contexts/GlobalStateUserImage.js'
 import GlobalStateUserQuestion from './contexts/GlobalStateUserQuestion.js'
 import GlobalStateImageSearch from './contexts/GlobalStateImageSearch.js'
 import congratsScreen from './components/Game/congratsScreen'
+import GlobalStateUserAnswer from './contexts/GlobalStateUserAnswer.js'
 export default function App() {
   const Stack = createStackNavigator();
   const [stateImage, setStateImage] = useState([]);
+  const [stateAnswer, setStateAnswer] = useState([]);
   const [statePic, setPicstatePic] = useState(null);
   const [stateQuestion, setStateQuestion] = useState({ XP: 0, COIN: 0, countCorrectAnswer: 0, userAnswer: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'] });
   return (
@@ -60,62 +62,64 @@ export default function App() {
     //   <Text>Open up App.js to start working on your app!</Text>
     //   <StatusBar style="auto" />
     // </View>
-    <GlobalStateImageSearch.Provider value={[statePic, setPicstatePic]}>
-      <GlobalStateUserQuestion.Provider value={[stateQuestion, setStateQuestion]}>
-        <GlobalStateUserImage.Provider value={[stateImage, setStateImage]}>
-          <NavigationContainer>
-            <Stack.Navigator initialRouteName="Home" screenOptions={{
-              headerShown: false
-            }}>
-              <Stack.Screen name="congrats" component={congratsScreen} />
-              <Stack.Screen name="Home" component={HomeScreen} />
-              <Stack.Screen name="Game" component={GameScreen} />
-              {/* <Stack.Screen name="Test" component={TestScreen} /> */}
-              <Stack.Screen name="Game2" component={GameScreen2} />
-              <Stack.Screen name="Game3" component={GameScreen3} />
-              <Stack.Screen name="Game4" component={GameScreen4} />
-              <Stack.Screen name="Game5" component={GameScreen5} />
-              <Stack.Screen name="Game5_2" component={GameScreen5_2} />
-              <Stack.Screen name="Game6" component={GameScreen6} />
-              <Stack.Screen name="Game7" component={GameScreen7} />
-              <Stack.Screen name="Game7_2" component={GameScreen7_2} />
-              <Stack.Screen name="Question" component={QuestionScreen} />
-              <Stack.Screen name="Question2" component={QuestionScreen2} />
-              <Stack.Screen name="Question3" component={QuestionScreen3} />
-              <Stack.Screen name="Question4" component={QuestionScreen4} />
-              <Stack.Screen name="Question5" component={QuestionScreen5} />
-              <Stack.Screen name="Question6" component={QuestionScreen6} />
-              <Stack.Screen name="Question7" component={QuestionScreen7} />
-              <Stack.Screen name="Question8" component={QuestionScreen8} />
-              <Stack.Screen name="Question9" component={QuestionScreen9} />
-              <Stack.Screen name="Question10" component={QuestionScreen10} />
-              <Stack.Screen name="Question11" component={QuestionScreen11} />
-              <Stack.Screen name="Solution2" component={SolutionScreen2} />
-              <Stack.Screen name="Solution3" component={SolutionScreen3} />
-              <Stack.Screen name="Solution4" component={SolutionScreen4} />
-              <Stack.Screen name="Solution5" component={SolutionScreen5} />
-              <Stack.Screen name="Solution6" component={SolutionScreen6} />
-              <Stack.Screen name="Solution7" component={SolutionScreen7} />
-              <Stack.Screen name="Solution8" component={SolutionScreen8} />
-              <Stack.Screen name="Solution9" component={SolutionScreen9} />
-              <Stack.Screen name="Solution10" component={SolutionScreen10} />
-              <Stack.Screen name="Solution11" component={SolutionScreen11} />
-              <Stack.Screen name="Question12" component={QuestionScreen12} />
-              <Stack.Screen name="Question13" component={QuestionScreen13} />
-              <Stack.Screen name="TextSearch" component={TextSearchScreen} />
-              <Stack.Screen name="ImageSearch" component={ImageSearchScreen} />
-              <Stack.Screen name="ImageSearch2" component={ImageSearchScreen2} />
-              <Stack.Screen name="ImageSearch3" component={ImageSearchScreen3} />
-              <Stack.Screen name="ImageSearch4" component={ImageSearchScreen4} />
-              <Stack.Screen name="ImageSearch5" component={ImageSearchScreen5} />
-              <Stack.Screen name="PlantGarden" component={PlantGardenScreen} />
-              <Stack.Screen name="Setting" component={SettingScreen} />
+    <GlobalStateUserAnswer.Provider value={[stateAnswer, setStateAnswer]}>
+      <GlobalStateImageSearch.Provider value={[statePic, setPicstatePic]}>
+        <GlobalStateUserQuestion.Provider value={[stateQuestion, setStateQuestion]}>
+          <GlobalStateUserImage.Provider value={[stateImage, setStateImage]}>
+            <NavigationContainer>
+              <Stack.Navigator initialRouteName="Question12" screenOptions={{
+                headerShown: false
+              }}>
+                <Stack.Screen name="congrats" component={congratsScreen} />
+                <Stack.Screen name="Home" component={HomeScreen} />
+                <Stack.Screen name="Game" component={GameScreen} />
+                {/* <Stack.Screen name="Test" component={TestScreen} /> */}
+                <Stack.Screen name="Game2" component={GameScreen2} />
+                <Stack.Screen name="Game3" component={GameScreen3} />
+                <Stack.Screen name="Game4" component={GameScreen4} />
+                <Stack.Screen name="Game5" component={GameScreen5} />
+                <Stack.Screen name="Game5_2" component={GameScreen5_2} />
+                <Stack.Screen name="Game6" component={GameScreen6} />
+                <Stack.Screen name="Game7" component={GameScreen7} />
+                <Stack.Screen name="Game7_2" component={GameScreen7_2} />
+                <Stack.Screen name="Question" component={QuestionScreen} />
+                <Stack.Screen name="Question2" component={QuestionScreen2} />
+                <Stack.Screen name="Question3" component={QuestionScreen3} />
+                <Stack.Screen name="Question4" component={QuestionScreen4} />
+                <Stack.Screen name="Question5" component={QuestionScreen5} />
+                <Stack.Screen name="Question6" component={QuestionScreen6} />
+                <Stack.Screen name="Question7" component={QuestionScreen7} />
+                <Stack.Screen name="Question8" component={QuestionScreen8} />
+                <Stack.Screen name="Question9" component={QuestionScreen9} />
+                <Stack.Screen name="Question10" component={QuestionScreen10} />
+                <Stack.Screen name="Question11" component={QuestionScreen11} />
+                <Stack.Screen name="Solution2" component={SolutionScreen2} />
+                <Stack.Screen name="Solution3" component={SolutionScreen3} />
+                <Stack.Screen name="Solution4" component={SolutionScreen4} />
+                <Stack.Screen name="Solution5" component={SolutionScreen5} />
+                <Stack.Screen name="Solution6" component={SolutionScreen6} />
+                <Stack.Screen name="Solution7" component={SolutionScreen7} />
+                <Stack.Screen name="Solution8" component={SolutionScreen8} />
+                <Stack.Screen name="Solution9" component={SolutionScreen9} />
+                <Stack.Screen name="Solution10" component={SolutionScreen10} />
+                <Stack.Screen name="Solution11" component={SolutionScreen11} />
+                <Stack.Screen name="Question12" component={QuestionScreen12} />
+                <Stack.Screen name="Question13" component={QuestionScreen13} />
+                <Stack.Screen name="TextSearch" component={TextSearchScreen} />
+                <Stack.Screen name="ImageSearch" component={ImageSearchScreen} />
+                <Stack.Screen name="ImageSearch2" component={ImageSearchScreen2} />
+                <Stack.Screen name="ImageSearch3" component={ImageSearchScreen3} />
+                <Stack.Screen name="ImageSearch4" component={ImageSearchScreen4} />
+                <Stack.Screen name="ImageSearch5" component={ImageSearchScreen5} />
+                <Stack.Screen name="PlantGarden" component={PlantGardenScreen} />
+                <Stack.Screen name="Setting" component={SettingScreen} />
 
-            </Stack.Navigator>
-          </NavigationContainer>
-        </GlobalStateUserImage.Provider>
-      </GlobalStateUserQuestion.Provider>
-    </GlobalStateImageSearch.Provider>
+              </Stack.Navigator>
+            </NavigationContainer>
+          </GlobalStateUserImage.Provider>
+        </GlobalStateUserQuestion.Provider>
+      </GlobalStateImageSearch.Provider>
+    </GlobalStateUserAnswer.Provider>
   );
 }
 
@@ -125,5 +129,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+
   },
 });

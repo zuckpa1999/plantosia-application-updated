@@ -56,6 +56,7 @@ export default function SolutionScreen11({ navigation }) {
                 </TouchableOpacity> */}
                 {/* +1 */}
                 <TemplateAnswerScreen index={9} />
+                <Text>fe</Text>
                 {/* +1 */}
                 <TouchableOpacity onPress={() => navigation.navigate('Question12')}>
                     <Image

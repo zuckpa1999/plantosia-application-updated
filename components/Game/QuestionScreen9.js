@@ -11,10 +11,11 @@ import questions from '../../config/questions.json'
 import TemplateQuestion from './templateQuestion.js'
 import TemplateTop from './templateTop.js'
 import GlobalStateUserQuestion from '../../contexts/GlobalStateUserQuestion'
-
+import GlobalStateUserAnswer from '../../contexts/GlobalStateUserAnswer'
 export default function QuestionScreen9({ navigation }) {
     /*   const [stateQuestion, setStateQuestion] = useState({ XP: 0, COIN: 0, countCorrectAnswer: 0, userAnswer: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'] }); */
     const [stateQuestion, setStateQuestion] = useContext(GlobalStateUserQuestion)
+    const [stateAnswer, setStateAnswer] = useContext(GlobalStateUserAnswer)
     // assumer we get props
     let index = 7
     let answerToQuestion = questions.easy[index].answers
@@ -47,10 +48,12 @@ export default function QuestionScreen9({ navigation }) {
         /* answer = stateQuestion.userAnswer[0] === answerToQuestion ? true : false */
         if (stateQuestion.userAnswer[0] === answerToQuestion) {
             setAnswer(true)
+            setStateAnswer(...stateAnswer, true)
             setStateQuestion({ COIN: stateQuestion.COIN + 20, XP: stateQuestion.XP + 50, countCorrectAnswer: stateQuestion.countCorrectAnswer + 1, userAnswer: stateQuestion.userAnswer })
         }
         else {
             setAnswer(false)
+            setStateAnswer(...stateAnswer, false)
             setStateQuestion({ COIN: stateQuestion.COIN + 5, XP: stateQuestion.XP + 30, countCorrectAnswer: stateQuestion.countCorrectAnswer, userAnswer: stateQuestion.userAnswer })
         }
 
