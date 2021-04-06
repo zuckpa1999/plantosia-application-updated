@@ -11,9 +11,12 @@ import questions from '../../config/questions.json'
 import TemplateQuestion from './templateQuestion.js'
 import TemplateTop from './templateTop.js'
 import GlobalStateUserQuestion from '../../contexts/GlobalStateUserQuestion'
+import { Images } from '../../Images'
+
 export default function QuestionScreen12({ navigation }) {
 
     // config file(json), globstateuseranswer, 
+
     const [stateQuestion, setStateQuestion] = useContext(GlobalStateUserQuestion)
     let configQuestion = questions.easy
     return (
@@ -35,61 +38,50 @@ export default function QuestionScreen12({ navigation }) {
                     style={{ marginTop: '3%' }}
                     source={require('../../asset/solutionBanner.png')}
                 />
-
-                {/*  {configQuestion.map((id) => {
-                    <Text>{id}</Text>
-                })} */}
-                <Text>w</Text>
+                {/* {configQuestion.map(element => (<Text>{element.id}</Text>))} */}
+                {/*    <View>
+                    {Object.keys(configQuestion).map((key) => (
+                        <Text key={key}>{configQuestion.map(element => (element.id))}</Text>))}
+                </View> */}
                 <ScrollView showsVerticalScrollIndicator={false}>
-                    {/* card should be responsive depending on the content */}
-                    <View style={{ borderRadius: '5%', width: responsiveScreenWidth(80), height: responsiveScreenHeight(35), backgroundColor: 'white', flexDirection: 'column', alignItems: 'center', marginBottom: '3%' }}>
-                        <Image
-                            style={{ marginTop: '3%', width: responsiveScreenWidth(34), height: responsiveScreenHeight(12) }}
-                            source={require('../../asset/imgQuestion1.png')}
-                        />
-                        <View style={{ width: responsiveScreenWidth(70), height: responsiveScreenHeight(18), backgroundColor: '#FFF8CA' }}>
-                            <View style={{ flexDirection: 'row', paddingTop: '5%' }}>
-                                <Image source={require('../../asset/Yes.png')} />
-                                <View style={{ paddingLeft: '5%' }}>
-                                    <Text style={{ fontSize: responsiveScreenFontSize(2.5), fontWeight: 'bold' }}>นี่คือส่วนใดของพืช?</Text>
-                                    <Text style={{ fontSize: responsiveScreenFontSize(2.5), fontWeight: 'bold' }} > เฉลย :</Text>
-                                    <View style={styles.choiceContainer}>
-                                        <Text style={styles.choiceOption}>ราก</Text>
+                    <View>
+                        {configQuestion.map(element => (
+                            <View style={{ borderRadius: '5%', width: responsiveScreenWidth(80), height: responsiveScreenHeight(35), backgroundColor: 'white', flexDirection: 'column', alignItems: 'center', marginBottom: '3%' }}>
+                                <Image
+                                    style={{ marginTop: '3%', width: responsiveScreenWidth(34), height: responsiveScreenHeight(12) }}
+                                    source={Images[element.id]}
+                                />
+                                <View style={{ width: responsiveScreenWidth(70), height: responsiveScreenHeight(18), backgroundColor: '#FFF8CA' }}>
+                                    <View style={{ flexDirection: 'row', paddingTop: '5%' }}>
+                                        <Image source={stateQuestion.userAnswer[element.id - 1] === element.answers ? require('../../asset/Yes.png') : require('../../asset/No.png')} />
+                                        <View style={{ paddingLeft: '5%' }}>
+                                            <Text style={{ fontSize: responsiveScreenFontSize(2), fontWeight: 'bold' }}>{element.question}</Text>
+                                            <Text style={{ fontSize: responsiveScreenFontSize(2.5), fontWeight: 'bold' }} > เฉลย :</Text>
+                                            <View style={styles.choiceContainer}>
+                                                <Text style={styles.choiceOption}>{element.answers}</Text>
+                                            </View>
+                                        </View>
                                     </View>
                                 </View>
-                            </View>
-                        </View>
 
+                            </View>
+                        ))}
                     </View>
-                    <View style={{ borderRadius: '5%', width: responsiveScreenWidth(80), height: responsiveScreenHeight(40), backgroundColor: 'white', flexDirection: 'column', alignItems: 'center' }}>
-                        <Image
-                            style={{ marginTop: '3%', width: responsiveScreenWidth(34), height: responsiveScreenHeight(12) }}
-                            source={require('../../asset/imgQuestion1.png')}
-                        />
-                        <View style={{ width: responsiveScreenWidth(70), height: responsiveScreenHeight(18), backgroundColor: '#FFF8CA' }}>
-                            <View style={{ flexDirection: 'row', paddingTop: '5%' }}>
-                                <Image source={require('../../asset/No.png')} />
-                                <View style={{ paddingLeft: '5%' }}>
-                                    <Text style={{ fontSize: responsiveScreenFontSize(2.2), fontWeight: 'bold' }}>หน้าที่ของ ผล ของพืชคืออะไร?</Text>
-                                    <Text style={{ fontSize: responsiveScreenFontSize(2.5), fontWeight: 'bold' }} > เฉลย :</Text>
-
-                                </View>
-                            </View>
-                            <View style={{ width: responsiveScreenWidth(65), height: responsiveScreenHeight(3), backgroundColor: '#FFED9E', margin: '1%' }}>
-                                <Text style={{ fontSize: responsiveScreenFontSize(2), fontWeight: 'bold', textAlign: 'center' }}> ดูดซับน้ำ</Text>
-                            </View>
-                            <View style={{ width: responsiveScreenWidth(65), height: responsiveScreenHeight(3), backgroundColor: '#FFED9E', margin: '1%' }}>
-                                <Text style={{ fontSize: responsiveScreenFontSize(2), fontWeight: 'bold', textAlign: 'center' }}> ดูดซับแร่ธาตุ</Text>
-                            </View>
-                            <View style={{ width: responsiveScreenWidth(65), height: responsiveScreenHeight(3), backgroundColor: '#FFED9E', margin: '1%' }}>
-                                <Text style={{ fontSize: responsiveScreenFontSize(2), fontWeight: 'bold', textAlign: 'center' }}> เป็นรากฐานให้กับพืช</Text>
-                            </View>
-                        </View>
-
-                    </View>
-
-
                 </ScrollView>
+                <View style={{ width: responsiveScreenWidth(65), height: responsiveScreenHeight(3), backgroundColor: '#FFED9E', margin: '1%' }}>
+                    <Text style={{ fontSize: responsiveScreenFontSize(2), fontWeight: 'bold', textAlign: 'center' }}> ดูดซับน้ำ</Text>
+                </View>
+                {/*  <View>
+                    {Object.keys(configQuestion).map((key) => (
+                        // onPress={() => selectThisChoice(configQuestion[key])}
+
+                        <Text key={key}>{configQuestion[key]}</Text>
+
+                    ))}
+
+                </View> */}
+
+
             </View>
 
         </SafeAreaView >
@@ -158,6 +150,13 @@ const styles = StyleSheet.create({
         fontWeight: '800',
         fontSize: responsiveScreenFontSize(2.5),
         padding: 2
+    },
+    questionFooter: {
+        marginTop: '6%',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+
+
     },
 
 

@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Button, Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-native';
 import {
     responsiveScreenHeight,
     responsiveScreenWidth,
     responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
-
+import GlobalStateImageSearch from '../../contexts/GlobalStateImageSearch'
+import GlobalStateUserAnswer from '../../contexts/GlobalStateUserAnswer'
+import GlobalStateUserImage from '../../contexts/GlobalStateUserImage'
+import GlobalStateUserQuestion from '../../contexts/GlobalStateUserQuestion'
 export default function TestScreen({ navigation }) {
-
-
+    const [stateQuestion, setStateQuestion] = useContext(GlobalStateUserQuestion)
+    const [stateAnswer, setStateAnswer] = useContext(GlobalStateUserAnswer)
+    const [statePic, setPicstatePic] = useContext(GlobalStateUserImage)
+    const [stateImage, setStateImage] = useContext(GlobalStateImageSearch);
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.top}>
@@ -29,18 +34,20 @@ export default function TestScreen({ navigation }) {
                     source={require('../../asset/leafLogo.png')}
                 />
                 <View style={styles.box}>
-                    <Text style={styles.msg}>อันดับแรก, ถ่ายรูปส่ssวน
+                    <Text style={styles.msg}>อันดับแรก, ถ่ากกกหยรูปส่ssวน
  <Text style={{ color: '#87D38A' }}>ใบ</Text>  ของพืช</Text>
                 </View>
                 <Image
                     style={styles.cameraArea}
                     source={require('../../asset/cameraArea.png')}
                 />
+                <Text>{stateQuestion.XP}</Text>
+                <Text>{stateQuestion.COIN}</Text>
+                <Text>{stateQuestion.userAnswer}</Text>
+                <Text>{stateAnswer}</Text>
+                <Text>{stateImage}</Text>
 
-                <Image
 
-                    source={require('../../asset/camera_2.png')}
-                />
                 <TouchableOpacity onPress={() => navigation.navigate('Game3')}>
                     <Image
                         style={styles.nextButton}
