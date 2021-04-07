@@ -127,7 +127,7 @@
     }
   ],
   "hard": {
-    "Banana": [
+    "Musa Sapientum": [
       {
         "id": "1",
         "question": "กล้วยหอม มีรากชนิดใด?",
@@ -243,7 +243,7 @@
         "image": ""
       }
     ],
-    "Rice": [
+    "Oryza Sativa": [
       {
         "id": "1",
         "question": "ข้าว มีรากชนิดใด?",
@@ -359,7 +359,7 @@
         "image": ""
       }
     ],
-    "West_Indian_Jasmine": [
+    "Ixora Coccinea": [
       {
         "id": "1",
         "question": "ดอกเข็ม มีรากชนิดใด?",
@@ -476,7 +476,7 @@
         "image": ""
       }
     ],
-    "Paper_Flower": [
+    "Bougainvillea": [
       {
         "id": "1",
         "question": "ดอกเฟื่องฟ้า มีรากชนิดใด?",
@@ -593,7 +593,7 @@
         "image": ""
       }
     ],
-    "Velvet_Bean": [
+    "Mucuna Pruriens": [
       {
         "id": "1",
         "question": "หมามุ้ย มีรากชนิดใด?",
@@ -709,7 +709,7 @@
         "image": ""
       }
     ],
-    "Coconut": [
+    "Cocos Nucifera": [
       {
         "id": "1",
         "question": "มะพร้าว มีรากชนิดใด?",

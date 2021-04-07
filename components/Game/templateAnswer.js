@@ -18,7 +18,7 @@ export default function TemplateAnswerScreen(props) {
     // let configQuestion = questions.easy[props.index].choices
     const [stateAnswer, setStateAnswer] = useContext(GlobalStateUserAnswer)
     let index = props.index + 1
-    const img = Images[index];
+    const img = stateAnswer.difficulty === 'hard' ? Images_hard[stateAnswer.plantName] : Images[index];
     let question = stateAnswer.difficulty === 'hard' ? questions.hard[stateAnswer.plantName][index].question : questions.easy[props.index].question
     let answer = stateAnswer.difficulty === 'hard' ? questions.hard[stateAnswer.plantName][index].answers : questions.easy[props.index].answers
 
