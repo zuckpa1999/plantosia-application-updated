@@ -70,8 +70,8 @@ def main():
 	# count occurance
 	#array = [1,2,3,4,5,6]
 	#dictionary = {p1 : [occurance, accuracy1, accuracy2, accuracy 3]   ,p2 :}
-	dict_occurance ={ 'Ixora Coccinea' : 0  , 'Bougainvillea' : 0, 'Cocos Nucifera' : 0, 'Mucuna Pruriens' : 0, 'Musa Sapientum' : 0, 'Oryza Sativa' : 0 }
-	dict_accuracy = {'Ixora Coccinea' : [], 'Bougainvillea' : [], 'Cocos Nucifera' : [], 'Mucuna Pruriens' : [], 'Musa Sapientum' : [], 'Oryza Sativa' : [] }
+	dict_occurance ={ 'West Indian Jasmine' : 0  , 'Paper Flower' : 0, 'Coconut' : 0, 'Velvet Bean' : 0, 'Banana' : 0, 'Rice' : 0 }
+	dict_accuracy = {'West Indian Jasmine' : [], 'Paper Flower' : [], 'Coconut' : [], 'Velvet Bean' : [], 'Banana' : [], 'Rice' : [] }
 	dictionary = {}
 	count = 0
 	#print('length lines')
@@ -135,24 +135,24 @@ def main():
 			count = count +1
 				#dict_occurance ={ ' Ixora Coccinea' : 0  , 'Bougainvillea' : 0, 'Cocos Nucifera' : 0, 'Mucuna Pruriens' : 0, 'Musa Sapientum' : 0, 'Oryza Sativa' : 0 }
 
-			if(label == 'Ixora Coccinea'):
-				dict_occurance['Ixora Coccinea'] = dict_occurance['Ixora Coccinea'] + 1
-				dict_accuracy['Ixora Coccinea'].append(confidence)
-			elif(label == 'Bougainvillea'):
-				dict_occurance['Bougainvillea'] = dict_occurance['Bougainvillea'] + 1
-				dict_accuracy['Bougainvillea'].append(confidence)
-			elif(label == 'Cocos Nucifera'):
-				dict_occurance['Cocos Nucifera'] = dict_occurance['Cocos Nucifera'] + 1
-				dict_accuracy['Cocos Nucifera'].append(confidence)
-			elif(label == 'Mucuna Pruriens'):
-				dict_occurance['Mucuna Pruriens'] = dict_occurance['Mucuna Pruriens'] + 1
-				dict_accuracy['Mucuna Pruriens'].append(confidence)
-			elif(label == 'Musa Sapientum'):
-				dict_occurance['Musa Sapientum'] = dict_occurance['Musa Sapientum'] + 1
-				dict_accuracy['Musa Sapientum'].append(confidence)
-			elif(label == 'Oryza Sativa'):
-				dict_occurance['Oryza Sativa'] = dict_occurance['Oryza Sativa'] + 1
-				dict_accuracy['Oryza Sativa'].append(confidence)
+			if(label == 'West Indian Jasmine'):
+				dict_occurance['West Indian Jasmine'] = dict_occurance['West Indian Jasmine'] + 1
+				dict_accuracy['West Indian Jasmine'].append(confidence)
+			elif(label == 'Paper Flower'):
+				dict_occurance['Paper Flower'] = dict_occurance['Paper Flower'] + 1
+				dict_accuracy['Paper Flower'].append(confidence)
+			elif(label == 'Coconut'):
+				dict_occurance['Coconut'] = dict_occurance['Coconut'] + 1
+				dict_accuracy['Coconut'].append(confidence)
+			elif(label == 'Velvet Bean'):
+				dict_occurance['Velvet Bean'] = dict_occurance['Velvet Bean'] + 1
+				dict_accuracy['Velvet Bean'].append(confidence)
+			elif(label == 'Banana'):
+				dict_occurance['Banana'] = dict_occurance['Banana'] + 1
+				dict_accuracy['Banana'].append(confidence)
+			elif(label == 'Rice'):
+				dict_occurance['Rice'] = dict_occurance['Rice'] + 1
+				dict_accuracy['Rice'].append(confidence)
 		
 			# return the key of dictionary that has highest the highest occurance
 			highestOccurance_Plant = max(dict_occurance, key=dict_occurance.get)
