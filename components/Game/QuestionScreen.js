@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image, Dimensions } from 'react-native';
 import {
     responsiveScreenHeight,
@@ -7,7 +7,7 @@ import {
 } from "react-native-responsive-dimensions";
 
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
-
+import GlobalStateUserAnswer from '../../contexts/GlobalStateUserAnswer'
 // @material-ui/core
 
 
@@ -15,6 +15,7 @@ import { Card, ListItem, Button, Icon } from 'react-native-elements'
 
 export default function QuestionScreen({ navigation }) {
     const [currentChoice, setCurrentChoice] = useState(null)
+    const [stateAnswer, setStateAnswer] = useContext(GlobalStateUserAnswer)
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.top}>
@@ -35,17 +36,18 @@ export default function QuestionScreen({ navigation }) {
 
                 <Text style={styles.text} >เลือกระดับความยากของเกม</Text>
                 <View style={styles.choice}>
-                    <TouchableOpacity style={currentChoice === 'ง่าย' ? styles.easyContainerPicked : styles.easyContainer} onPress={() => {
-                        setCurrentChoice('ง่าย')
+                    <TouchableOpacity style={currentChoice === 'easy' ? styles.easyContainerPicked : styles.easyContainer} onPress={() => {
+                        setCurrentChoice('easy')
+                        setStateAnswer({ plantName: stateAnswer.plantName, difficulty: 'easy' })
 
                     }}  >
                         <Text style={styles.easyText}>ง่าย</Text>
 
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={currentChoice === 'ยาก' ? styles.hardContainerPicked : styles.hardContainer} onPress={() => {
-                        setCurrentChoice('ยาก')
-
+                    <TouchableOpacity style={currentChoice === 'hard' ? styles.hardContainerPicked : styles.hardContainer} onPress={() => {
+                        setCurrentChoice('hard')
+                        setStateAnswer({ plantName: stateAnswer.plantName, difficulty: 'hard' })
                     }} >
                         <Text style={styles.hardText} >ยาก</Text>
 

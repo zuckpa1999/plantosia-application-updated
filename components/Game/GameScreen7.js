@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image, Dimensions } from 'react-native';
 import {
     responsiveScreenHeight,
@@ -7,14 +7,14 @@ import {
 } from "react-native-responsive-dimensions";
 
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
-
+import GlobalStateUserAnswer from '../../contexts/GlobalStateUserAnswer'
 // @material-ui/core
 
 
 
 
 export default function GameScreen7({ navigation, route }) {
-
+    const [stateAnswer, setStateAnswer] = useContext(GlobalStateUserAnswer)
     const { plantName, confidence } = route.params
     return (
         <SafeAreaView style={styles.container}>
@@ -92,7 +92,11 @@ export default function GameScreen7({ navigation, route }) {
                     </View>
                 </View>
 
-                <TouchableOpacity onPress={() => navigation.navigate('Game7_2')} style={{ marginBottom: '20l%' }}>
+                <TouchableOpacity onPress={() => {
+                    setStateAnswer({ plantName: plantName, difficulty: stateAnswer.difficulty })
+                    navigation.navigate('Question')
+
+                }} style={{ marginBottom: '20l%' }}>
                     <Image
                         style={styles.nextButton}
                         source={require('../../asset/nextBig.png')}

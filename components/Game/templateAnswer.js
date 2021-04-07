@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Button, Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-native';
 import {
     responsiveScreenHeight,
@@ -6,8 +6,9 @@ import {
     responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
 import questions from '../../config/questions.json'
-
+import GlobalStateUserAnswer from '../../contexts/GlobalStateUserAnswer'
 import { Images } from '../../Images.js'
+
 export default function TemplateAnswerScreen(props) {
 
     // let imageQuestion = questions.easy[props.index].image
@@ -15,11 +16,12 @@ export default function TemplateAnswerScreen(props) {
     // let numQuestion = questions.easy.length
     // let question = questions.easy[props.index].question
     // let configQuestion = questions.easy[props.index].choices
-
+    const [stateAnswer, setStateAnswer] = useContext(GlobalStateUserAnswer)
     let index = props.index + 1
     const img = Images[index];
-    let question = questions.easy[props.index].question
-    let iQ = 1
+    let question = stateAnswer.difficulty === 'hard' ? questions.hard[stateAnswer.plantName][index].question : questions.easy[props.index].question
+    let answer = stateAnswer.difficulty === 'hard' ? questions.hard[stateAnswer.plantName][index].answers : questions.easy[props.index].answers
+
     let nQ = 10
     return (
         <SafeAreaView style={styles.container}>
@@ -54,7 +56,7 @@ export default function TemplateAnswerScreen(props) {
                 <Text style={{ fontWeight: '700', marginTop: '6%', fontSize: 19 }}>คำตอบ:</Text>
                 <TouchableOpacity style={styles.choiceContainer} >
                     {/* <Text style={styles.choiceOption}>{configQuestion[key]}</Text> */}
-                    <Text style={styles.choiceOption}>ราก</Text>
+                    <Text style={styles.choiceOption}>{answer}</Text>
                 </TouchableOpacity>
 
                 {/*   <TouchableOpacity onPress={() => navigation.navigate('Test')}>

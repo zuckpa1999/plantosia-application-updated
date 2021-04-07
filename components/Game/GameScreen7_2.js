@@ -72,7 +72,7 @@ export default function GameScreen7_2({ navigation }) {
                     </View>
                 </Card>
  */}
-                <TouchableOpacity onPress={() => navigation.navigate('Question')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Game2')}>
                     <Image
                         style={styles.nextButton}
                         source={require('../../asset/goBackBig.png')}

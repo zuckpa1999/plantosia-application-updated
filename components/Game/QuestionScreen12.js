@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
         marginTop: '12%',
         fontWeight: '800',
         fontSize: responsiveScreenFontSize(2.5),
-        padding: 2
+        padding: 3
     },
     questionFooter: {
         marginTop: '6%',

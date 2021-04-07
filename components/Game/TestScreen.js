@@ -1,96 +1,170 @@
-import React, { useContext } from 'react'
-import { Button, Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-native';
+import React, { useState, useContext } from 'react'
+import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image, Dimensions, Alert, Modal, Pressable } from 'react-native';
 import {
     responsiveScreenHeight,
     responsiveScreenWidth,
     responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
-import GlobalStateImageSearch from '../../contexts/GlobalStateImageSearch'
-import GlobalStateUserAnswer from '../../contexts/GlobalStateUserAnswer'
-import GlobalStateUserImage from '../../contexts/GlobalStateUserImage'
+
+import { Card, ListItem, Button, Icon } from 'react-native-elements'
+import questions from '../../config/questions.json'
+import TemplateQuestion from './templateQuestion.js'
+import TemplateTop from './templateTop.js'
 import GlobalStateUserQuestion from '../../contexts/GlobalStateUserQuestion'
+import GlobalStateUserAnswer from '../../contexts/GlobalStateUserAnswer'
 export default function TestScreen({ navigation }) {
+    /*   const [stateQuestion, setStateQuestion] = useState({ XP: 0, COIN: 0, countCorrectAnswer: 0, userAnswer: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'] }); */
     const [stateQuestion, setStateQuestion] = useContext(GlobalStateUserQuestion)
     const [stateAnswer, setStateAnswer] = useContext(GlobalStateUserAnswer)
-    const [statePic, setPicstatePic] = useContext(GlobalStateUserImage)
-    const [stateImage, setStateImage] = useContext(GlobalStateImageSearch);
+    // assumer we get props
+
+    let index = 1
+    /* let indexQuestion = questions.easy[index].answers */
+    let plant = "Banana"
+    let indexQuestion = questions.hard[plant][index].question
+    /* let answer */
+    const [answer, setAnswer] = useState(false)
+    // 2 version 
+    //if props.answer : true ? boolean
+    // need global variable to store coin and XP **
+    // right answer banner1 , mascot1, coin + 5, XP + 30
+    // wrong answer, banner 2, mascot 2, coin + 20, XP + 50
+    const [modalVisible, setModalVisible] = useState(false);
+    const bannerRight = require('../../asset/ปกถูก.png')
+    const bannerWrong = require('../../asset/ปกผิด.png')
+    const mascotRight = require('../../asset/ตอบถูก.png')
+    const mascotWrong = require('../../asset/ตอบผิด.png')
+    //
+    let banner = answer ? bannerRight : bannerWrong
+    let mascot = answer ? mascotRight : mascotWrong
+
+    // GlobalStateUserQuestion
+    //    store - userAnswer (string of the choice), userResult(correct, incorrect)
+    //
+    /*  let indexQuestion = questions.hard['Banana'][index] */
+    let confirm = () => {
+
+        // if  pickedChoice  = coroect answer answer
+        //  answer = true /false
+        /*    alert(stateQuestion.userAnswer[0])
+           alert(answerToQuestion) */
+        /* answer = stateQuestion.userAnswer[0] === answerToQuestion ? true : false */
+        if (stateQuestion.userAnswer[0] === answerToQuestion) {
+            setAnswer(true)
+            setStateAnswer(...stateAnswer, true)
+            setStateQuestion({ COIN: stateQuestion.COIN + 20, XP: stateQuestion.XP + 50, countCorrectAnswer: stateQuestion.countCorrectAnswer + 1, userAnswer: stateQuestion.userAnswer })
+        }
+        else {
+            setAnswer(false)
+            setStateAnswer(...stateAnswer, false)
+            setStateQuestion({ COIN: stateQuestion.COIN + 5, XP: stateQuestion.XP + 30, countCorrectAnswer: stateQuestion.countCorrectAnswer, userAnswer: stateQuestion.userAnswer })
+        }
+
+        setModalVisible(true)
+
+    }
     return (
         <SafeAreaView style={styles.container}>
-            <View style={styles.top}>
-                <TouchableOpacity onPress={navigation.goBack}>
-                    <Image
-                        style={styles.backButton}
-                        source={require('../../asset/backButton.png')}
-                    />
-                </TouchableOpacity>
-                <Image
-                    style={styles.plantosiaLogo}
-                    source={require('../../asset/PlantosiaLogo2.png')}
-                />
-            </View>
+
+
+            <TemplateTop navigation={navigation} />
+            {/*     QuestionScreen2 ---> 0,  */}
             <View style={styles.greenArea}>
-                <Image
-                    style={styles.leaf}
-                    source={require('../../asset/leafLogo.png')}
-                />
-                <View style={styles.box}>
-                    <Text style={styles.msg}>อันดับแรก, ถ่ากกกหยรูปส่ssวน
- <Text style={{ color: '#87D38A' }}>ใบ</Text>  ของพืช</Text>
-                </View>
-                <Image
-                    style={styles.cameraArea}
-                    source={require('../../asset/cameraArea.png')}
-                />
-                <Text>{stateQuestion.XP}</Text>
-                <Text>{stateQuestion.COIN}</Text>
-                <Text>{stateQuestion.userAnswer}</Text>
-                <Text>{stateAnswer}</Text>
-                <Text>{stateImage}</Text>
+
+                <TemplateQuestion index={index} />
+                <Text>{indexQuestion}</Text>
+                <TouchableOpacity onPress={() => alert(indexQuestion)}><Text>HITME</Text></TouchableOpacity>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                        Alert.alert("Modal has been clou6u6sed.");
+                        setModalVisible(!modalVisible);
+                    }}
+                >
+                    <View style={styles.centeredView}>
+                        <View style={styles.modalView}>
+                            <Image
+
+                                style={answer ? { marginTop: '-42%', width: 375, height: 135 } : { marginTop: '-42%', width: 375, height: 115 }}
+                                source={banner}
 
 
-                <TouchableOpacity onPress={() => navigation.navigate('Game3')}>
-                    <Image
-                        style={styles.nextButton}
-                        source={require('../../asset/nextButton.png')}
-                    />
-                </TouchableOpacity>
+                            />
+
+                            <Image
+
+                                style={answer ? { width: 150, height: 90 } : { width: 130, height: 92 }}
+                                source={mascot}
+                            />
+
+                            <View style={{ backgroundColor: 'white', width: responsiveScreenWidth(40), height: responsiveScreenHeight(7), borderRadius: 30, borderColor: '#099846', borderWidth: 4, marginTop: '3%', paddingTop: '6%' }}>
+                                <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: '700', marginBottom: '11%' }}> <Image style={styles.image} source={require('../../asset/dollar_2.png')} /> + 20</Text>
+
+
+                            </View>
+
+                            <View style={{ backgroundColor: 'white', width: responsiveScreenWidth(40), height: responsiveScreenHeight(7), borderRadius: 30, borderColor: '#099846', borderWidth: 4, marginTop: '3%', paddingTop: '5%' }}>
+
+                                <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: '700', marginBottom: '11%' }}> XP + 50</Text>
+
+                            </View>
+                            <Text>XP :{stateQuestion.XP}</Text>
+                            <Text>COIN:{stateQuestion.COIN}</Text>
+                            <TouchableOpacity style={styles.solutionContainer} onPress={() => {
+                                setModalVisible(!modalVisible)
+                                navigation.navigate('Solution3')
+                            }}>
+                                <Text style={styles.solutionButton}>เฉลย</Text>
+                            </TouchableOpacity>
+                            <Pressable
+                                style={[styles.button, styles.buttonClose]}
+                                onPress={() => setModalVisible(!modalVisible)}
+                            >
+
+                            </Pressable>
+                        </View>
+                    </View>
+                </Modal>
+                <Pressable
+                    style={styles.confirmButtonContainer}
+                    onPress={() => confirm()}
+                >
+                    <Text style={styles.confirmButton}>Confirm</Text>
+                </Pressable>
 
             </View>
-
-
 
         </SafeAreaView >
     )
 }
 
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        alignItems: 'center',
-        // justifyContent: 'center',
-        // backgroundColor: '#94F098',
-        // display: 'flex',
-    },
-    top: {
-        flexDirection: 'row',
-        // justifyContent: 'center',
-        justifyContent: 'space-between',
-        marginBottom: '3%',
-        display: 'flex',
-    },
-    plantosiaLogo: {
-        marginTop: '1%',
-
-        marginRight: '5%'
-        // height: responsiveScreenHeight(6.5), // 50% of Screen height
-        // width: responsiveScreenWidth(58), // 50% of Screen width
+        alignItems: 'center'
 
     },
-    backButton: {
-        right: 90,
-        marginRight: '-4%'
+
+
+    confirmButtonContainer: {
+        backgroundColor: '#099846',
+        borderRadius: 10,
+        height: responsiveScreenHeight(4), // 50% of Screen height,
+        width: responsiveScreenWidth(24),// 50% of Screen width
+        alignSelf: 'flex-end',
+        marginRight: '4%',
+        marginTop: '15%'
+
+    },
+    confirmButton: {
+        textAlign: 'center',
+        marginTop: '7%',
+        color: 'white',
+        fontWeight: '800'
+
     },
     greenArea: {
 
@@ -106,42 +180,50 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start'
 
     },
-    box: {
-        marginTop: '5%',
-        // marginBottom: '9%',
-        width: 333,
-        height: 100,
-        backgroundColor: 'white',
+    modalView: {
+        margin: 20,
+        backgroundColor: "white",
         borderRadius: 20,
-        position: 'relative',
-        top: -47
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        height: responsiveScreenHeight(50), // 50% of Screen height
+        width: responsiveScreenWidth(73), // 50% of Screen width
+        borderWidth: 8,
+        borderColor: 'white',
+        elevation: 5,
+        backgroundColor: '#94F098'
 
     },
-    msg: {
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+    },
+    solutionButton: {
         textAlign: 'center',
-        fontWeight: '700',
-        paddingTop: 20,
-        fontSize: 25,
+        // marginTop: '7%',
+        color: 'white',
+        fontWeight: '800',
+        fontSize: 30
+    },
+    solutionContainer: {
+        backgroundColor: '#099846',
+        borderRadius: 10,
+        height: responsiveScreenHeight(5), // 50% of Screen height,
+        width: responsiveScreenWidth(38),// 50% of Screen width
 
-    },
-    mascot: {
-        marginTop: '36%'
-    },
-    nextButton: {
 
-        position: 'absolute',
-        top: 75,
-        left: 70,
+        marginTop: '15%'
+    },
 
-    },
-    leaf: {
-        top: -20,
-        zIndex: 10,
-        width: 50,
-        height: 50,
-    },
-    cameraArea: {
-        marginTop: '10%',
-        marginBottom: '10%'
-    }
+
+
 });

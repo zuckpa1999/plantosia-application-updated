@@ -10,14 +10,23 @@ import { Card, ListItem, Button, Icon } from 'react-native-elements'
 import questions from '../../config/questions.json'
 import { Images } from '../../Images'
 import GlobalStateUserQuestion from '../../contexts/GlobalStateUserQuestion'
+import GlobalStateUserAnswer from '../../contexts/GlobalStateUserAnswer'
 export default function templateQuestion(props) {
     /* let imageQuestion = questions.easy[props.index].image */
     let index = props.index
     const img = Images[index];
-    let indexQuestion = questions.easy[props.index].id
-    let numQuestion = questions.easy.length
-    let question = questions.easy[props.index].question
-    let configQuestion = questions.easy[props.index].choices
+    const [stateAnswer, setStateAnswer] = useContext(GlobalStateUserAnswer)
+    /*   let indexQuestion = questions.easy[props.index].id
+      let numQuestion = questions.easy.length
+      let question = questions.easy[props.index].question
+      let configQuestion = questions.easy[props.index].choices */
+    let plant = "Banana"
+    let indexQuestion = stateAnswer.difficulty === 'hard' ? questions.hard[plant][index].id : questions.easy[props.index].id
+    let numQuestion = stateAnswer.difficulty === 'hard' ? questions.hard[plant].length : questions.easy.length
+    let question = stateAnswer.difficulty === 'hard' ? questions.hard[plant][index].question : questions.easy[props.index].question
+    let configQuestion = stateAnswer.difficulty === 'hard' ? questions.hard[plant][index].choices : questions.easy[props.index].choices
+
+
     const [stateQuestion, setStateQuestion] = useContext(GlobalStateUserQuestion)
     const [currentChoice, setCurrentChoice] = useState(null)
 

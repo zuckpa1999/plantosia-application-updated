@@ -53,7 +53,7 @@ import GlobalStateUserAnswer from './contexts/GlobalStateUserAnswer.js'
 export default function App() {
   const Stack = createStackNavigator();
   const [stateImage, setStateImage] = useState([]);
-  const [stateAnswer, setStateAnswer] = useState([]);
+  const [stateAnswer, setStateAnswer] = useState({ plantName: null, difficulty: null });
   const [statePic, setPicstatePic] = useState(null);
   const [stateQuestion, setStateQuestion] = useState({ XP: 0, COIN: 0, countCorrectAnswer: 0, userAnswer: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'] });
   return (
@@ -67,7 +67,7 @@ export default function App() {
         <GlobalStateUserQuestion.Provider value={[stateQuestion, setStateQuestion]}>
           <GlobalStateUserImage.Provider value={[stateImage, setStateImage]}>
             <NavigationContainer>
-              <Stack.Navigator initialRouteName="Question12" screenOptions={{
+              <Stack.Navigator initialRouteName="Home" screenOptions={{
                 headerShown: false
               }}>
                 <Stack.Screen name="congrats" component={congratsScreen} />
