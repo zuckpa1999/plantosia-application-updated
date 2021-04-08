@@ -6,9 +6,11 @@ import {
     responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
 import GlobalStateUserImage from '../../contexts/GlobalStateUserImage'
+import GlobalStateUserAnswer from '../../contexts/GlobalStateUserAnswer'
 import axios from 'axios'
 export default function GameScreen6({ navigation }) {
     const [stateImage, setStateImage] = useContext(GlobalStateUserImage)
+    const [stateAnswer, setStateAnswer] = useContext(GlobalStateUserAnswer)
     const [data, setData] = useState(null)
     let upload = async () => {
 
@@ -87,7 +89,7 @@ export default function GameScreen6({ navigation }) {
         /*   alert('bkabka')
           alert(Object.keys(data)) */
         /*  alert(Object.keys(data)) */
-
+        setStateAnswer({ plantName: data[0], difficulty: stateAnswer.difficulty })
 
         if (data.length >= 2) {
             navigation.navigate('Game7', {

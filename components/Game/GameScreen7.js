@@ -8,6 +8,7 @@ import {
 
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
 import GlobalStateUserAnswer from '../../contexts/GlobalStateUserAnswer'
+import { Images_plant_card_container } from '../../Images_plant_card_container'
 // @material-ui/core
 
 
@@ -16,6 +17,32 @@ import GlobalStateUserAnswer from '../../contexts/GlobalStateUserAnswer'
 export default function GameScreen7({ navigation, route }) {
     const [stateAnswer, setStateAnswer] = useContext(GlobalStateUserAnswer)
     const { plantName, confidence } = route.params
+
+    let PlantThaiName = () => {
+        switch (plantName) {
+            case 'Musa Sapientum':
+                return 'กล้วยหอม'
+                break;
+            case 'Cocos Nucifera':
+                return 'มะพร้าว'
+                break;
+            case 'Bougainvillea':
+                return 'ดอกเฟื่องฟ้า'
+                break;
+            case 'Oryza Sativa':
+                return 'ข้าว'
+                break;
+            case 'Mucuna Pruriens':
+                return 'หมามุ้ย'
+                break;
+            case 'Ixora Coccinea':
+                return 'ดอกเข็ม'
+                break;
+            default:
+                return 'No plant'
+        }
+    }
+
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.top}>
@@ -43,44 +70,17 @@ export default function GameScreen7({ navigation, route }) {
                     source={require('../../asset/ผลลัพธ์.png')}
                     style={styles.result}
                 />
-
-
-
-
-
-
-                {/*     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-                    <View style={{ backgroundColor: "#eee", borderRadius: 10, overflow: "hidden" }}>
-                        <View>
-                            <Image
-                                source={require('../../asset/Rectangle.png')}
-                                style={{
-                                    height: 135,
-                                    width: 155
-                                }}
-                            />
-                        </View>
-                        <View style={{ padding: 10, width: 155 }}>
-                            <Text>Title</Text>
-                            <Text style={{ color: "#777", paddingTop: 5 }}>
-                                Description of the image
-            </Text>
-                        </View>
-                    </View>
-                </View> */}
-
-
                 <View style={{ flex: 1 }}>
                     <View style={{ backgroundColor: "#eee", borderRadius: 20, overflow: "hidden", marginBottom: 20, width: 340, height: 250 }}>
                         <View>
                             <Image
-                                source={require('../../asset/12.png')}
+                                source={Images_plant_card_container[stateAnswer.plantName]}
                                 style={styles.ImageDetail}
                             />
                         </View>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', padding: 15 }}>
                             <View style={{ paddingRight: 60 }}>
-                                <Text style={styles.ThaiName}>กล้วยหอม</Text>
+                                <Text style={styles.ThaiName}>{PlantThaiName()}</Text>
                                 <Text style={styles.EnglishName}>{plantName}</Text>
                             </View>
                             <View style={styles.similarColumn}>
