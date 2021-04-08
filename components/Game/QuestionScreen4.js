@@ -18,7 +18,7 @@ export default function QuestionScreen4({ navigation }) {
     const [stateAnswer, setStateAnswer] = useContext(GlobalStateUserAnswer)
     // assumer we get props
     let index = 2
-    let answerToQuestion = questions.easy[index].answers
+    let answerToQuestion = stateAnswer.difficulty === 'hard' ? questions.hard[stateAnswer.plantName][index].answers : questions.easy[index].answers
     /* let answer */
     const [answer, setAnswer] = useState(false)
     // 2 version 
@@ -48,12 +48,12 @@ export default function QuestionScreen4({ navigation }) {
         /* answer = stateQuestion.userAnswer[0] === answerToQuestion ? true : false */
         if (stateQuestion.userAnswer[0] === answerToQuestion) {
             setAnswer(true)
-            setStateAnswer(...stateAnswer, true)
+
             setStateQuestion({ COIN: stateQuestion.COIN + 20, XP: stateQuestion.XP + 50, countCorrectAnswer: stateQuestion.countCorrectAnswer + 1, userAnswer: stateQuestion.userAnswer })
         }
         else {
             setAnswer(false)
-            setStateAnswer(...stateAnswer, false)
+
             setStateQuestion({ COIN: stateQuestion.COIN + 5, XP: stateQuestion.XP + 30, countCorrectAnswer: stateQuestion.countCorrectAnswer, userAnswer: stateQuestion.userAnswer })
         }
 

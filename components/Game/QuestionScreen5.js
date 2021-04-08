@@ -48,12 +48,12 @@ export default function QuestionScreen5({ navigation }) {
         /* answer = stateQuestion.userAnswer[0] === answerToQuestion ? true : false */
         if (stateQuestion.userAnswer[0] === answerToQuestion) {
             setAnswer(true)
-            setStateAnswer(...stateAnswer, true)
+
             setStateQuestion({ COIN: stateQuestion.COIN + 20, XP: stateQuestion.XP + 50, countCorrectAnswer: stateQuestion.countCorrectAnswer + 1, userAnswer: stateQuestion.userAnswer })
         }
         else {
             setAnswer(false)
-            setStateAnswer(...stateAnswer, false)
+
             setStateQuestion({ COIN: stateQuestion.COIN + 5, XP: stateQuestion.XP + 30, countCorrectAnswer: stateQuestion.countCorrectAnswer, userAnswer: stateQuestion.userAnswer })
         }
 

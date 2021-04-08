@@ -8,7 +8,7 @@ import {
 import questions from '../../config/questions.json'
 import GlobalStateUserAnswer from '../../contexts/GlobalStateUserAnswer'
 import { Images } from '../../Images.js'
-
+import { Images_hard } from '../../Images_hard.js'
 export default function TemplateAnswerScreen(props) {
 
     // let imageQuestion = questions.easy[props.index].image
