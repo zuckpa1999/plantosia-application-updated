@@ -39,13 +39,15 @@ export default function congratsScreen({ navigation }) {
                     <Text style={styles.xpAndCoinText}>  <Text style={styles.greenText}>20  </Text> <Image source={require('../../asset/dollar.png')} /> <Image source={require('../../asset/vector.png')} /><Text style={styles.greenText}>{stateQuestion.COIN}</Text> <Image source={require('../../asset/dollar.png')} /></Text>
 
                 </View>
-                <TouchableOpacity style={styles.buttonContainer}
+                <TouchableOpacity
+                    style={{ marginTop: '10%' }}
                     onPress={() => navigation.navigate('Home')}>
-                    <Text style={styles.buttonText}>หน้าหลัก</Text>
+                    {/* <Text style={styles.buttonText}>หน้าหลัก</Text> */}
+                    <Image source={require('../../asset/หน้าหลักbutton.png')} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonContainer}
+                <TouchableOpacity style={{ marginTop: '3%' }}
                     onPress={() => navigation.navigate('PlantGarden')}>
-                    <Text style={styles.buttonText}>สวนพืชจำลอง</Text>
+                    <Image source={require('../../asset/สวนพืชจำลองbutton.png')} />
                 </TouchableOpacity>
             </View>
 
