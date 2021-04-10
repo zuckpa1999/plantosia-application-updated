@@ -67,7 +67,7 @@ export default function App() {
         <GlobalStateUserQuestion.Provider value={[stateQuestion, setStateQuestion]}>
           <GlobalStateUserImage.Provider value={[stateImage, setStateImage]}>
             <NavigationContainer>
-              <Stack.Navigator initialRouteName="Test" screenOptions={{
+              <Stack.Navigator initialRouteName="Home" screenOptions={{
                 headerShown: false
               }}>
                 <Stack.Screen name="congrats" component={congratsScreen} />
