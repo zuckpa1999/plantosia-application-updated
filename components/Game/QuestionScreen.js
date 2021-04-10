@@ -8,6 +8,7 @@ import {
 
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
 import GlobalStateUserAnswer from '../../contexts/GlobalStateUserAnswer'
+import GlobalStateUserQuestion from '../../contexts/GlobalStateUserQuestion'
 // @material-ui/core
 
 
@@ -16,6 +17,7 @@ import GlobalStateUserAnswer from '../../contexts/GlobalStateUserAnswer'
 export default function QuestionScreen({ navigation }) {
     const [currentChoice, setCurrentChoice] = useState(null)
     const [stateAnswer, setStateAnswer] = useContext(GlobalStateUserAnswer)
+    const [stateQuestion, setStateQuestion] = useContext(GlobalStateUserQuestion)
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.top}>
@@ -55,7 +57,10 @@ export default function QuestionScreen({ navigation }) {
 
                     <Text>{currentChoice}</Text>
                 </View>
-                <TouchableOpacity onPress={() => navigation.navigate('Question2')}>
+                <TouchableOpacity onPress={() => {
+                    setStateQuestion({ COIN: 0, XP: 0, countCorrectAnswer: 0, userAnswer: [null] })
+                    navigation.navigate('Question2')
+                }}>
                     <Image
                         style={styles.nextButton}
                         source={require('../../asset/nextBig.png')}

@@ -34,11 +34,15 @@ export default function QuestionScreen12({ navigation }) {
         }
         elif(stateAnswer.difficulty === 'easy')
         {
+            alert('bla')
             /* stateQuestion.userAnswer[element.id - 1] === element.answers ? require('../../asset/Yes.png') : require('../../asset/No.png') */
             if (stateQuestion.userAnswer[element.id - 1] === element.answers) {
+                alert('if')
                 return require('../../asset/Yes.png')
+
             }
             else {
+                alert('else')
                 return require('../../asset/No.png')
             }
         }
@@ -56,8 +60,28 @@ export default function QuestionScreen12({ navigation }) {
                     }}>ผลลัพธ์</Text>
 
                 </View>
-                <Image source={require('../../asset/คะแนนที่ได้.png')}></Image>
+                {/*   <Image source={require('../../asset/คะแนนที่ได้.png')}></Image>
+                <Text>{stateQuestion.countCorrectAnswer}</Text> */}
 
+
+                <Image source={require('../../asset/คะแนนที่ได้.png')}></Image>
+                <Text style={{ top: '-17%', left: '9%', fontSize: responsiveScreenFontSize(2.5), fontWeight: 'bold' }}>คะแนนที่ได้ {"\n"}{stateQuestion.countCorrectAnswer}/10</Text>
+
+
+                {/*   <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', marginTop: 20 }}>
+                    <Image
+                        style={{
+                            flex: 1,
+                            width: 100,
+                            height: 100,
+                        }}
+                        source={require('../../asset/คะแนนที่ได้.png')}
+                    />
+                    <Text style={{ position: 'absolute', fontSize: 20 }}>{stateQuestion.countCorrectAnswer}</Text>
+                </View> */}
+
+                {/*  <Text>{stateQuestion.COIN}</Text>
+                <TouchableOpacity onPress={() => alert(stateQuestion.userAnswer)}><Text>Click me</Text></TouchableOpacity> */}
                 <Image
                     style={{ marginTop: '3%' }}
                     source={require('../../asset/solutionBanner.png')}

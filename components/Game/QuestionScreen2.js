@@ -35,7 +35,8 @@ export default function QuestionScreen2({ navigation }) {
     //
     let banner = answer ? bannerRight : bannerWrong
     let mascot = answer ? mascotRight : mascotWrong
-
+    const xpText = answer ? '50' : '30'
+    const coinText = answer ? '20' : '5'
     // GlobalStateUserQuestion
     //    store - userAnswer (string of the choice), userResult(correct, incorrect)
     //
@@ -47,7 +48,8 @@ export default function QuestionScreen2({ navigation }) {
         /*    alert(stateQuestion.userAnswer[0])
            alert(answerToQuestion) */
         /* answer = stateQuestion.userAnswer[0] === answerToQuestion ? true : false */
-        if (stateQuestion.userAnswer[0] === answerToQuestion) {
+
+        if (stateQuestion.userAnswer[index] === answerToQuestion) {
             setAnswer(true)
 
             setStateQuestion({ COIN: stateQuestion.COIN + 20, XP: stateQuestion.XP + 50, countCorrectAnswer: stateQuestion.countCorrectAnswer + 1, userAnswer: stateQuestion.userAnswer })
@@ -57,7 +59,9 @@ export default function QuestionScreen2({ navigation }) {
 
             setStateQuestion({ COIN: stateQuestion.COIN + 5, XP: stateQuestion.XP + 30, countCorrectAnswer: stateQuestion.countCorrectAnswer, userAnswer: stateQuestion.userAnswer })
         }
-
+        /*    alert(stateQuestion.userAnswer[index]) */
+        /* alert(answerToQuestion) */
+        /* alert(stateQuestion.userAnswer) */
         setModalVisible(true)
 
     }
@@ -98,18 +102,22 @@ export default function QuestionScreen2({ navigation }) {
                             />
 
                             <View style={{ backgroundColor: 'white', width: responsiveScreenWidth(40), height: responsiveScreenHeight(7), borderRadius: 30, borderColor: '#099846', borderWidth: 4, marginTop: '3%', paddingTop: '6%' }}>
-                                <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: '700', marginBottom: '11%' }}> <Image style={styles.image} source={require('../../asset/dollar_2.png')} /> + 20</Text>
+                                <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: '700', marginBottom: '11%' }}> <Image style={styles.image} source={require('../../asset/dollar_2.png')} /> + {coinText} </Text>
 
 
                             </View>
 
                             <View style={{ backgroundColor: 'white', width: responsiveScreenWidth(40), height: responsiveScreenHeight(7), borderRadius: 30, borderColor: '#099846', borderWidth: 4, marginTop: '3%', paddingTop: '5%' }}>
 
-                                <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: '700', marginBottom: '11%' }}> XP + 50</Text>
+                                <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: '700', marginBottom: '11%' }}> XP + {xpText}</Text>
 
                             </View>
                             <Text>XP :{stateQuestion.XP}</Text>
                             <Text>COIN:{stateQuestion.COIN}</Text>
+                            <Text>countCorrectAnswer:{stateQuestion.countCorrectAnswer}</Text>
+                            <Text>userAnswer:{stateQuestion.userAnswer}</Text>
+                            {/* <Text>userAnswer:{stateQuestion.userAnswer.length}</Text>
+                            <Text>userAnswer:{stateQuestion.userAnswer[0]}</Text> */}
                             <TouchableOpacity style={styles.solutionContainer} onPress={() => {
                                 setModalVisible(!modalVisible)
                                 navigation.navigate('Solution2')

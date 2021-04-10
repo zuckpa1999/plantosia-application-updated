@@ -62,7 +62,7 @@ export default function templateQuestion(props) {
                 {Object.keys(configQuestion).map((key) => (
                     // onPress={() => selectThisChoice(configQuestion[key])}
                     <TouchableOpacity style={currentChoice === configQuestion[key] ? styles.choiceContainer2 : styles.choiceContainer} onPress={() => {
-                        setStateQuestion({ COIN: stateQuestion.COIN, XP: stateQuestion.XP, countCorrectAnswer: stateQuestion.countCorrectAnswer, userAnswer: [configQuestion[key], '2', '3', '4', '5', '6', '7', '8', '9', '10'] })
+                        setStateQuestion({ COIN: stateQuestion.COIN, XP: stateQuestion.XP, countCorrectAnswer: stateQuestion.countCorrectAnswer, userAnswer: stateQuestion.userAnswer[0] === null ? [configQuestion[key]] : [...stateQuestion.userAnswer, configQuestion[key]] })
                         setCurrentChoice(configQuestion[key])
                     }}>
                         <Text key={key} style={styles.choiceOption}>{configQuestion[key]}</Text>
@@ -70,7 +70,7 @@ export default function templateQuestion(props) {
                 ))}
 
             </View>
-            <Text>{stateQuestion.userAnswer[index]}</Text>
+            {/* <Text>{stateQuestion.userAnswer[index]}</Text> */}
         </View >
     )
 }

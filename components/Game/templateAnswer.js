@@ -17,11 +17,12 @@ export default function TemplateAnswerScreen(props) {
     // let question = questions.easy[props.index].question
     // let configQuestion = questions.easy[props.index].choices
     const [stateAnswer, setStateAnswer] = useContext(GlobalStateUserAnswer)
-    let index = props.index + 1
+    let index = props.index
     const img = stateAnswer.difficulty === 'hard' ? Images_hard[stateAnswer.plantName] : Images[index];
     let question = stateAnswer.difficulty === 'hard' ? questions.hard[stateAnswer.plantName][index].question : questions.easy[props.index].question
     let answer = stateAnswer.difficulty === 'hard' ? questions.hard[stateAnswer.plantName][index].answers : questions.easy[props.index].answers
-
+    let indexQuestion = stateAnswer.difficulty === 'hard' ? questions.hard[stateAnswer.plantName][index].id : questions.easy[props.index].id
+    let numQuestion = stateAnswer.difficulty === 'hard' ? questions.hard[stateAnswer.plantName].length : questions.easy.length
     let nQ = 10
     return (
         <SafeAreaView style={styles.container}>
@@ -32,7 +33,7 @@ export default function TemplateAnswerScreen(props) {
                     <View></View>
                     <Text style={{
                         textAlign: 'center', fontSize: 23, fontWeight: '600', marginLeft: '9%'
-                    }}>Questions {index} / {nQ}</Text>
+                    }}>Questions {indexQuestion} / {numQuestion}</Text>
                     < TouchableOpacity >
                         <Image
                             style={{ width: 50, height: 50, marginBottom: "100%", marginLeft: '-3%' }}
