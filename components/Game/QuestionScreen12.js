@@ -11,14 +11,38 @@ import questions from '../../config/questions.json'
 import TemplateQuestion from './templateQuestion.js'
 import TemplateTop from './templateTop.js'
 import GlobalStateUserQuestion from '../../contexts/GlobalStateUserQuestion'
+import GlobalStateUserAnswer from '../../contexts/GlobalStateUserAnswer'
 import { Images } from '../../Images'
-
+import { Images_hard } from '../../Images_hard'
 export default function QuestionScreen12({ navigation }) {
 
     // config file(json), globstateuseranswer, 
 
     const [stateQuestion, setStateQuestion] = useContext(GlobalStateUserQuestion)
-    let configQuestion = questions.easy
+    const [stateAnswer, setStateAnswer] = useContext(GlobalStateUserAnswer)
+    let configQuestion = stateAnswer.difficulty === 'hard' ? questions.hard[stateAnswer.plantName] : questions.easy
+    /* let questionImage = stateAnswer.difficulty === 'hard' ? Images_hard[stateAnswer.plantName] : Images[element.id - 1] */
+
+    let isCorrect = (element) => {
+        if (stateAnswer.difficulty === 'hard') {
+            if (stateQuestion.userAnswer[element.id - 1] === element.answers) {
+                return require('../../asset/Yes.png')
+            }
+            else {
+                return require('../../asset/No.png')
+            }
+        }
+        elif(stateAnswer.difficulty === 'easy')
+        {
+            /* stateQuestion.userAnswer[element.id - 1] === element.answers ? require('../../asset/Yes.png') : require('../../asset/No.png') */
+            if (stateQuestion.userAnswer[element.id - 1] === element.answers) {
+                return require('../../asset/Yes.png')
+            }
+            else {
+                return require('../../asset/No.png')
+            }
+        }
+    }
     return (
         <SafeAreaView style={styles.container}>
 
@@ -32,7 +56,7 @@ export default function QuestionScreen12({ navigation }) {
                     }}>ผลลัพธ์</Text>
 
                 </View>
-                <Image source={require('../../asset/Group_284.png')}></Image>
+                <Image source={require('../../asset/คะแนนที่ได้.png')}></Image>
 
                 <Image
                     style={{ marginTop: '3%' }}
@@ -49,7 +73,7 @@ export default function QuestionScreen12({ navigation }) {
                             <View style={{ borderRadius: '5%', width: responsiveScreenWidth(80), height: responsiveScreenHeight(35), backgroundColor: 'white', flexDirection: 'column', alignItems: 'center', marginBottom: '3%' }}>
                                 <Image
                                     style={{ marginTop: '3%', width: responsiveScreenWidth(34), height: responsiveScreenHeight(12) }}
-                                    source={Images[element.id - 1]}
+                                    source={stateAnswer.difficulty === 'hard' ? Images_hard[stateAnswer.plantName] : Images[element.id - 1]}
                                 />
                                 <View style={{ width: responsiveScreenWidth(70), height: responsiveScreenHeight(18), backgroundColor: '#FFF8CA' }}>
                                     <View style={{ flexDirection: 'row', paddingTop: '5%' }}>
