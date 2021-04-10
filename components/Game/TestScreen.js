@@ -12,6 +12,7 @@ import TemplateQuestion from './templateQuestion.js'
 import TemplateTop from './templateTop.js'
 import GlobalStateUserQuestion from '../../contexts/GlobalStateUserQuestion'
 import GlobalStateUserAnswer from '../../contexts/GlobalStateUserAnswer'
+import { Images_plant_card_container } from '../../Images_plant_card_container'
 export default function TestScreen({ navigation }) {
     /*   const [stateQuestion, setStateQuestion] = useState({ XP: 0, COIN: 0, countCorrectAnswer: 0, userAnswer: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'] }); */
     const [stateQuestion, setStateQuestion] = useContext(GlobalStateUserQuestion)
@@ -20,8 +21,8 @@ export default function TestScreen({ navigation }) {
 
     let index = 1
     /* let indexQuestion = questions.easy[index].answers */
-    let plant = "Banana"
-    let indexQuestion = questions.hard[plant][index].question
+    /* let plant = "Banana" */
+    /* let indexQuestion = questions.hard[plant][index].question */
     /* let answer */
     const [answer, setAnswer] = useState(false)
     // 2 version 
@@ -38,31 +39,7 @@ export default function TestScreen({ navigation }) {
     let banner = answer ? bannerRight : bannerWrong
     let mascot = answer ? mascotRight : mascotWrong
 
-    // GlobalStateUserQuestion
-    //    store - userAnswer (string of the choice), userResult(correct, incorrect)
-    //
-    /*  let indexQuestion = questions.hard['Banana'][index] */
-    let confirm = () => {
 
-        // if  pickedChoice  = coroect answer answer
-        //  answer = true /false
-        /*    alert(stateQuestion.userAnswer[0])
-           alert(answerToQuestion) */
-        /* answer = stateQuestion.userAnswer[0] === answerToQuestion ? true : false */
-        if (stateQuestion.userAnswer[0] === answerToQuestion) {
-            setAnswer(true)
-            setStateAnswer(...stateAnswer, true)
-            setStateQuestion({ COIN: stateQuestion.COIN + 20, XP: stateQuestion.XP + 50, countCorrectAnswer: stateQuestion.countCorrectAnswer + 1, userAnswer: stateQuestion.userAnswer })
-        }
-        else {
-            setAnswer(false)
-            setStateAnswer(...stateAnswer, false)
-            setStateQuestion({ COIN: stateQuestion.COIN + 5, XP: stateQuestion.XP + 30, countCorrectAnswer: stateQuestion.countCorrectAnswer, userAnswer: stateQuestion.userAnswer })
-        }
-
-        setModalVisible(true)
-
-    }
     return (
         <SafeAreaView style={styles.container}>
 
@@ -70,63 +47,26 @@ export default function TestScreen({ navigation }) {
             <TemplateTop navigation={navigation} />
             {/*     QuestionScreen2 ---> 0,  */}
             <View style={styles.greenArea}>
-
-                <TemplateQuestion index={index} />
-                <Text>{indexQuestion}</Text>
-                <TouchableOpacity onPress={() => alert(indexQuestion)}><Text>HITME</Text></TouchableOpacity>
-                <Modal
-                    animationType="slide"
-                    transparent={true}
-                    visible={modalVisible}
-                    onRequestClose={() => {
-                        Alert.alert("Modal has been clou6u6sed.");
-                        setModalVisible(!modalVisible);
-                    }}
-                >
-                    <View style={styles.centeredView}>
-                        <View style={styles.modalView}>
+                {/* borderRadius: 20, */}
+                <View style={{ flex: 1 }}>
+                    <View style={{ backgroundColor: "#eee", overflow: "hidden", marginBottom: 20, width: 340, height: 250, borderTopLeftRadius: 20, borderTopRightRadius: 20 }}>
+                        <View>
                             <Image
-
-                                style={answer ? { marginTop: '-42%', width: 375, height: 135 } : { marginTop: '-42%', width: 375, height: 115 }}
-                                source={banner}
-
-
+                                source={Images_plant_card_container['Bougainvillea']}
+                                style={styles.ImageDetail}
                             />
-
-                            <Image
-
-                                style={answer ? { width: 150, height: 90 } : { width: 130, height: 92 }}
-                                source={mascot}
-                            />
-
-                            <View style={{ backgroundColor: 'white', width: responsiveScreenWidth(40), height: responsiveScreenHeight(7), borderRadius: 30, borderColor: '#099846', borderWidth: 4, marginTop: '3%', paddingTop: '6%' }}>
-                                <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: '700', marginBottom: '11%' }}> <Image style={styles.image} source={require('../../asset/dollar_2.png')} /> + 20</Text>
-
-
-                            </View>
-
-                            <View style={{ backgroundColor: 'white', width: responsiveScreenWidth(40), height: responsiveScreenHeight(7), borderRadius: 30, borderColor: '#099846', borderWidth: 4, marginTop: '3%', paddingTop: '5%' }}>
-
-                                <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: '700', marginBottom: '11%' }}> XP + 50</Text>
-
-                            </View>
-                            <Text>XP :{stateQuestion.XP}</Text>
-                            <Text>COIN:{stateQuestion.COIN}</Text>
-                            <TouchableOpacity style={styles.solutionContainer} onPress={() => {
-                                setModalVisible(!modalVisible)
-                                navigation.navigate('Solution3')
-                            }}>
-                                <Text style={styles.solutionButton}>เฉลย</Text>
-                            </TouchableOpacity>
-                            <Pressable
-                                style={[styles.button, styles.buttonClose]}
-                                onPress={() => setModalVisible(!modalVisible)}
-                            >
-
-                            </Pressable>
                         </View>
+                        <View style={{ flexDirection: 'column', justifyContent: 'center', padding: '7%' }}>
+
+
+                            <Text style={styles.similarity}>เฟื่องฟ้า</Text>
+                            <Text style={styles.scientificName}>Bougainvillea</Text>
+
+                        </View>
+
                     </View>
-                </Modal>
+                </View>
+
                 <Pressable
                     style={styles.confirmButtonContainer}
                     onPress={() => confirm()}
@@ -223,7 +163,30 @@ const styles = StyleSheet.create({
 
         marginTop: '15%'
     },
+    ImageDetail: {
+        // display: 'flex'
 
+        /*  flexDirection: 'row',
+         justifyContent: 'space-between',
+         resizeMode: 'contain', */
+        height: responsiveScreenHeight(17),
+        width: responsiveScreenWidth(85)
+
+    },
+    scientificName: {
+        fontSize: 14,
+        fontWeight: '500',
+        marginTop: '1%',
+
+
+    },
+    similarity: {
+
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: 25,
+        lineHeight: 35
+    },
 
 
 });
