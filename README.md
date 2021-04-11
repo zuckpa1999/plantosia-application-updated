@@ -1,18 +1,20 @@
 # plantosia-application
 
-# plantosia-YOLO-Darknet
+## Table of contents
+* [General info](#general-info)
+* [Preview](#Preview)
+* [Technological Stack](#Technological Stack)
+* [Setup](#Setup)
 
 
 
 
 
-**Plantosia**
+**General info**
 
 Plantosia is a project aimed to increase awareness of plantology for kids from age 7 - 12 years old. We deliver our solution in a form of c cross-platform application by React native
 
-## Technological Stack (PERN)
-
-
+**Technological Stack**
 
 ### Front end
 - React Native
@@ -31,12 +33,22 @@ A simple way to run Python scripts from Node.js with basic but efficient inter-p
 ### Backend
 - Node.js
 - Express.js
-
+- Postgresql
 
 ### Object Detection
 
 - YOLOv3 Algorithm
 - Darknet 53
+
+
+**Preview**
+# ffwefwef
+
+
+**Setup**
+```
+
+```
 
 
 ## Design 
