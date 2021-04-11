@@ -10,11 +10,11 @@
 
 
 
-**General info**
+## General info
 
 Plantosia is a project aimed to increase awareness of plantology for kids from age 7 - 12 years old. We deliver our solution in a form of c cross-platform application by React native
 
-**Technological Stack**
+## Technological Stack
 
 ### Front end
 - React Native
@@ -41,11 +41,11 @@ A simple way to run Python scripts from Node.js with basic but efficient inter-p
 - Darknet 53
 
 
-**Preview**
+## Preview
 # ffwefwef
 
 
-**Setup**
+## Setup
 ```
 
 ```
