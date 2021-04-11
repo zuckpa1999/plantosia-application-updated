@@ -22,7 +22,7 @@ Plantosia is a project aimed to increase awareness of plantology for kids from a
 - Java script
 - etc
 
-## Dependencies
+### Dependencies
 - axios
 - expo
 - python-shell
