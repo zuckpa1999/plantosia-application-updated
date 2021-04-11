@@ -12,7 +12,7 @@ import { Images_plant_card_container } from '../../Images_plant_card_container'
 import { Images } from '../../Images'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 export default function PlantComponentScreen({ navigation }) {
-    let allPlant = questions.hard
+
     const [textState, setTextState] = useState(null)
     let updateSearch = (search) => {
         setTextState(search)
@@ -31,8 +31,6 @@ export default function PlantComponentScreen({ navigation }) {
                             <SearchBar
                                 round
                                 searchIcon={{ size: 24 }}
-                                /*            onChangeText={(text) => searchFilterFunction(text)} */
-                                /*  onClear={(text) => searchFilterFunction('')} */
                                 placeholder="Type Here..."
                                 onChangeText={updateSearch}
                                 containerStyle={{ backgroundColor: '#94F098' }}
@@ -44,15 +42,15 @@ export default function PlantComponentScreen({ navigation }) {
                     </SafeAreaView>
                     <Image source={require('../../asset/searchButton.png')} style={{ marginTop: '2%', width: 50, height: 50 }} />
                 </View>
-                <Text style={{ fontWeight: '400', fontSize: responsiveScreenFontSize(3), marginBottom: '3%' }}>ส่วนประกอบของพืช</Text>
+                <Text style={styles.plantComponentText}>ส่วนประกอบของพืช</Text>
                 <ScrollView>
-                    <View style={{ width: responsiveScreenWidth(85), height: responsiveScreenHeight(45), backgroundColor: '#FFED9E', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center' }}>
-                        <Image style={{ marginTop: '5%', marginBottom: '3%', height: responsiveScreenHeight(23), width: responsiveScreenWidth(70) }} source={Images[2]} />
-                        <Text style={{ fontWeight: '500', fontSize: responsiveScreenFontSize(3) }}>ราก</Text>
-                        <View style={{ alignSelf: 'flex-start', marginLeft: '10%', padding: '0.5%' }}>
-                            <Text style={{ fontWeight: '500', fontSize: responsiveScreenFontSize(2) }}>หน้าที่</Text>
-                            <Text style={{ fontWeight: 'normal', fontSize: responsiveScreenFontSize(2) }}>• ดูดซับน้ำและแร่ธาตุจากพืชดิน หรือจากต้นไม้ต้นอื่น</Text>
-                            <Text style={{ fontWeight: 'normal', fontSize: responsiveScreenFontSize(2) }}>• เป็นรากฐานเพื่อสร้างความมั่นคง ให้ต้นไม้</Text>
+                    <View style={styles.plantCardContainer}>
+                        <Image style={styles.plantCardImage} source={Images[2]} />
+                        <Text style={styles.plantCardComponentText}>ราก</Text>
+                        <View style={styles.plantCardDetailContainer}>
+                            <Text style={styles.plantCardDetailHeader}>หน้าที่</Text>
+                            <Text style={styles.plantCardDetailText}>• ดูดซับน้ำและแร่ธาตุจากพืชดิน หรือจากต้นไม้ต้นอื่น</Text>
+                            <Text style={styles.plantCardDetailText}>• เป็นรากฐานเพื่อสร้างความมั่นคง ให้ต้นไม้</Text>
                         </View>
 
                     </View>
@@ -99,41 +97,39 @@ const styles = StyleSheet.create({
         width: responsiveScreenWidth(85)
 
     },
-    plantCharacterText: {
-        textAlign: 'center',
-        marginTop: '5%',
-        fontWeight: 'bold',
-        fontSize: responsiveScreenFontSize(3)
-    },
-    plantCharacterContainer: {
-        backgroundColor: "#eee",
-        overflow: "hidden",
-        width: responsiveScreenWidth(82),
-        height: responsiveScreenHeight(25),
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20,
-        marginTop: '2%'
-    },
-
-    recommendText: {
-        marginRight: '60%',
-        marginTop: '5%',
-        fontSize: responsiveScreenFontSize(3),
+    plantComponentText: {
         fontWeight: '400',
+        fontSize: responsiveScreenFontSize(3),
         marginBottom: '3%'
     },
-    scientificName: {
-        fontSize: 15,
+    plantCardContainer: {
+        width: responsiveScreenWidth(85),
+        height: responsiveScreenHeight(45),
+        backgroundColor: '#FFED9E',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
+    },
+    plantCardImage: {
+        marginTop: '5%',
+        marginBottom: '3%',
+        height: responsiveScreenHeight(23),
+        width: responsiveScreenWidth(70)
+    },
+    plantCardComponentText: {
         fontWeight: '500',
-
-
-
+        fontSize: responsiveScreenFontSize(3)
     },
-    similarity: {
-
-        fontStyle: 'normal',
+    plantCardDetailContainer: {
+        alignSelf: 'flex-start',
+        marginLeft: '10%', padding: '0.5%'
+    },
+    plantCardDetailHeader: {
+        fontWeight: '500',
+        fontSize: responsiveScreenFontSize(2)
+    },
+    plantCardDetailText: {
         fontWeight: 'normal',
-        fontSize: 25,
-        lineHeight: 35
-    },
+        fontSize: responsiveScreenFontSize(2)
+    }
 })
