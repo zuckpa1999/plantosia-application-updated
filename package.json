@@ -24,6 +24,7 @@
     "expo-updates": "~0.4.0",
     "express": "^4.17.1",
     "fs": "^0.0.1-security",
+    "pg": "^8.5.1",
     "pod-install": "^0.1.18",
     "python-shell": "^2.0.3",
     "react": "16.13.1",

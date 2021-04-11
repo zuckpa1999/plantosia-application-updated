@@ -2,6 +2,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 const fs = require('fs')
+/* const pool = require("./db"); */
+const pool = require('./db')
 var { PythonShell } = require('python-shell');
 var pyshell = new PythonShell('obj_img.py');
 let uploadImageName
@@ -146,6 +148,31 @@ app.post('/uploadImageSearch', (req, res) => {
 
 
 })
+
+
+
+//get all plant LEAF_MED_PRO
+
+app.get("/test", async (req, res) => {
+	try {
+		const allTodos = await pool.query('SELECT * FROM "LEAF_MED_PRO"');
+		res.json(allTodos.rows);
+	} catch (err) {
+		console.error(err.message);
+	}
+});
+
+
+app.get("/test2", async (req, res) => {
+	try {
+		const allTodos = await pool.query('SELECT * FROM "PLANT_INFO"');
+		res.json(allTodos.rows);
+	} catch (err) {
+		console.error(err.message);
+	}
+});
+
+
 
 
 /* console.log('tttttt')
