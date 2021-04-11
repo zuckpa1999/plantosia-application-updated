@@ -87,6 +87,7 @@ export default function TextSearchScreen({ navigation }) {
                                 containerStyle={{ backgroundColor: '#94F098' }}
                                 inputContainerStyle={{ backgroundColor: 'white' }}
                                 value={textState}
+                                lightTheme={true}
 
                             />
                         </View>

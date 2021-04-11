@@ -36,7 +36,7 @@ export default function PlantInfoScreen({ navigation }) {
                                 containerStyle={{ backgroundColor: '#94F098' }}
                                 inputContainerStyle={{ backgroundColor: 'white' }}
                                 value={textState}
-
+                                lightTheme={true}
                             />
                         </View>
                     </SafeAreaView>

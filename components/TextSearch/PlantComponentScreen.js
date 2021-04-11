@@ -36,6 +36,7 @@ export default function PlantComponentScreen({ navigation }) {
                                 containerStyle={{ backgroundColor: '#94F098' }}
                                 inputContainerStyle={{ backgroundColor: 'white' }}
                                 value={textState}
+                                lightTheme={true}
 
                             />
                         </View>
