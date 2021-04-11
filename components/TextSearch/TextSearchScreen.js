@@ -110,7 +110,7 @@ export default function TextSearchScreen({ navigation }) {
                     {/* plantCharacterContainerNotFirst */}
                     {Object.keys(allPlant).map((key) => (
 
-                        <TouchableOpacity style={styles.plantCharacterContainer}>
+                        <TouchableOpacity style={styles.plantCharacterContainer} onPress={() => navigation.navigate('PlantInfo')}>
                             <View>
                                 <Image
                                     source={Images_plant_card_container[key]}

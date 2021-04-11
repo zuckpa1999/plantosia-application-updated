@@ -39,6 +39,7 @@ import QuestionScreen12 from './components/Game/QuestionScreen12.js'
 import QuestionScreen13 from './components/Game/QuestionScreen13.js'
 import TextSearchScreen from './components/TextSearch/TextSearchScreen.js'
 import PlantComponentScreen from './components/TextSearch/PlantComponentScreen.js'
+import PlantInfoScreen from './components/TextSearch/PlantInfoScreen.js'
 import ImageSearchScreen from './components/ImageSearch/ImageSearchScreen.js'
 import ImageSearchScreen2 from './components/ImageSearch/ImageSearchScreen2.js'
 import ImageSearchScreen3 from './components/ImageSearch/ImageSearchScreen3.js'
@@ -108,7 +109,7 @@ export default function App() {
                 <Stack.Screen name="Question13" component={QuestionScreen13} />
                 <Stack.Screen name="TextSearch" component={TextSearchScreen} />
                 <Stack.Screen name="PlantComponent" component={PlantComponentScreen} />
-
+                <Stack.Screen name="PlantInfo" component={PlantInfoScreen} />
                 <Stack.Screen name="ImageSearch" component={ImageSearchScreen} />
                 <Stack.Screen name="ImageSearch2" component={ImageSearchScreen2} />
                 <Stack.Screen name="ImageSearch3" component={ImageSearchScreen3} />
