@@ -9,33 +9,11 @@ import {
 import questions from '../../config/questions.json'
 import { SearchBar } from 'react-native-elements'
 import { Images_plant_card_container } from '../../Images_plant_card_container'
+import { Images } from '../../Images'
 import { TouchableOpacity } from 'react-native-gesture-handler';
-export default function TextSearchScreen({ navigation }) {
+export default function PlantComponentScreen({ navigation }) {
     let allPlant = questions.hard
     const [textState, setTextState] = useState(null)
-    const searchFilterFunction = (text) => {
-        // Check if searched text is not blank
-        if (text) {
-            // Inserted text is not blank
-            // Filter the masterDataSource
-            // Update FilteredDataSource
-            const newData = masterDataSource.filter(function (item) {
-                const itemData = item.title
-                    ? item.title.toUpperCase()
-                    : ''.toUpperCase();
-                const textData = text.toUpperCase();
-                return itemData.indexOf(textData) > -1;
-            });
-            setFilteredDataSource(newData);
-            setSearch(text);
-        } else {
-            // Inserted text is blank
-            // Update FilteredDataSource with masterDataSource
-            setFilteredDataSource(masterDataSource);
-            setSearch(text);
-        }
-    };
-
     let updateSearch = (search) => {
         setTextState(search)
     };
@@ -66,43 +44,21 @@ export default function TextSearchScreen({ navigation }) {
                     </SafeAreaView>
                     <Image source={require('../../asset/searchButton.png')} style={{ marginTop: '2%', width: 50, height: 50 }} />
                 </View>
-                <TouchableOpacity style={styles.plantCharacterContainer} onPress={() => navigation.navigate('PlantComponent')}>
-                    <View>
-                        <Image
-                            source={Images_plant_card_container['All plant']}
-                            style={styles.ImageDetail}
-                        />
-                    </View>
-                    <Text style={styles.plantCharacterText}>ส่วนประกอบของพืช</Text>
-                </TouchableOpacity>
-
-                <Text style={styles.recommendText}>★แนะนำ★</Text>
-                {/*   <Text>{allPlant.length}</Text>
-                <Text>{Object.keys(allPlant)}</Text> */}
+                <Text style={{ fontWeight: '400', fontSize: responsiveScreenFontSize(3), marginBottom: '3%' }}>ส่วนประกอบของพืช</Text>
                 <ScrollView>
-                    {/* plantCharacterContainerNotFirst */}
-                    {Object.keys(allPlant).map((key) => (
+                    <View style={{ width: responsiveScreenWidth(85), height: responsiveScreenHeight(45), backgroundColor: '#FFED9E', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center' }}>
+                        <Image style={{ marginTop: '5%', marginBottom: '3%', height: responsiveScreenHeight(23), width: responsiveScreenWidth(70) }} source={Images[2]} />
+                        <Text style={{ fontWeight: '500', fontSize: responsiveScreenFontSize(3) }}>ราก</Text>
+                        <View style={{ alignSelf: 'flex-start', marginLeft: '10%', padding: '0.5%' }}>
+                            <Text style={{ fontWeight: '500', fontSize: responsiveScreenFontSize(2) }}>หน้าที่</Text>
+                            <Text style={{ fontWeight: 'normal', fontSize: responsiveScreenFontSize(2) }}>• ดูดซับน้ำและแร่ธาตุจากพืชดิน หรือจากต้นไม้ต้นอื่น</Text>
+                            <Text style={{ fontWeight: 'normal', fontSize: responsiveScreenFontSize(2) }}>• เป็นรากฐานเพื่อสร้างความมั่นคง ให้ต้นไม้</Text>
+                        </View>
 
-                        <TouchableOpacity style={styles.plantCharacterContainer}>
-                            <View>
-                                <Image
-                                    source={Images_plant_card_container[key]}
-                                    style={styles.ImageDetail}
-                                />
-                            </View>
-                            <View style={{ flexDirection: 'column', justifyContent: 'center', padding: '3%' }}>
-
-
-                                <Text style={styles.similarity}>เฟื่องฟ้า</Text>
-                                <Text style={styles.scientificName}>{key}</Text>
-
-                            </View>
-                        </TouchableOpacity>
-                    ))}
+                    </View>
                 </ScrollView>
             </View>
-
-        </SafeAreaView >
+        </SafeAreaView>
     )
 }
 
