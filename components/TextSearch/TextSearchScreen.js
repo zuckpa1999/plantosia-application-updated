@@ -39,6 +39,33 @@ export default function TextSearchScreen({ navigation }) {
     let updateSearch = (search) => {
         setTextState(search)
     };
+
+
+    let PlantThaiName = (plantName) => {
+        switch (plantName) {
+            case 'Musa Sapientum':
+                return 'กล้วยหอม'
+                break;
+            case 'Cocos Nucifera':
+                return 'มะพร้าว'
+                break;
+            case 'Bougainvillea':
+                return 'ดอกเฟื่องฟ้า'
+                break;
+            case 'Oryza Sativa':
+                return 'ข้าว'
+                break;
+            case 'Mucuna Pruriens':
+                return 'หมามุ้ย'
+                break;
+            case 'Ixora Coccinea':
+                return 'ดอกเข็ม'
+                break;
+            default:
+                return 'No plant'
+        }
+    }
+
     return (
         <SafeAreaView style={styles.container}>
             <TemplateTop navigation={navigation} />
@@ -93,7 +120,7 @@ export default function TextSearchScreen({ navigation }) {
                             <View style={{ flexDirection: 'column', justifyContent: 'center', padding: '3%' }}>
 
 
-                                <Text style={styles.similarity}>เฟื่องฟ้า</Text>
+                                <Text style={styles.similarity}>{PlantThaiName(key)}</Text>
                                 <Text style={styles.scientificName}>{key}</Text>
 
                             </View>
