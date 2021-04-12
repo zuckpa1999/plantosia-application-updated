@@ -14,8 +14,8 @@
 
 Plantosia is a project aimed to increase awareness of plantology for kids from age 7 - 12 years old. We deliver our solution in a form of c cross-platform application by React native
 
-
-
+<img src='./s1.png'>
+<img src='./s2.png'>
 
 
 ## Technological-Stack
