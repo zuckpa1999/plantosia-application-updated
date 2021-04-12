@@ -11,8 +11,8 @@ import { SearchBar } from 'react-native-elements'
 import { Images_plant_card_container } from '../../Images_plant_card_container'
 import { Images } from '../../Images'
 import { TouchableOpacity } from 'react-native-gesture-handler';
-export default function PlantInfoScreen({ navigation }) {
-
+export default function PlantInfoScreen({ navigation, route }) {
+    const { plantName, plantNameThai } = route.params
     const [textState, setTextState] = useState(null)
     let updateSearch = (search) => {
         setTextState(search)
@@ -43,11 +43,11 @@ export default function PlantInfoScreen({ navigation }) {
                     <Image source={require('../../asset/searchButton.png')} style={{ marginTop: '2%', width: 50, height: 50 }} />
                 </View>
                 <Image
-                    source={Images_plant_card_container['Bougainvillea']}
+                    source={Images_plant_card_container[plantName]}
                     style={styles.ImageDetail}
                 />
-                <Text style={styles.plantThainame}>เฟื่องฟ้า</Text>
-                <Text style={styles.plantScientificName}>Bougainvillea</Text>
+                <Text style={styles.plantThainame}>{plantNameThai}</Text>
+                <Text style={styles.plantScientificName}>{plantName}</Text>
                 <View style={styles.PlantCharacterContainer}>
                     <View style={styles.PlantCharacterContainerTop}>
                         <Image source={require('../../asset/text_search/BrocMascotMini.png')} />
@@ -71,7 +71,7 @@ export default function PlantInfoScreen({ navigation }) {
                         </Text>
                     </View>
                 </View>
-
+                <Text>{plantName}</Text>
 
 
             </View>

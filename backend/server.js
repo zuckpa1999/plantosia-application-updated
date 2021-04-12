@@ -27,6 +27,18 @@ app.get('/gameImageData', function (req, res) {
 app.get('/uploadedImage', (req, res) => {
 	res.send({ uploadImageName: uploadImageName })
 })
+
+
+
+app.get('/getPlantName/:plantName', (req, res) => {
+	const { plantName } = req.params;
+	console.log(plantName)
+	res.json(plantName)
+	/* res.send({ plantName: plantName, bla: '1', test: '2' }) */
+	res.status(200)
+})
+
+
 app.post('/uploadImageGame', (req, res) => {
 	/* 	for (let i = 0; i < req.body.length; i++) { */
 	console.log('xxxxx')

@@ -13,6 +13,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 export default function TextSearchScreen({ navigation }) {
     let allPlant = questions.hard
     const [textState, setTextState] = useState(null)
+    const [plantInfo, setplantInfo] = useState(null)
     const searchFilterFunction = (text) => {
         // Check if searched text is not blank
         if (text) {
@@ -66,6 +67,32 @@ export default function TextSearchScreen({ navigation }) {
         }
     }
 
+
+    let sendPlantName = async (plantName) => {
+
+
+
+        try {
+            /* alert(plantName) */
+            const response = await fetch(`http://192.168.1.102:3100/getPlantName/${plantName}`)
+
+            const jsonData = await response.json();
+
+            alert(jsonData)
+            /* setplantInfo(jsonData) */
+            /*     let delayInMilliseconds = 1000; //1 second
+    
+                setTimeout(function () {
+                    //your code to be executed after 1 second
+                }, delayInMilliseconds); */
+            navigation.navigate('PlantInfo', { plantName: jsonData, plantNameThai: PlantThaiName(jsonData) })
+            alert('zxccz')
+
+        } catch (err) {
+            alert(err.message);
+        }
+
+    }
     return (
         <SafeAreaView style={styles.container}>
             <TemplateTop navigation={navigation} />
@@ -111,7 +138,10 @@ export default function TextSearchScreen({ navigation }) {
                     {/* plantCharacterContainerNotFirst */}
                     {Object.keys(allPlant).map((key) => (
 
-                        <TouchableOpacity style={styles.plantCharacterContainer} onPress={() => navigation.navigate('PlantInfo')}>
+                        <TouchableOpacity style={styles.plantCharacterContainer} onPress={() => {
+                            sendPlantName(key)
+
+                        }}>
                             <View>
                                 <Image
                                     source={Images_plant_card_container[key]}
