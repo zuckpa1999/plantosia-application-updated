@@ -76,30 +76,28 @@ export default function GameScreen6({ navigation }) {
 
     const fetchInfo = async () => {
 
-        await axios.get(`http://192.168.1.102:3100/gameImageData`)
-            .then(res => {
-
-                setData(res.data.data)
-            })
+        const Data = await axios.get(`http://192.168.1.102:3100/gameImageData`)
+        const plantNameAndConfidence = Data.data.data
 
 
-        /*   alert(data) */
         alert('fe')
-        alert(data)
+        alert(Data.data.data)
+        /*    alert(Data[0])
+           alert(Data[1]) */
         /*   alert('bkabka')
           alert(Object.keys(data)) */
         /*  alert(Object.keys(data)) */
-        setStateAnswer({ plantName: data[0], difficulty: stateAnswer.difficulty })
+        setStateAnswer({ plantName: plantNameAndConfidence[0], difficulty: stateAnswer.difficulty })
 
-        if (data.length >= 2) {
+        if (plantNameAndConfidence.length >= 2) {
             navigation.navigate('Game7', {
-                plantName: data[0], confidence: data[1]
+                plantName: plantNameAndConfidence[0], confidence: plantNameAndConfidence[1]
             })
         }
         else {
             navigation.navigate('Game7_2')
         }
-        /*  navigation.navigate('Game7_2') */
+
     }
 
 

@@ -51,10 +51,25 @@ export default function GameScreen5_2({ navigation }) {
  
  
      } */
-    let storeImageAndGoNext = (selectedImage) => {
+    let storeImageAndGoNext = async (selectedImage) => {
         if (selectedImage !== null) setStateImage([...stateImage, selectedImage])
         /* setStateImage([...stateImage, selectedImage]) */
-        navigation.navigate('Game6')
+        let imagesWithBase64 = []
+        for (let i = 0; i < stateImage.length; i++) {
+            imagesWithBase64.push(stateImage[i].base64)
+        }
+
+        await fetch('http://192.168.1.102:3100/uploadImageGame', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            // send our base64 string as POST request
+            body: JSON.stringify({
+                imgsource: imagesWithBase64
+            }),
+        }).then(navigation.navigate('Game6'))
 
     }
 
@@ -81,6 +96,68 @@ export default function GameScreen5_2({ navigation }) {
 
 
     }
+
+    let upload = async () => {
+
+
+
+        // obj.base64.push to array
+        // then pass array
+
+
+        /*       for (let i = 0; i < stateImage.length; i++) {
+                  fetch('http://192.168.1.102:3100/uploads', {
+                      method: 'POST',
+                      headers: {
+                          Accept: 'application/json',
+                          'Content-Type': 'application/json',
+                      },
+                      // send our base64 string as POST request
+                      body: JSON.stringify({
+                          imgsource: [stateImage[0].base64, stateImage[1].base64]
+                      })
+                  })
+       */
+        /*  arr.push(stateImage[i].base64) */
+        /* } */
+
+
+
+
+        /*     } */
+
+
+
+        // obj.base64.push to array
+        // then pass array
+        let imagesWithBase64 = []
+        for (let i = 0; i < stateImage.length; i++) {
+            imagesWithBase64.push(stateImage[i].base64)
+        }
+
+        await fetch('http://192.168.1.102:3100/uploadImageGame', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            // send our base64 string as POST request
+            body: JSON.stringify({
+                imgsource: imagesWithBase64
+            }),
+        })
+        alert('done')
+        /* alert(data)
+
+        navigation.navigate('Game7', {
+            plantName: data[0], confidence: data[1]
+        }) */
+        /*  navigation.navigate('Game3') */
+
+
+
+    }
+
 
     return (
         <SafeAreaView style={styles.container}>

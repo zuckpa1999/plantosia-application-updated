@@ -53,8 +53,10 @@ export default function GameScreen5({ navigation }) {
     let storeImageAndGoNext = (selectedImage) => {
 
         if (selectedImage !== null) setStateImage([...stateImage, selectedImage])
+
         navigation.navigate('Game5_2')
     }
+
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.top}>
