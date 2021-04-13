@@ -12,6 +12,7 @@ import { Images } from '../../Images'
 import { Images_hard } from '../../Images_hard'
 import GlobalStateUserQuestion from '../../contexts/GlobalStateUserQuestion'
 import GlobalStateUserAnswer from '../../contexts/GlobalStateUserAnswer'
+import { Navigation } from '@material-ui/icons';
 export default function templateQuestion(props) {
     /* let imageQuestion = questions.easy[props.index].image */
     let index = props.index
@@ -41,7 +42,7 @@ export default function templateQuestion(props) {
                 <Text style={{
                     textAlign: 'center', fontSize: 23, fontWeight: '600', marginLeft: '9%'
                 }}>Questions {indexQuestion} / {numQuestion}</Text>
-                < TouchableOpacity >
+                < TouchableOpacity onPress={() => navigation.navigate('TextSearch')}>
                     <Image
                         style={{ width: 50, height: 50, marginBottom: "100%", marginLeft: '-3%' }}
                         source={require('../../asset/searchButton.png')}

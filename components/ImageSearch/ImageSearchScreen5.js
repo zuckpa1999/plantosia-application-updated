@@ -7,24 +7,55 @@ import {
     responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
 import { Camera } from 'expo-camera';
+import { Images_plant_card_container } from '../../Images_plant_card_container'
+
 export default function ImageSearchScreen5({ navigation, route }) {
     const [hasPermission, setHasPermission] = useState(null);
     const [cameraRef, setCameraRef] = useState(null)
     const [type, setType] = useState(Camera.Constants.Type.back);
     const { plantName, confidence, fileName } = route.params
 
-    useEffect(() => {
-        (async () => {
-            const { status } = await Camera.requestPermissionsAsync();
-            setHasPermission(status === 'granted');
-        })();
-    }, []);
-    if (hasPermission === null) {
-        return <View />;
+    /*  useEffect(() => {
+         (async () => {
+             const { status } = await Camera.requestPermissionsAsync();
+             setHasPermission(status === 'granted');
+         })();
+     }, []);
+     if (hasPermission === null) {
+         return <View />;
+     }
+     if (hasPermission === false) {
+         return <Text>No access to camera</Text>;
+     } */
+
+
+
+    let PlantThaiName = (plantName) => {
+        switch (plantName) {
+            case 'Musa Sapientum':
+                return 'กล้วยหอม'
+                break;
+            case 'Cocos Nucifera':
+                return 'มะพร้าว'
+                break;
+            case 'Bougainvillea':
+                return 'ดอกเฟื่องฟ้า'
+                break;
+            case 'Oryza Sativa':
+                return 'ข้าว'
+                break;
+            case 'Mucuna Pruriens':
+                return 'หมามุ้ย'
+                break;
+            case 'Ixora Coccinea':
+                return 'ดอกเข็ม'
+                break;
+            default:
+                return 'No plant'
+        }
     }
-    if (hasPermission === false) {
-        return <Text>No access to camera</Text>;
-    }
+
+
 
     return (
 
@@ -59,35 +90,31 @@ export default function ImageSearchScreen5({ navigation, route }) {
                     />
                 </View>
                 <Image
-                    style={{ marginLeft: '2%', top: -40 }}
+                    style={{ marginLeft: '2%', top: -60 }}
                     source={require('../../asset/Group_68.png')}
                 />
                 {/*   height: responsiveScreenHeight(5), // 50% of Screen height,
         width: responsiveScreenWidth(38),// 50% of Screen width */}
-                <View style={{ borderColor: '#EEAC59', borderWidth: '7px', borderRadius: '20px', flexDirection: 'row', flexWrap: 'wrap' }}>
-                    <Image
-                        style={styles.thumbnail}
-
-                        source={require('../../backend/upload/1030.png')}
-                    /* source={require(`../../backend/upload/${fileName}.png`)} */
-                    />
+                <View style={{ borderColor: '#EEAC59', borderWidth: '7px', borderRadius: '20px', flexWrap: 'wrap', top: -50 }}>
+                    <Image style={styles.thumbnail} source={require('../../backend/upload/1030.png')} /* source={require(`../../backend/upload/${fileName}.png`)} */ />
                 </View>
+
                 <Image
-                    style={{ marginLeft: '2%' }}
+                    style={{ marginLeft: '2%', top: -46 }}
                     source={require('../../asset/ผลลัพธ์.png')}
                 />
 
 
-                <View style={{ backgroundColor: "#eee", borderRadius: 20, overflow: "hidden", width: 340, height: 250 }}>
+                <View style={{ backgroundColor: "#eee", borderRadius: 20, overflow: "hidden", width: 340, height: 250, top: -48 }}>
                     <View>
                         <Image
-                            source={require('../../asset/12.png')}
+                            source={Images_plant_card_container[plantName]}
                             style={styles.ImageDetail}
                         />
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', padding: 15 }}>
                         <View style={{ paddingRight: 60 }}>
-                            <Text style={styles.ThaiName}>กล้วยหอม</Text>
+                            <Text style={styles.ThaiName}>{PlantThaiName(plantName)}</Text>
                             <Text style={styles.EnglishName}>{plantName}</Text>
                         </View>
                         <View style={styles.similarColumn}>
@@ -100,8 +127,8 @@ export default function ImageSearchScreen5({ navigation, route }) {
 
                 <TouchableOpacity
                     activeOpacity={0.7}
-                    onPress={() => navigation.navigate('Game')}
-                    style={{ marginBottom: '100%' }}
+                    onPress={() => navigation.navigate('Home')}
+                    style={{ top: -35 }}
 
                 >
                     <Image
@@ -149,20 +176,6 @@ const styles = StyleSheet.create({
         right: 90,
         marginRight: '-4%'
     },
-    greenArea: {
-
-        backgroundColor: '#94F098',
-        // width: 385,
-        // height: 740,
-        height: responsiveScreenHeight(85), // 50% of Screen height
-        width: responsiveScreenWidth(91), // 50% of Screen width
-        borderRadius: 20,
-        // top: 20,
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-
-    },
     bannerDetail: {
         flexDirection: 'row',
         top: -96,
@@ -172,20 +185,6 @@ const styles = StyleSheet.create({
         marginTop: '5%',
         flexDirection: 'row',
         justifyContent: 'space-evenly'
-    },
-    box: {
-        marginTop: '5%',
-        width: 333,
-        height: 100,
-        backgroundColor: 'white',
-        borderRadius: 20,
-    },
-    msg: {
-        textAlign: 'center',
-        fontWeight: '700',
-        paddingTop: 20,
-        fontSize: 22,
-
     },
     banner: {
         marginTop: '-3%'
@@ -278,52 +277,11 @@ const styles = StyleSheet.create({
         // top: 20,
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'flex-start'
+        justifyContent: 'space-between'
 
     },
-    box: {
-        marginTop: '20%',
-        // marginBottom: '9%',
-        width: 300,
-        height: 75,
-        backgroundColor: 'white',
-        borderRadius: 20,
-        position: 'relative',
-        top: -47
 
-    },
-    box2: {
-        marginTop: '5%',
-        // marginBottom: '9%',
-        width: 333,
-        height: 160,
-        backgroundColor: 'white',
-        borderRadius: 20,
-        position: 'relative',
-        // top: -47
-    },
-    msg: {
-        textAlign: 'center',
-        fontWeight: '700',
-        padding: 25,
-        fontSize: 27,
 
-    },
-    msg2: {
 
-        textAlign: 'center',
-        fontWeight: '700',
-        padding: 15,
-        fontSize: 25,
-    },
-    /*  cardContainer: {
-         marginBottom: '400%'
-     }, */
-    result: {
-        width: 200,
-        height: 200
-    },
-    startGame: {
 
-    }
 });

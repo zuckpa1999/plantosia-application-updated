@@ -83,7 +83,7 @@ export default function QuestionScreen12({ navigation }) {
                 {/*  <Text>{stateQuestion.COIN}</Text>
                 <TouchableOpacity onPress={() => alert(stateQuestion.userAnswer)}><Text>Click me</Text></TouchableOpacity> */}
                 <Image
-                    style={{ marginTop: '3%' }}
+                    style={{ top: -50 }}
                     source={require('../../asset/solutionBanner.png')}
                 />
                 {/* {configQuestion.map(element => (<Text>{element.id}</Text>))} */}
@@ -91,7 +91,7 @@ export default function QuestionScreen12({ navigation }) {
                     {Object.keys(configQuestion).map((key) => (
                         <Text key={key}>{configQuestion.map(element => (element.id))}</Text>))}
                 </View> */}
-                <ScrollView showsVerticalScrollIndicator={false}>
+                <ScrollView showsVerticalScrollIndicator={false} style={{ marginBottom: '%' }}>
                     <View>
                         {configQuestion.map(element => (
                             <View style={{ borderRadius: '5%', width: responsiveScreenWidth(80), height: responsiveScreenHeight(35), backgroundColor: 'white', flexDirection: 'column', alignItems: 'center', marginBottom: '3%' }}>
@@ -129,19 +129,10 @@ export default function QuestionScreen12({ navigation }) {
                         ))}
                     </View>
                 </ScrollView>
-                <View style={{ width: responsiveScreenWidth(65), height: responsiveScreenHeight(3), backgroundColor: '#FFED9E', margin: '1%' }}>
-                    <Text style={{ fontSize: responsiveScreenFontSize(2), fontWeight: 'bold', textAlign: 'center' }}> ดูดซับน้ำ</Text>
-                </View>
-                {/*  <View>
-                    {Object.keys(configQuestion).map((key) => (
-                        // onPress={() => selectThisChoice(configQuestion[key])}
+                <TouchableOpacity onPress={() => navigation.navigate('congrats')}>
 
-                        <Text key={key}>{configQuestion[key]}</Text>
-
-                    ))}
-
-                </View> */}
-
+                    <Image source={require('../../asset/goNext.png')} />
+                </TouchableOpacity>
 
             </View>
 

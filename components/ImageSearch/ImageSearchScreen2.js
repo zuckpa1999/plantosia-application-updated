@@ -75,6 +75,7 @@ export default function ImageSearchScreen2({ navigation }) {
                         source={require('../../asset/nextButton.png')}
                     />
                 </TouchableOpacity>
+
                 {/* <TouchableOpacity onPress={() => navigation.navigate('Game2')}>
                     <Image
                         style={styles.nextButton}

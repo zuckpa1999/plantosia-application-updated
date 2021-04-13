@@ -8,16 +8,8 @@ import {
 import TemplateTop from './templateTop'
 import GlobalStateUserQuestion from '../../contexts/GlobalStateUserQuestion'
 export default function congratsScreen({ navigation }) {
-
-    // let imageQuestion = questions.easy[props.index].image
-    // let indexQuestion = questions.easy[props.index].id
-    // let numQuestion = questions.easy.length
-    // let question = questions.easy[props.index].question
-    // let configQuestion = questions.easy[props.index].choices
     const [stateQuestion, setStateQuestion] = useContext(GlobalStateUserQuestion)
 
-    let iQ = 1
-    let nQ = 10
 
     return (
         <SafeAreaView style={styles.container}>
@@ -32,11 +24,11 @@ export default function congratsScreen({ navigation }) {
                 />
                 <Text style={styles.congratsMessage}>ยินดีด้วย!</Text>
                 <View style={styles.xpAndCoinContainer}>
-                    <Text style={styles.xpAndCoinText}>  <Text style={styles.greenText}>20  </Text>XP <Image source={require('../../asset/vector.png')} /> <Text style={styles.greenText}>{stateQuestion.XP}</Text> XP</Text>
+                    <Text style={styles.xpAndCoinText}>  <Text style={styles.greenText}>0  </Text>XP <Image source={require('../../asset/vector.png')} /> <Text style={styles.greenText}>{stateQuestion.XP}</Text> XP</Text>
 
                 </View>
                 <View style={styles.xpAndCoinContainer}>
-                    <Text style={styles.xpAndCoinText}>  <Text style={styles.greenText}>20  </Text> <Image source={require('../../asset/dollar.png')} /> <Image source={require('../../asset/vector.png')} /><Text style={styles.greenText}>{stateQuestion.COIN}</Text> <Image source={require('../../asset/dollar.png')} /></Text>
+                    <Text style={styles.xpAndCoinText}>  <Text style={styles.greenText}>0  </Text> <Image source={require('../../asset/dollar.png')} /> <Image source={require('../../asset/vector.png')} /><Text style={styles.greenText}>{stateQuestion.COIN}</Text> <Image source={require('../../asset/dollar.png')} /></Text>
 
                 </View>
                 <TouchableOpacity

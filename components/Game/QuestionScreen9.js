@@ -49,6 +49,8 @@ export default function QuestionScreen9({ navigation }) {
            alert(answerToQuestion) */
         /* answer = stateQuestion.userAnswer[0] === answerToQuestion ? true : false */
         if (stateQuestion.userAnswer[index] === answerToQuestion) {
+            /* alert(stateQuestion.userAnswer[index])
+            alert(answerToQuestion) */
             setAnswer(true)
 
             setStateQuestion({ COIN: stateQuestion.COIN + 20, XP: stateQuestion.XP + 50, countCorrectAnswer: stateQuestion.countCorrectAnswer + 1, userAnswer: stateQuestion.userAnswer })
@@ -71,8 +73,9 @@ export default function QuestionScreen9({ navigation }) {
             <View style={styles.greenArea}>
 
                 <TemplateQuestion index={index} />
-
-
+                <Text>fdsf</Text>
+                <Text>stateQuestion.userAnswer[index]: {stateQuestion.userAnswer[index]}</Text>
+                <Text>answerToQuestion: {answerToQuestion}</Text>
                 <Modal
                     animationType="slide"
                     transparent={true}
@@ -113,6 +116,8 @@ export default function QuestionScreen9({ navigation }) {
                             <Text>COIN:{stateQuestion.COIN}</Text>
                             <Text>countCorrectAnswer:{stateQuestion.countCorrectAnswer}</Text>
                             <Text>userAnswer:{stateQuestion.userAnswer}</Text>
+                            <Text>stateQuestion.userAnswer[index]: {stateQuestion.userAnswer[index]}</Text>
+                            <Text>answerToQuestion: {answerToQuestion}</Text>
                             <TouchableOpacity style={styles.solutionContainer} onPress={() => {
                                 setModalVisible(!modalVisible)
                                 navigation.navigate('Solution9')

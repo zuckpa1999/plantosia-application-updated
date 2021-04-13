@@ -50,19 +50,16 @@ export default function ImageSearchScreen3({ navigation }) {
     }
     const fetchInfo = async () => {
 
-        await axios.get(`http://192.168.1.102:3100/info`)
-            .then(res => {
+        await axios.get(`http://192.168.1.102:3100/info`).then(res => { navigation.navigate('ImageSearch5', { plantName: res.data.title[0], confidence: res.data.title[1], fileName: fileName }) })
+        /* const Data = res.data.title */
 
-                setData(res.data.title)
-            })
-
-        await axios.get(`http://192.168.1.102:3100/uploadedImage`)
-            .then(res => {
-
-                fileName = res.data.uploadImageName
-            })
+        /*   await axios.get(`http://192.168.1.102:3100/uploadedImage`)
+              .then(res => {
+  
+                  fileName = res.data.uploadImageName
+              }) */
         /*   alert(data) */
-        alert(fileName)
+        /* alert(fileName) */
         /*   alert('bkabka')
           alert(Object.keys(data)) */
         /*  alert(Object.keys(data)) */
@@ -111,18 +108,9 @@ export default function ImageSearchScreen3({ navigation }) {
 
                     />
                 </TouchableOpacity>
-                <Button
-                    onPress={() => fetchInfo()}
-                    title="clickme"
-                    color="#841584"
-                    accessibilityLabel="Learn more about this purple button"
-                />
 
-                <TouchableOpacity onPress={() => {
 
-                    navigation.navigate('ImageSearch5', { plantName: data[0], confidence: data[1], fileName: fileName })
-
-                }
+                <TouchableOpacity onPress={() => fetchInfo()
                 }>
                     <Image
                         style={styles.nextButton}
