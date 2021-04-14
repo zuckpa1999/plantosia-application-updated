@@ -69,7 +69,7 @@ export default function QuestionScreen11({ navigation }) {
             {/*     QuestionScreen2 ---> 0,  */}
             <View style={styles.greenArea}>
 
-                <TemplateQuestion index={index} />
+                <TemplateQuestion index={index} navigation={navigation} />
 
 
                 <Modal

@@ -72,7 +72,7 @@ export default function QuestionScreen9({ navigation }) {
             {/*     QuestionScreen2 ---> 0,  */}
             <View style={styles.greenArea}>
 
-                <TemplateQuestion index={index} />
+                <TemplateQuestion index={index} navigation={navigation} />
                 <Text>fdsf</Text>
                 <Text>stateQuestion.userAnswer[index]: {stateQuestion.userAnswer[index]}</Text>
                 <Text>answerToQuestion: {answerToQuestion}</Text>

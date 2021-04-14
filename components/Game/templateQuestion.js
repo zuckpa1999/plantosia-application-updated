@@ -13,9 +13,9 @@ import { Images_hard } from '../../Images_hard'
 import GlobalStateUserQuestion from '../../contexts/GlobalStateUserQuestion'
 import GlobalStateUserAnswer from '../../contexts/GlobalStateUserAnswer'
 import { Navigation } from '@material-ui/icons';
-export default function templateQuestion(props) {
+export default function templateQuestion({ navigation, index }) {
     /* let imageQuestion = questions.easy[props.index].image */
-    let index = props.index
+    /*     let index = index */
 
     const [stateAnswer, setStateAnswer] = useContext(GlobalStateUserAnswer)
     const img = stateAnswer.difficulty === 'hard' ? Images_hard[stateAnswer.plantName] : Images[index];
@@ -24,10 +24,10 @@ export default function templateQuestion(props) {
       let question = questions.easy[props.index].question
       let configQuestion = questions.easy[props.index].choices */
     let plant = "Banana"
-    let indexQuestion = stateAnswer.difficulty === 'hard' ? questions.hard[stateAnswer.plantName][index].id : questions.easy[props.index].id
+    let indexQuestion = stateAnswer.difficulty === 'hard' ? questions.hard[stateAnswer.plantName][index].id : questions.easy[index].id
     let numQuestion = stateAnswer.difficulty === 'hard' ? questions.hard[stateAnswer.plantName].length : questions.easy.length
-    let question = stateAnswer.difficulty === 'hard' ? questions.hard[stateAnswer.plantName][index].question : questions.easy[props.index].question
-    let configQuestion = stateAnswer.difficulty === 'hard' ? questions.hard[stateAnswer.plantName][index].choices : questions.easy[props.index].choices
+    let question = stateAnswer.difficulty === 'hard' ? questions.hard[stateAnswer.plantName][index].question : questions.easy[index].question
+    let configQuestion = stateAnswer.difficulty === 'hard' ? questions.hard[stateAnswer.plantName][index].choices : questions.easy[index].choices
 
 
     const [stateQuestion, setStateQuestion] = useContext(GlobalStateUserQuestion)
