@@ -3,6 +3,7 @@ import { Button, Text, View, PanResponder, Animated, StyleSheet, Image } from 'r
 import { TouchableOpacity } from 'react-native-gesture-handler';
 export default function PlantGardenScreen({ navigation }) {
     const pan = useRef(new Animated.ValueXY()).current;
+    const pan2 = useRef(new Animated.ValueXY()).current;
     const [state, setState] = useState([])
     //useRef preserve their previous values as long as you don'
     //t change their arguments or the order of the Hook calls.
@@ -20,10 +21,7 @@ export default function PlantGardenScreen({ navigation }) {
                     null,
                     { dx: pan.x, dy: pan.y }
                 ]
-            )[
-                null,
-                { dx: pan.x, dy: pan.y }
-            ],
+            ),
             onPanResponderRelease: () => {
                 pan.flattenOffset();
             }
@@ -33,19 +31,19 @@ export default function PlantGardenScreen({ navigation }) {
         PanResponder.create({
             onMoveShouldSetPanResponder: () => true,
             onPanResponderGrant: () => {
-                pan.setOffset({
-                    x: pan.x._value,
-                    y: pan.y._value
+                pan2.setOffset({
+                    x: pan2.x._value,
+                    y: pan2.y._value
                 });
             },
             onPanResponderMove: Animated.event(
                 [
                     null,
-                    { dx: pan.x, dy: pan.y }
+                    { dx: pan2.x, dy: pan2.y }
                 ]
             ),
             onPanResponderRelease: () => {
-                pan.flattenOffset();
+                pan2.flattenOffset();
             },
 
         })
@@ -55,7 +53,7 @@ export default function PlantGardenScreen({ navigation }) {
             style={{
                 transform: [{ translateX: pan.x }, { translateY: pan.y }]
             }}
-            {...panResponder.panHandlers}
+            {...panResponder2.panHandlers}
         >
             <Image source={require('../../asset/ต้นกล้วย.png')} />
         </Animated.View></View>
@@ -85,7 +83,7 @@ export default function PlantGardenScreen({ navigation }) {
 
                 <TouchableOpacity onPress={() => addUser()}><Text>Click me</Text></TouchableOpacity>
                 {state}
-
+                <Text>{Object.keys(panResponder)}</Text>
             </View>
         </View >
 
@@ -111,4 +109,6 @@ const styles = StyleSheet.create({
     }
 });
 
+
+// check this out
 /* https://blog.pusher.com/animation-react-native-part-3/ */
