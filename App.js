@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './components/HomeScreen'
 import GameScreen from './components/Game/GameScreen.js'
-import TestScreen from './components/Game/TestScreen.js'
+/* import TestScreen from './components/Game/TestScreen.js' */
 import GameScreen2 from './components/Game/GameScreen2.js'
 import GameScreen3 from './components/Game/GameScreen3.js'
 import GameScreen4 from './components/Game/GameScreen4.js'
@@ -69,13 +69,13 @@ export default function App() {
         <GlobalStateUserQuestion.Provider value={[stateQuestion, setStateQuestion]}>
           <GlobalStateUserImage.Provider value={[stateImage, setStateImage]}>
             <NavigationContainer>
-              <Stack.Navigator initialRouteName="Home" screenOptions={{
+              <Stack.Navigator initialRouteName="PlantGarden" screenOptions={{
                 headerShown: false
               }}>
                 <Stack.Screen name="congrats" component={congratsScreen} />
                 <Stack.Screen name="Home" component={HomeScreen} />
                 <Stack.Screen name="Game" component={GameScreen} />
-                <Stack.Screen name="Test" component={TestScreen} />
+                {/* <Stack.Screen name="Test" component={TestScreen} /> */}
                 <Stack.Screen name="Game2" component={GameScreen2} />
                 <Stack.Screen name="Game3" component={GameScreen3} />
                 <Stack.Screen name="Game4" component={GameScreen4} />

@@ -38,8 +38,10 @@ export default function TestScreen({ navigation }) {
     //
     let banner = answer ? bannerRight : bannerWrong
     let mascot = answer ? mascotRight : mascotWrong
-
-
+    /* 
+        const RADIUS = 20;
+        const x = this.props.position[0] - RADIUS / 2;
+        const y = this.props.position[1] - RADIUS / 2; */
     return (
         <SafeAreaView style={styles.container}>
 
@@ -48,7 +50,7 @@ export default function TestScreen({ navigation }) {
             {/*     QuestionScreen2 ---> 0,  */}
             <View style={styles.greenArea}>
                 {/* borderRadius: 20, */}
-                <View style={{ flex: 1 }}>
+                {/*   <View style={{ flex: 1 }}>
                     <View style={{ backgroundColor: "#eee", overflow: "hidden", marginBottom: 20, width: 340, height: 250, borderTopLeftRadius: 20, borderTopRightRadius: 20 }}>
                         <View>
                             <Image
@@ -59,14 +61,16 @@ export default function TestScreen({ navigation }) {
                         <View style={{ flexDirection: 'column', justifyContent: 'center', padding: '7%' }}>
 
 
-                            <Text style={styles.similarity}>เฟื่องฟ้า</Text>
-                            <Text style={styles.scientificName}>Bougainvillea</Text>
+                            <Text style={styles.similarity}>เฟื่องxxฟ้า</Text>
+                            <Text style={styles.scientificName}>Bougainvivcvcllea</Text>
 
                         </View>
 
                     </View>
-                </View>
-
+                </View> */}
+                <Text>fs</Text>
+                <Text>fs</Text>
+                <View style={[styles.finger, { left: x, top: y }]} />
                 <Pressable
                     style={styles.confirmButtonContainer}
                     onPress={() => confirm()}
@@ -147,46 +151,15 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginTop: 22
     },
-    solutionButton: {
-        textAlign: 'center',
-        // marginTop: '7%',
-        color: 'white',
-        fontWeight: '800',
-        fontSize: 30
-    },
-    solutionContainer: {
-        backgroundColor: '#099846',
-        borderRadius: 10,
-        height: responsiveScreenHeight(5), // 50% of Screen height,
-        width: responsiveScreenWidth(38),// 50% of Screen width
-
-
-        marginTop: '15%'
-    },
-    ImageDetail: {
-        // display: 'flex'
-
-        /*  flexDirection: 'row',
-         justifyContent: 'space-between',
-         resizeMode: 'contain', */
-        height: responsiveScreenHeight(17),
-        width: responsiveScreenWidth(85)
-
-    },
-    scientificName: {
-        fontSize: 14,
-        fontWeight: '500',
-        marginTop: '1%',
-
-
-    },
-    similarity: {
-
-        fontStyle: 'normal',
-        fontWeight: 'normal',
-        fontSize: 25,
-        lineHeight: 35
-    },
+    finger: {
+        borderColor: "#CCC",
+        borderWidth: 4,
+        borderRadius: RADIUS * 2,
+        width: RADIUS * 2,
+        height: RADIUS * 2,
+        backgroundColor: "pink",
+        position: "absolute"
+    }
 
 
 });
