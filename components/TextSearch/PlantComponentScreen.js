@@ -46,12 +46,52 @@ export default function PlantComponentScreen({ navigation }) {
                 <Text style={styles.plantComponentText}>ส่วนประกอบของพืช</Text>
                 <ScrollView>
                     <View style={styles.plantCardContainer}>
-                        <Image style={styles.plantCardImage} source={Images[2]} />
+                        <Image style={styles.plantCardImage} source={Images[0]} />
                         <Text style={styles.plantCardComponentText}>ราก</Text>
                         <View style={styles.plantCardDetailContainer}>
                             <Text style={styles.plantCardDetailHeader}>หน้าที่</Text>
                             <Text style={styles.plantCardDetailText}>• ดูดซับน้ำและแร่ธาตุจากพืชดิน หรือจากต้นไม้ต้นอื่น</Text>
                             <Text style={styles.plantCardDetailText}>• เป็นรากฐานเพื่อสร้างความมั่นคง ให้ต้นไม้</Text>
+                        </View>
+
+                    </View>
+                    <View style={styles.plantCardContainer}>
+                        <Image style={styles.plantCardImage} source={Images[2]} />
+                        <Text style={styles.plantCardComponentText}>ลำต้น</Text>
+                        <View style={styles.plantCardDetailContainer}>
+                            <Text style={styles.plantCardDetailHeader}>หน้าที่</Text>
+                            <Text style={styles.plantCardDetailText}>• ลำเลียงน้ำและแร่ธาตุไปยัง ส่วนต่างๆ ของพืช</Text>
+                            <Text style={styles.plantCardDetailText}>• ยกและยื่นกิ่งก้านและใบของพืช</Text>
+                        </View>
+
+                    </View>
+                    <View style={styles.plantCardContainer}>
+                        <Image style={styles.plantCardImage} source={Images[4]} />
+                        <Text style={styles.plantCardComponentText}>ใบ</Text>
+                        <View style={styles.plantCardDetailContainer}>
+                            <Text style={styles.plantCardDetailHeader}>หน้าที่</Text>
+                            <Text style={styles.plantCardDetailText}>• สร้างอาหารผ่านกระบวนการ สังเคราะห์ด้วยแสง</Text>
+                            <Text style={styles.plantCardDetailText}>• หายใจและแลกเปลี่ยนแก๊ส</Text>
+                        </View>
+
+                    </View>
+                    <View style={styles.plantCardContainer}>
+                        <Image style={styles.plantCardImage} source={Images[6]} />
+                        <Text style={styles.plantCardComponentText}>ดอก</Text>
+                        <View style={styles.plantCardDetailContainer}>
+                            <Text style={styles.plantCardDetailHeader}>หน้าที่</Text>
+                            <Text style={styles.plantCardDetailText}>• การสืบพันธุ์และ การสร้างเมล็ด</Text>
+
+                        </View>
+
+                    </View>
+                    <View style={styles.plantCardContainer}>
+                        <Image style={styles.plantCardImage} source={Images[9]} />
+                        <Text style={styles.plantCardComponentText}>ผล</Text>
+                        <View style={styles.plantCardDetailContainer}>
+                            <Text style={styles.plantCardDetailHeader}>หน้าที่</Text>
+                            <Text style={styles.plantCardDetailText}>• ปกป้องเมล็ดจากสิ่งเร้าภายนอก </Text>
+                            <Text style={styles.plantCardDetailText}>• ช่วยในการกระจายเมล็ด</Text>
                         </View>
 
                     </View>
@@ -109,7 +149,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFED9E',
         flexDirection: 'column',
         justifyContent: 'flex-start',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom: '4%'
     },
     plantCardImage: {
         marginTop: '5%',
@@ -126,10 +167,12 @@ const styles = StyleSheet.create({
         marginLeft: '10%', padding: '0.5%'
     },
     plantCardDetailHeader: {
-        fontWeight: '500',
-        fontSize: responsiveScreenFontSize(2)
+        fontWeight: '700',
+        fontSize: responsiveScreenFontSize(2.6),
+        marginBottom: '2%'
     },
     plantCardDetailText: {
+        padding: '1.5%',
         fontWeight: 'normal',
         fontSize: responsiveScreenFontSize(2)
     }
