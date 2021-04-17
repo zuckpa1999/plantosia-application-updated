@@ -75,11 +75,11 @@ export default function ImageSearchScreen5({ navigation, route }) {
             </View>
             <View style={styles.greenArea}>
 
-                <Image
+                {/*  <Image
                     style={styles.banner}
                     source={require('../../asset/banner.png')}
-                />
-                <View style={styles.bannerDetail}>
+                /> */}
+                {/* <View style={styles.bannerDetail}>
                     <Image
 
                         source={require('../../asset/cameraGreen.png')}
@@ -88,17 +88,23 @@ export default function ImageSearchScreen5({ navigation, route }) {
                         style={{ marginLeft: '2%' }}
                         source={require('../../asset/การค้นหาด้วยรูป.png')}
                     />
-                </View>
+                </View> */}
                 <Image
+                    style={{ marginLeft: '2%' }}
+                    source={require('../../asset/imageSearchBanner.png')}
+                />
+
+                {/*   <Image
                     style={{ marginLeft: '2%', top: -60 }}
                     source={require('../../asset/Group_68.png')}
-                />
+                /> */}
                 {/*   height: responsiveScreenHeight(5), // 50% of Screen height,
         width: responsiveScreenWidth(38),// 50% of Screen width */}
-                <View style={{ borderColor: '#EEAC59', borderWidth: '7px', borderRadius: '20px', flexWrap: 'wrap', top: -50 }}>
-                    <Image style={styles.thumbnail} source={require('../../backend/upload/1030.png')} /* source={require(`../../backend/upload/${fileName}.png`)} */ />
+                {/*  source={require(`../../backend/upload/${fileName}.png`)}  */}
+                {/*  <View style={{ borderColor: '#EEAC59', borderWidth: '7px', borderRadius: '20px', flexWrap: 'wrap', top: -50 }}>
+                    <Image style={styles.thumbnail} source={require('../../backend/upload/1030.png')}  />
                 </View>
-
+ */}
                 <Image
                     style={{ marginLeft: '2%', top: -46 }}
                     source={require('../../asset/ผลลัพธ์.png')}

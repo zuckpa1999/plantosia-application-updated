@@ -73,9 +73,9 @@ export default function QuestionScreen9({ navigation }) {
             <View style={styles.greenArea}>
 
                 <TemplateQuestion index={index} navigation={navigation} />
-                <Text>fdsf</Text>
+                {/*  <Text>fdsf</Text>
                 <Text>stateQuestion.userAnswer[index]: {stateQuestion.userAnswer[index]}</Text>
-                <Text>answerToQuestion: {answerToQuestion}</Text>
+                <Text>answerToQuestion: {answerToQuestion}</Text> */}
                 <Modal
                     animationType="slide"
                     transparent={true}

@@ -80,7 +80,7 @@ export default function GameScreen6({ navigation }) {
         const plantNameAndConfidence = Data.data.data
 
 
-        alert('fe')
+        /*  alert('fe') */
         alert(Data.data.data)
         /*    alert(Data[0])
            alert(Data[1]) */

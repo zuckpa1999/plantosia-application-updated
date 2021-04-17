@@ -46,6 +46,7 @@ import ImageSearchScreen3 from './components/ImageSearch/ImageSearchScreen3.js'
 import ImageSearchScreen4 from './components/ImageSearch/ImageSearchScreen4.js'
 import ImageSearchScreen5 from './components/ImageSearch/ImageSearchScreen5.js'
 import PlantGardenScreen from './components/PlantGarden/PlantGardenScreen.js'
+import plantShopScreen from './components/PlantGarden/plantShopScreen.js'
 import SettingScreen from './components/Setting/SettingScreen.js'
 import GlobalStateUserImage from './contexts/GlobalStateUserImage.js'
 import GlobalStateUserQuestion from './contexts/GlobalStateUserQuestion.js'
@@ -69,7 +70,7 @@ export default function App() {
         <GlobalStateUserQuestion.Provider value={[stateQuestion, setStateQuestion]}>
           <GlobalStateUserImage.Provider value={[stateImage, setStateImage]}>
             <NavigationContainer>
-              <Stack.Navigator initialRouteName="PlantGarden" screenOptions={{
+              <Stack.Navigator initialRouteName="Home" screenOptions={{
                 headerShown: false
               }}>
                 <Stack.Screen name="congrats" component={congratsScreen} />
@@ -116,6 +117,7 @@ export default function App() {
                 <Stack.Screen name="ImageSearch4" component={ImageSearchScreen4} />
                 <Stack.Screen name="ImageSearch5" component={ImageSearchScreen5} />
                 <Stack.Screen name="PlantGarden" component={PlantGardenScreen} />
+                <Stack.Screen name="PlantShop" component={plantShopScreen} />
                 <Stack.Screen name="Setting" component={SettingScreen} />
 
               </Stack.Navigator>

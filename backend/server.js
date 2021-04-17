@@ -93,6 +93,10 @@ app.post('/uploadImageGame', (req, res) => {
 		console.log('finished');
 		console.log('test x');
 		console.log(x);
+		console.log('test ImageURL');
+		console.log(ImageURL)
+		/* 		x = []
+				ImageURL = [] */
 	}
 	)
 

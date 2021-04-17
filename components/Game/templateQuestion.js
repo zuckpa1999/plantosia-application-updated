@@ -125,8 +125,8 @@ const styles = StyleSheet.create({
         // flexDirection: 'column',
         // alignItems: 'flex-end'
         marginTop: '12%',
-        fontWeight: '800',
-        fontSize: 14,
+        fontWeight: '400',
+        fontSize: 17,
         padding: 2
     },
 
