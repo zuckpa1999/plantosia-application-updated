@@ -1,29 +1,72 @@
-import React from 'react'
-import { View, SafeAreaView, StyleSheet, Image, Text } from 'react-native'
+import React, { useContext } from 'react'
+import { View, SafeAreaView, StyleSheet, Image, Text, TouchableOpacity } from 'react-native'
 import TemplateTop from '../Game/templateTop.js'
 import {
     responsiveScreenHeight,
     responsiveScreenWidth,
     responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
+import { Images_plantShop } from '../../Images_plantShop.js'
+import PlantShop from '../../config/plantShop.json'
+import { ScrollView } from 'react-native-gesture-handler';
+import GlobalStateUserQuestion from '../../contexts/GlobalStateUserQuestion'
+import GlobalStateUserPlant from '../../contexts/GlobalStateUserPlant'
 export default function plantShopScreen({ navigation }) {
+    const [stateQuestion, setStateQuestion] = useContext(GlobalStateUserQuestion)
+    const [statePlant, setStatePlant] = useContext(GlobalStateUserPlant)
+    const clickCard = (plant) => {
+        if (stateQuestion.COIN >= PlantShop[plant].cost) {
+            setStateQuestion({ COIN: stateQuestion.COIN - PlantShop[plant].cost, XP: stateQuestion.XP, countCorrectAnswer: stateQuestion.countCorrectAnswer, userAnswer: stateQuestion.userAnswer })
+            //       setStatePlant(...statePlant, plant) vs .push
+            if (statePlant[0] === null) setStatePlant([plant])
+            else setStatePlant([...statePlant, plant])
+        }
+        else {
+            alert('You broke bitches')
+        }
+
+    }
     return (
         <SafeAreaView style={styles.container}>
-
+            {/* Group160 */}
             <TemplateTop navigation={navigation} />
             <View style={styles.greenArea}>
                 <Image source={require('../../asset/plant_garden/plantShopBanner.png')} />
-                <View style={styles.cardContainer}>
-                    <View style={styles.cardContainerLeft}>
-                        <Image style={{ marginTop: '45%', marginLeft: '10%' }} source={require('../../asset/plant_garden/Group162.png')} />
+                <Text>Your Coin : {stateQuestion.COIN}</Text>
+                <Text>statePlant 0: {statePlant[0]}</Text>
+                <Text>statePlant 1: {statePlant[1]}</Text>
+                <Text>statePlant 2: {statePlant[2]}</Text>
+                <Text onPress={() => {
+                    setStateQuestion({ COIN: 800, XP: stateQuestion.XP, countCorrectAnswer: stateQuestion.countCorrectAnswer, userAnswer: stateQuestion.userAnswer })
+                    setStatePlant([null])
+                }}>Click me to change COIN</Text>
+                <Text>statePlant length : {statePlant.length}</Text>
+                <ScrollView>
+                    {statePlant.length === Object.keys(PlantShop) ?
+                        <View>
+                            <Image source={require('../../asset/plant_garden/noPlant.png')} />
+                            <Text>ไม่มีพืชที่ซื้อได้ในขณะนี้</Text>
+                        </View> :
+                        Object.keys(PlantShop).map((plant) => (
+                            !statePlant.includes(plant) ?
+                                <TouchableOpacity onPress={() => clickCard(plant)}>
+                                    <View style={styles.cardContainer}>
+                                        <View style={styles.cardContainerLeft}>
+                                            <Image style={{ marginTop: '45%', marginLeft: '10%' }} source={Images_plantShop[plant]} />
+                                        </View>
+                                        <View style={styles.cardContainerRight}>
 
-                    </View>
-                    <View style={styles.cardContainerRight}>
-                        <Text style={styles.text1}>แอปเปิล</Text>
-                        <Text style={styles.text2}><Image source={require('../../asset/plant_garden/coin.png')} /> 50</Text>
-                        <Text style={styles.text3}>ผลสีแดงบนต้นไม้แสนโสภา</Text>
-                    </View>
-                </View>
+                                            <Text style={styles.text1}>{plant}</Text>
+                                            <Text style={styles.text2}><Image source={require('../../asset/plant_garden/coin.png')} />{PlantShop[plant].cost}</Text>
+                                            <Text style={styles.text3}>{PlantShop[plant].description}</Text>
+                                        </View>
+
+                                    </View>
+                                </TouchableOpacity> : null
+                        )
+                        )
+                    }
+                </ScrollView>
             </View>
         </SafeAreaView >
     )
@@ -51,10 +94,11 @@ const styles = StyleSheet.create({
     },
     cardContainer: {
         width: responsiveScreenWidth(82),
-        height: responsiveScreenHeight(20),
+        height: responsiveScreenHeight(21),
         /* backgroundColor: 'white', */
         /* borderRadius: 20, */
-        flexDirection: 'row'
+        flexDirection: 'row',
+        marginBottom: '3%'
     },
     cardContainerLeft: {
         backgroundColor: '#FFED9E',
@@ -85,7 +129,21 @@ const styles = StyleSheet.create({
     },
     text3: {
         fontWeight: '700',
-        fontSize: responsiveScreenFontSize(2)
+        fontSize: responsiveScreenFontSize(2),
+
     }
 }
 )
+
+// create config json file for buyable plants -- key : plantName , value : cost, description
+//iter ate config file with the card component
+    // if json length = statePlant.length ==> show no mascot
+    // else
+        // dont render if the name exist in statePlant already
+    /// make it touchable next
+
+//render hut
+    //iter ate config file with the box component
+        //only redner the box if the plant exist in statePLant already
+    /// make it touchable next 
+//set up json image file with key (plantName) : value (URO) 

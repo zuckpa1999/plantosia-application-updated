@@ -59,7 +59,7 @@ export default function App() {
   const [stateImage, setStateImage] = useState([]);
   const [stateAnswer, setStateAnswer] = useState({ plantName: null, difficulty: null });
   const [statePic, setPicstatePic] = useState(null);
-  const [statePlant, setStatePlant] = useState([])
+  const [statePlant, setStatePlant] = useState([null])
   const [stateQuestion, setStateQuestion] = useState({ XP: 0, COIN: 0, countCorrectAnswer: 0, userAnswer: [null] });
   return (
 
