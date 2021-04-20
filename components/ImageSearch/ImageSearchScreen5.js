@@ -28,6 +28,12 @@ export default function ImageSearchScreen5({ navigation, route }) {
          return <Text>No access to camera</Text>;
      } */
 
+    let uploadImage_path = ''
+    try {
+        uploadImage_path = require('../../backend/upload/upload_img.png')
+    } catch (err) {
+        uploadImage_path = require('../../asset/Plant_Image_card_container/allPlant.png')
+    }
 
 
     let PlantThaiName = (plantName) => {
@@ -101,10 +107,14 @@ export default function ImageSearchScreen5({ navigation, route }) {
                 {/*   height: responsiveScreenHeight(5), // 50% of Screen height,
         width: responsiveScreenWidth(38),// 50% of Screen width */}
                 {/*  source={require(`../../backend/upload/${fileName}.png`)}  */}
-                {/*  <View style={{ borderColor: '#EEAC59', borderWidth: '7px', borderRadius: '20px', flexWrap: 'wrap', top: -50 }}>
-                    <Image style={styles.thumbnail} source={require('../../backend/upload/1030.png')}  />
+                <View style={{ borderColor: '#EEAC59', borderWidth: '7px', borderRadius: '20px', flexWrap: 'wrap', top: -50 }}>
+                    <Image style={styles.thumbnail} source={uploadImage_path} />
+
+
+
+
                 </View>
- */}
+
                 <Image
                     style={{ marginLeft: '2%', top: -46 }}
                     source={require('../../asset/ผลลัพธ์.png')}

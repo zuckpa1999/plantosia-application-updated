@@ -114,7 +114,7 @@ app.post('/uploadImageSearch', (req, res) => {
 	/* console.log(req.body.imgsource[0]) */
 	/* for (let i = 0; i < req.body.imgsource.length; i++) { */
 	let file_name = Math.floor(Math.random() * 50000);
-	let file = `./upload/${file_name}.png`
+	let file = `./upload/upload_img.png`
 
 	// let x = `./0.png`
 

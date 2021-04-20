@@ -41,11 +41,13 @@ export default function plantShopScreen({ navigation }) {
                     setStatePlant([null])
                 }}>Click me to change COIN</Text>
                 <Text>statePlant length : {statePlant.length}</Text>
+                <Text>Object.keys(PlantShop)  : {Object.keys(PlantShop).length}</Text>
+                <Text>{statePlant.length == Object.keys(PlantShop)}</Text>
                 <ScrollView>
-                    {statePlant.length === Object.keys(PlantShop) ?
-                        <View>
-                            <Image source={require('../../asset/plant_garden/noPlant.png')} />
-                            <Text>ไม่มีพืชที่ซื้อได้ในขณะนี้</Text>
+                    {statePlant.length === 3 ?
+                        <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginLeft: '10%' }}>
+                            <Image style={{ width: responsiveScreenWidth(51), height: responsiveScreenHeight(23) }} source={require('../../asset/plant_garden/noPlant.png')} />
+                            <Text style={{ fontWeight: '500', color: '#566368', fontSize: responsiveScreenFontSize(3), marginTop: '6%' }}>ไม่มีพืชที่ซื้อได้ในขณะนี้</Text>
                         </View> :
                         Object.keys(PlantShop).map((plant) => (
                             !statePlant.includes(plant) ?
