@@ -44,7 +44,7 @@ export default function templateQuestion({ navigation, index }) {
                 }}>Questions {indexQuestion} / {numQuestion}</Text>
                 < TouchableOpacity onPress={() => navigation.navigate('TextSearch')}>
                     <Image
-                        style={{ width: 50, height: 50, marginBottom: "100%", marginLeft: '-3%' }}
+                        style={{ width: 70, height: 70, marginBottom: "5%", marginLeft: '-5%' }}
                         source={require('../../asset/searchButton.png')}
                     />
                 </TouchableOpacity>

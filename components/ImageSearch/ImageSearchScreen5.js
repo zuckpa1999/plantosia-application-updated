@@ -148,7 +148,7 @@ export default function ImageSearchScreen5({ navigation, route }) {
 
                 >
                     <Image
-                        style={styles.startGame}
+                        /* style={styles.startGame} */
                         source={require('../../asset/หน้าหลัก.png')}
                     />
                 </TouchableOpacity>
