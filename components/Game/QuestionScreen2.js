@@ -17,11 +17,13 @@ export default function QuestionScreen2({ navigation }) {
     /*   const [stateQuestion, setStateQuestion] = useState({ XP: 0, COIN: 0, countCorrectAnswer: 0, userAnswer: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'] }); */
     const [stateQuestion, setStateQuestion] = useContext(GlobalStateUserQuestion)
     const [stateAnswer, setStateAnswer] = useContext(GlobalStateUserAnswer)
+
     // assumer we get props
     let index = 0
     let answerToQuestion = stateAnswer.difficulty === 'hard' ? questions.hard[stateAnswer.plantName][index].answers : questions.easy[index].answers
     /* let answer */
     const [answer, setAnswer] = useState(false)
+    const [userAnswer, setuserAnswer] = useState('nah')
     // 2 version 
     //if props.answer : true ? boolean
     // need global variable to store coin and XP **
@@ -65,6 +67,12 @@ export default function QuestionScreen2({ navigation }) {
         setModalVisible(true)
 
     }
+
+    const sendDataToParent = (answer) => { // the callback. Use a better name
+
+        setuserAnswer(answer)
+
+    };
     return (
         <SafeAreaView style={styles.container}>
 
@@ -73,7 +81,7 @@ export default function QuestionScreen2({ navigation }) {
             {/*     QuestionScreen2 ---> 0,  */}
             <View style={styles.greenArea}>
 
-                <TemplateQuestion index={index} navigation={navigation} />
+                <TemplateQuestion index={index} navigation={navigation} sendDataToParent={sendDataToParent} />
 
 
                 <Modal
@@ -138,6 +146,7 @@ export default function QuestionScreen2({ navigation }) {
                     onPress={() => confirm()}
                 >
                     <Text style={styles.confirmButton}>Confirm</Text>
+                    <Text>{userAnswer}</Text>
                 </Pressable>
 
             </View>

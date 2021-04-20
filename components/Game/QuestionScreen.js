@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image, Dimensions } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, Image, Dimensions, Pressable } from 'react-native';
 import {
     responsiveScreenHeight,
     responsiveScreenWidth,
@@ -38,22 +38,22 @@ export default function QuestionScreen({ navigation }) {
 
                 <Text style={styles.text} >เลือกระดับความยากของเกม</Text>
                 <View style={styles.choice}>
-                    <TouchableOpacity style={currentChoice === 'easy' ? styles.easyContainerPicked : styles.easyContainer} onPress={() => {
+                    <Pressable style={currentChoice == 'easy' ? styles.easyContainerPicked : styles.easyContainer} onPress={() => {
                         setCurrentChoice('easy')
                         setStateAnswer({ plantName: stateAnswer.plantName, difficulty: 'easy' })
 
                     }}  >
                         <Text style={styles.easyText}>ง่าย</Text>
 
-                    </TouchableOpacity>
+                    </Pressable>
 
-                    <TouchableOpacity style={currentChoice === 'hard' ? styles.hardContainerPicked : styles.hardContainer} onPress={() => {
+                    <Pressable style={currentChoice == 'hard' ? styles.hardContainerPicked : styles.hardContainer} onPress={() => {
                         setCurrentChoice('hard')
                         setStateAnswer({ plantName: stateAnswer.plantName, difficulty: 'hard' })
                     }} >
                         <Text style={styles.hardText} >ยาก</Text>
 
-                    </TouchableOpacity>
+                    </Pressable>
 
                     <Text>{currentChoice}</Text>
                 </View>

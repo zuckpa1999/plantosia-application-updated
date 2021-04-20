@@ -13,7 +13,7 @@ import { Images_hard } from '../../Images_hard'
 import GlobalStateUserQuestion from '../../contexts/GlobalStateUserQuestion'
 import GlobalStateUserAnswer from '../../contexts/GlobalStateUserAnswer'
 import { Navigation } from '@material-ui/icons';
-export default function templateQuestion({ navigation, index }) {
+export default function templateQuestion({ navigation, index, sendDataToParent }) {
     /* let imageQuestion = questions.easy[props.index].image */
     /*     let index = index */
 
@@ -64,6 +64,7 @@ export default function templateQuestion({ navigation, index }) {
                     // onPress={() => selectThisChoice(configQuestion[key])}
                     <TouchableOpacity style={currentChoice === configQuestion[key] ? styles.choiceContainer2 : styles.choiceContainer} onPress={() => {
                         setStateQuestion({ COIN: stateQuestion.COIN, XP: stateQuestion.XP, countCorrectAnswer: stateQuestion.countCorrectAnswer, userAnswer: stateQuestion.userAnswer[0] === null ? [configQuestion[key]] : [...stateQuestion.userAnswer, configQuestion[key]] })
+                        sendDataToParent(configQuestion[key])
                         setCurrentChoice(configQuestion[key])
                     }}>
                         <Text key={key} style={styles.choiceOption}>{configQuestion[key]}</Text>
