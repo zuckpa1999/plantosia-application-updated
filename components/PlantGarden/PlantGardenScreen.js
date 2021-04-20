@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Button, Text, View, PanResponder, Animated, StyleSheet, Image, SafeAreaView } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Draggable from './Draggable'
@@ -8,11 +8,16 @@ import {
     responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
 import TemplateTop from '../Game/templateTop.js'
+import GlobalStateUserQuestion from '../../contexts/GlobalStateUserQuestion'
+import GlobalStateUserPlant from '../../contexts/GlobalStateUserPlant'
+import { Images_plantShop } from '../../Images_plantShop.js'
 export default function PlantGardenScreen({ navigation }) {
-
+    const [stateQuestion, setStateQuestion] = useContext(GlobalStateUserQuestion)
+    const [statePlant, setStatePlant] = useContext(GlobalStateUserPlant)
     const [state, setState] = useState([])
-    let addUser = () => {
-        setState([...state, <Draggable plantName='ต้นกล้วย' />])
+    let addUser = (plant) => {
+        /* alert(plant) */
+        setState([...state, <Draggable plantName={plant} />])
     }
     return (
         <SafeAreaView style={styles.container}>
@@ -35,11 +40,39 @@ export default function PlantGardenScreen({ navigation }) {
 
             <View style={styles.lowerBody}>
                 {state}
+
                 <Image style={styles.ground} source={require('../../asset/text_search/ground.png')} />
-                <TouchableOpacity onPress={() => addUser()}><Text>Click me</Text></TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate('PlantShop')}>
-                    <Image source={require('../../asset/text_search/plantShopp.png')} />
-                </TouchableOpacity>
+                <View style={{ top: -50, left: 150 }}>
+                    {/* <TouchableOpacity onPress={() => addUser()}><Text>Click me</Text></TouchableOpacity> */}
+                    <TouchableOpacity onPress={() => navigation.navigate('PlantShop')}>
+                        <Image style={{ width: 60, height: 60 }} source={require('../../asset/text_search/plantShop.png')} />
+                    </TouchableOpacity>
+                </View>
+                {/*    <View style={styles.plantList}>
+                    <TouchableOpacity >
+                        <Image source={require('../../asset/plant_garden/มะพร้าว.png')} />
+                        <Text>plant</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity >
+                        <Image source={require('../../asset/plant_garden/มะพร้าว.png')} />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity >
+                        <Image source={require('../../asset/plant_garden/มะพร้าว.png')} />
+                    </TouchableOpacity>
+
+
+                </View> */}
+                <View style={styles.plantList}>
+                    {
+                        Object.keys(Images_plantShop).map(plant => (statePlant.includes(plant) ?
+                            <TouchableOpacity style={{ marginTop: '5%', flexDirection: 'column', alignItems: 'center' }} onPress={() => addUser(plant)}>
+                                <Image style={{ width: 80, height: 90, marginTop: '3%' }} source={Images_plantShop[plant]} />
+                                <Text style={{ fontWeight: '600', marginTop: '10%', fontSize: responsiveScreenFontSize(2) }}>{plant}</Text>
+                            </TouchableOpacity> : null
+                        ))
+                    }
+                </View>
             </View>
         </SafeAreaView >
 
@@ -107,5 +140,16 @@ const styles = StyleSheet.create({
         marginTop: '3%',
         width: responsiveScreenWidth(75),
         height: responsiveScreenHeight(20)
+    },
+    plantList: {
+        width: responsiveScreenWidth(82),
+        height: responsiveScreenHeight(14),
+        backgroundColor: 'white',
+        top: -37,
+        borderRadius: 20,
+        flexDirection: 'row',
+
+        justifyContent: 'space-around'
+
     }
 });

@@ -2,8 +2,9 @@
 import React, { useRef, useState } from 'react'
 import { Button, Text, View, PanResponder, Animated, StyleSheet, Image } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Images_plantGarden } from '../../Images_plantGarden.js'
 export default function Draggable({ plantName }) {
-    const plantURI = plantName === 'ต้นกล้วย' ? require('../../asset/text_search/ต้นกล้วย.png') : require('../../asset/text_search/ต้นมะพร้าว.png')
+    const plantURI = Images_plantGarden[plantName]
     const pan = useRef(new Animated.ValueXY()).current;
     const pan2 = useRef(new Animated.ValueXY()).current;
     const [state, setState] = useState([])

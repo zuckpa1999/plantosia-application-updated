@@ -142,6 +142,10 @@ const styles = StyleSheet.create({
         // dont render if the name exist in statePlant already
     /// make it touchable next
 
+// done
+
+
+
 //render hut
     //iter ate config file with the box component
         //only redner the box if the plant exist in statePLant already
