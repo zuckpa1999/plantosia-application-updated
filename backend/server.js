@@ -38,11 +38,10 @@ app.get('/getPlantName/:plantName', (req, res) => {
 	res.status(200)
 })
 
-
+// p.2
 app.post('/uploadImageGame', (req, res) => {
 	/* 	for (let i = 0; i < req.body.length; i++) { */
 	console.log('xxxxx')
-	console.log(req.body.length)
 	console.log(req.body.imgsource.length)
 	/* 	console.log(req.body.imgsource[0])
 		console.log(req.body.imgsource) */
@@ -56,6 +55,7 @@ app.post('/uploadImageGame', (req, res) => {
 		fs.writeFile(file, req.body.imgsource[i], 'base64', (err) => {
 			if (err) throw err
 		})
+		// ImageURL keeps all the file's paths 
 		ImageURL.push(file)
 	}
 
@@ -69,7 +69,6 @@ app.post('/uploadImageGame', (req, res) => {
 	// 
 	/* console.log(JSON.stringify(file)) */
 	// send as a list instead
-	// get all the file's name in an array
 	for (let i = 0; i < ImageURL.length; i++) {
 		pyshell.send(JSON.stringify(ImageURL[i]));
 
@@ -127,7 +126,7 @@ app.post('/uploadImageSearch', (req, res) => {
 	/* } */
 	// file_name = file_name + 1
 	uploadImageName = file_name
-	res.status(200)
+
 
 	/* c */
 	console.log('receiveddwdw')
@@ -138,7 +137,7 @@ app.post('/uploadImageSearch', (req, res) => {
 	// send as a list instead
 	// get all the file's name in an array
 	pyshell.send(JSON.stringify(file));
-	pyshell.send(JSON.stringify(file));
+	/* pyshell.send(JSON.stringify(file)); */
 
 	// pyshell.send(JSON.stringify([1, 2, 3, 4, 5]));
 	// console.log('test print from node')
@@ -161,7 +160,7 @@ app.post('/uploadImageSearch', (req, res) => {
 		console.log(x);
 	}
 	)
-
+	res.status(200)
 
 })
 
@@ -189,14 +188,12 @@ app.get("/test2", async (req, res) => {
 });
 
 
-
-
-/* console.log('tttttt')
-console.log('test') */
+// p.1
 console.log('starting')
 console.log('test x')
 console.log(x)
 
+// always run , kinda p.2
 app.listen(3100, () => {
 
 	console.log('server is ready..')

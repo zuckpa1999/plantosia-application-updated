@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import sys, json
+from statistics import mean
 # YOLO --> deep learning algorithm, stateoftheart real time object detection system
 # apply single nueral network to the entire image to predict boudning bpxed and their probabilities
 #  high prob of image --> images considered as object detected
@@ -32,8 +33,11 @@ def read_in():
 	#print(type(lines))
 	#print(len(lines))
 	list = []
+	
+	#print(json.loads(lines))
 	if(len(lines) == 1):
-		return json.loads(lines[0]) 
+		list.append(json.loads(lines[0]))
+		return list
 	elif(len(lines) > 1):
 		for i in lines:
 			list.append(json.loads(i))
@@ -74,8 +78,7 @@ def main():
 	dict_accuracy = {'Ixora Coccinea' : [], 'Bougainvillea' : [], 'Cocos Nucifera' : [], 'Mucuna Pruriens' : [], 'Musa Sapientum' : [], 'Oryza Sativa' : [] }
 	dictionary = {}
 	count = 0
-	#print('length lines')
-	#print(len(lines))
+
 	if(len(lines) > 1):
 		for i in lines:
 			test = i
@@ -137,36 +140,38 @@ def main():
 
 			if(label == 'Ixora Coccinea'):
 				dict_occurance['Ixora Coccinea'] = dict_occurance['Ixora Coccinea'] + 1
-				dict_accuracy['Ixora Coccinea'].append(confidence)
+				dict_accuracy['Ixora Coccinea'].append(float(confidence))
 			elif(label == 'Bougainvillea'):
 				dict_occurance['Bougainvillea'] = dict_occurance['Bougainvillea'] + 1
-				dict_accuracy['Bougainvillea'].append(confidence)
+				dict_accuracy['Bougainvillea'].append(float(confidence))
 			elif(label == 'Cocos Nucifera'):
 				dict_occurance['Cocos Nucifera'] = dict_occurance['Cocos Nucifera'] + 1
-				dict_accuracy['Cocos Nucifera'].append(confidence)
+				dict_accuracy['Cocos Nucifera'].append(float(confidence))
 			elif(label == 'Mucuna Pruriens'):
 				dict_occurance['Mucuna Pruriens'] = dict_occurance['Mucuna Pruriens'] + 1
-				dict_accuracy['Mucuna Pruriens'].append(confidence)
+				dict_accuracy['Mucuna Pruriens'].append(float(confidence))
 			elif(label == 'Musa Sapientum'):
 				dict_occurance['Musa Sapientum'] = dict_occurance['Musa Sapientum'] + 1
-				dict_accuracy['Musa Sapientum'].append(confidence)
+				dict_accuracy['Musa Sapientum'].append(float(confidence))
 			elif(label == 'Oryza Sativa'):
 				dict_occurance['Oryza Sativa'] = dict_occurance['Oryza Sativa'] + 1
-				dict_accuracy['Oryza Sativa'].append(confidence)
+				dict_accuracy['Oryza Sativa'].append(float(confidence))
 		
 			# return the key of dictionary that has highest the highest occurance
-			highestOccurance_Plant = max(dict_occurance, key=dict_occurance.get)
+		highestOccurance_Plant = max(dict_occurance, key=dict_occurance.get)
 			#print('highestOccurance_Plant')
-			print(highestOccurance_Plant)
-			higestAccuracy_Plant = max(dict_accuracy[highestOccurance_Plant])
-			#print('higestAccuracy_Plant')
-			print(higestAccuracy_Plant)
-			#print('count')
-			#print(count)
-			#print('dict_occurance')
-			#print(dict_occurance)
-			#print('dict_accuracy')
-			#print(dict_accuracy)
+		
+		meanAccuracy_Plant = mean(dict_accuracy[highestOccurance_Plant])
+		print(highestOccurance_Plant )
+		print(meanAccuracy_Plant)
+		#print('blabla')
+		#print('count')
+		#print(count)
+		#print('dict_occurance')
+		#print(dict_occurance)
+		#print('dict_accuracy')
+		#print(dict_accuracy)
+
 		#if(count > math.floor(len(lines)*0.7)):
 			
 		#print(dictionary)
@@ -186,8 +191,8 @@ def main():
 	#print('print line')
 	#print(lines)
 	elif(len(lines) == 1):
-		test = lines
-		img = cv2.imread(test)
+		
+		img = cv2.imread(lines[0])
 		# print(lines)
 		# img = cv2.imread(lines)
 
@@ -240,7 +245,7 @@ def main():
 			color = colors[i]
 			cv2.rectangle(img, (x,y), (x+w, y+h), color, 2)
 			cv2.putText(img, label + " " + confidence, (x, y+20), font, 2, (255,255,255), 2)
-		
+
 		print(label)
 		print(confidence)
 	

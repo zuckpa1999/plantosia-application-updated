@@ -96,7 +96,7 @@ export default function ImageSearchScreen5({ navigation, route }) {
                     />
                 </View> */}
                 <Image
-                    style={{ marginLeft: '2%' }}
+                    style={{ marginLeft: '2%', marginBottom: '5%' }}
                     source={require('../../asset/imageSearchBanner.png')}
                 />
 
@@ -147,10 +147,7 @@ export default function ImageSearchScreen5({ navigation, route }) {
                     style={{ top: -35 }}
 
                 >
-                    <Image
-                        /* style={styles.startGame} */
-                        source={require('../../asset/หน้าหลัก.png')}
-                    />
+                    <Image source={require('../../asset/หน้าหลัก.png')} />
                 </TouchableOpacity>
             </View>
 
