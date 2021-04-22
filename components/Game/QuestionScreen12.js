@@ -99,11 +99,11 @@ export default function QuestionScreen12({ navigation }) {
                                     style={{ marginTop: '3%', width: responsiveScreenWidth(34), height: responsiveScreenHeight(12) }}
                                     source={stateAnswer.difficulty === 'hard' ? Images_hard[stateAnswer.plantName] : Images[element.id - 1]}
                                 />
-                                <View style={{ width: responsiveScreenWidth(70), height: responsiveScreenHeight(18), backgroundColor: '#FFF8CA' }}>
+                                <View style={{ width: responsiveScreenWidth(70), height: responsiveScreenHeight(18), backgroundColor: '#FFF8CA', flex: 1 }}>
                                     <View style={{ flexDirection: 'row', paddingTop: '5%' }}>
                                         <Image source={stateQuestion.userAnswer[element.id - 1] === element.answers ? require('../../asset/Yes.png') : require('../../asset/No.png')} />
-                                        <View style={{ paddingLeft: '5%' }}>
-                                            <Text style={{ fontSize: responsiveScreenFontSize(2.1), fontWeight: 'bold', flexWrap: 'wrap', alignItems: 'flex-start' }}>{element.question}</Text>
+                                        <View style={{ paddingLeft: '5%', flex: 1 }}>
+                                            <Text style={{ fontSize: responsiveScreenFontSize(2.1), fontWeight: 'bold' }}>{element.question}</Text>
                                             <Text style={{ fontSize: responsiveScreenFontSize(2.5), fontWeight: 'bold', marginBottom: '2%' }} > เฉลย :</Text>
 
                                             {/* Object.keys(element.choices).map((id) => (<Text>{element[id]}</Text>)) */}
@@ -202,8 +202,8 @@ const styles = StyleSheet.create({
         // alignItems: 'flex-end'
         marginTop: '12%',
         fontWeight: '800',
-        fontSize: responsiveScreenFontSize(2.5),
-        padding: 3
+        fontSize: responsiveScreenFontSize(2.3),
+
     },
     questionFooter: {
         marginTop: '6%',
