@@ -91,18 +91,24 @@ export default function GameScreen7({ navigation, route }) {
 
                     </View>
                 </View>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }} >
+                    <TouchableOpacity onPress={() => navigation.navigate('Game')}>
+                        <Image
+                            style={styles.LeftButton}
+                            source={require('../../asset/ถ่ายรูปอีกครั้ง.png')}
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => {
+                        setStateAnswer({ plantName: plantName, difficulty: stateAnswer.difficulty })
+                        navigation.navigate('Question')
 
-                <TouchableOpacity onPress={() => {
-                    setStateAnswer({ plantName: plantName, difficulty: stateAnswer.difficulty })
-                    navigation.navigate('Question')
-
-                }} style={{ marginBottom: '20l%' }}>
-                    <Image
-                        style={styles.nextButton}
-                        source={require('../../asset/nextBig.png')}
-                    />
-                </TouchableOpacity>
-
+                    }} style={{ marginBottom: '20l%' }}>
+                        <Image
+                            style={styles.RightButton}
+                            source={require('../../asset/ถัดไป.png')}
+                        />
+                    </TouchableOpacity>
+                </View>
             </View>
 
         </SafeAreaView >
@@ -255,7 +261,7 @@ const styles = StyleSheet.create({
         marginTop: '36%'
     },
     nextButton: {
-        marginTop: '3%',
+
         // left: 120,
         // position: 'absolute',
         // top: 75,
@@ -281,5 +287,15 @@ const styles = StyleSheet.create({
         width: '48%',
         margin: '1%',
         aspectRatio: 1,
+    },
+    LeftButton: {
+        marginRight: '10%',
+        width: responsiveScreenWidth(40),
+        height: responsiveScreenHeight(10)
+    },
+    RightButton: {
+
+        width: responsiveScreenWidth(40),
+        height: responsiveScreenHeight(10)
     }
 });

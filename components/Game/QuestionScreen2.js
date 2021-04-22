@@ -30,6 +30,7 @@ export default function QuestionScreen2({ navigation }) {
     // right answer banner1 , mascot1, coin + 5, XP + 30
     // wrong answer, banner 2, mascot 2, coin + 20, XP + 50
     const [modalVisible, setModalVisible] = useState(false);
+    /* const bannerRight = require('../../asset/bannerRight.gif') */
     const bannerRight = require('../../asset/ปกถูก.png')
     const bannerWrong = require('../../asset/ปกผิด.png')
     const mascotRight = require('../../asset/ตอบถูก.png')
@@ -146,7 +147,7 @@ export default function QuestionScreen2({ navigation }) {
                     onPress={() => confirm()}
                 >
                     <Text style={styles.confirmButton}>Confirm</Text>
-                    <Text>{userAnswer}</Text>
+                    {/*  <Text>{userAnswer}</Text> */}
                 </Pressable>
 
             </View>
