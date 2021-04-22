@@ -29,8 +29,8 @@ export default function QuestionScreen3({ navigation }) {
     const [modalVisible, setModalVisible] = useState(false);
     const bannerRight = require('../../asset/ปกถูก.png')
     const bannerWrong = require('../../asset/ปกผิด.png')
-    const mascotRight = require('../../asset/ตอบถูก.png')
-    const mascotWrong = require('../../asset/ตอบผิด.png')
+    const mascotRight = require('../../asset/Correct.gif')
+    const mascotWrong = require('../../asset/Wrong.gif')
     //
     let banner = answer ? bannerRight : bannerWrong
     let mascot = answer ? mascotRight : mascotWrong

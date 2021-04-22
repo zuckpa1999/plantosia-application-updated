@@ -103,7 +103,7 @@ export default function QuestionScreen12({ navigation }) {
                                     <View style={{ flexDirection: 'row', paddingTop: '5%' }}>
                                         <Image source={stateQuestion.userAnswer[element.id - 1] === element.answers ? require('../../asset/Yes.png') : require('../../asset/No.png')} />
                                         <View style={{ paddingLeft: '5%' }}>
-                                            <Text style={{ fontSize: responsiveScreenFontSize(2), fontWeight: 'bold' }}>{element.question}</Text>
+                                            <Text style={{ fontSize: responsiveScreenFontSize(2.1), fontWeight: 'bold', flexWrap: 'wrap', alignItems: 'flex-start' }}>{element.question}</Text>
                                             <Text style={{ fontSize: responsiveScreenFontSize(2.5), fontWeight: 'bold', marginBottom: '2%' }} > เฉลย :</Text>
 
                                             {/* Object.keys(element.choices).map((id) => (<Text>{element[id]}</Text>)) */}

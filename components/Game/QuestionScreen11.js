@@ -27,10 +27,11 @@ export default function QuestionScreen11({ navigation }) {
     // right answer banner1 , mascot1, coin + 5, XP + 30
     // wrong answer, banner 2, mascot 2, coin + 20, XP + 50
     const [modalVisible, setModalVisible] = useState(false);
+    /* Correct.gif */
     const bannerRight = require('../../asset/ปกถูก.png')
     const bannerWrong = require('../../asset/ปกผิด.png')
-    const mascotRight = require('../../asset/ตอบถูก.png')
-    const mascotWrong = require('../../asset/ตอบผิด.png')
+    const mascotRight = require('../../asset/Correct.gif')
+    const mascotWrong = require('../../asset/Wrong.gif')
     //
     let banner = answer ? bannerRight : bannerWrong
     let mascot = answer ? mascotRight : mascotWrong

@@ -33,8 +33,8 @@ export default function QuestionScreen2({ navigation }) {
     /* const bannerRight = require('../../asset/bannerRight.gif') */
     const bannerRight = require('../../asset/ปกถูก.png')
     const bannerWrong = require('../../asset/ปกผิด.png')
-    const mascotRight = require('../../asset/ตอบถูก.png')
-    const mascotWrong = require('../../asset/ตอบผิด.png')
+    const mascotRight = require('../../asset/Correct.gif')
+    const mascotWrong = require('../../asset/Wrong.gif')
     //
     let banner = answer ? bannerRight : bannerWrong
     let mascot = answer ? mascotRight : mascotWrong
