@@ -94,7 +94,7 @@ export default function QuestionScreen12({ navigation }) {
                 <ScrollView showsVerticalScrollIndicator={false} style={{ marginBottom: '%' }}>
                     <View>
                         {configQuestion.map(element => (
-                            <View style={{ borderRadius: '5%', width: responsiveScreenWidth(80), height: responsiveScreenHeight(35), backgroundColor: 'white', flexDirection: 'column', alignItems: 'center', marginBottom: '3%' }}>
+                            <View style={{ borderRadius: '5%', width: responsiveScreenWidth(80), height: responsiveScreenHeight(35), backgroundColor: 'white', flexDirection: 'column', alignItems: 'center', marginBottom: '3%', justifyContent: 'flex-start', }}>
                                 <Image
                                     style={{ marginTop: '3%', width: responsiveScreenWidth(34), height: responsiveScreenHeight(12) }}
                                     source={stateAnswer.difficulty === 'hard' ? Images_hard[stateAnswer.plantName] : Images[element.id - 1]}

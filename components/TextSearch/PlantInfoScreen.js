@@ -367,11 +367,13 @@ const styles = StyleSheet.create({
     },
     PlantCharacterContainer: {
         width: responsiveScreenWidth(85),
-        height: responsiveScreenHeight(30),
+        /*   height: responsiveScreenHeight(34), */
         backgroundColor: '#FFFFFF',
         borderRadius: 10,
         flexDirection: 'column',
-        marginTop: '3%'
+        marginTop: '3%',
+        justifyContent: 'flex-start',
+        /* flexDirection: 'column' */
     },
     PlantCharacterContainerTop: {
         width: responsiveScreenWidth(85),

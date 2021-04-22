@@ -34,9 +34,10 @@ export default function TemplateAnswerScreen(props) {
                     <Text style={{
                         textAlign: 'center', fontSize: 23, fontWeight: '600', marginLeft: '9%'
                     }}>Questions {indexQuestion} / {numQuestion}</Text>
+                    {/* < TouchableOpacity onPress={() => navigation.navigate('TextSearch')}></TouchableOpacity> */}
                     < TouchableOpacity >
                         <Image
-                            style={{ width: 50, height: 50, marginBottom: "100%", marginLeft: '-3%' }}
+                            style={{ width: 70, height: 70, marginBottom: "70%", marginLeft: '-6%' }}
                             source={require('../../asset/searchButton.png')}
                         />
                     </TouchableOpacity>
@@ -90,17 +91,20 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderColor: 'white',
         height: responsiveScreenHeight(9), // 50% of Screen height,
-        width: responsiveScreenWidth(43),// 50% of Screen width
-        margin: '1%',
+        width: responsiveScreenWidth(45),// 50% of Screen width
+
         marginTop: '5%'
     },
     choiceOption: {
+        alignItems: 'flex-start',
         textAlign: 'center',
         // flexDirection: 'column',
         // alignItems: 'flex-end'
-        marginTop: '17%',
+        marginTop: '13%',
         fontWeight: '600',
-        fontSize: 18,
+        fontSize: responsiveScreenFontSize(2),
+
+
     },
     greenArea: {
 

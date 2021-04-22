@@ -41,8 +41,7 @@ export default function TextSearchScreen({ navigation }) {
         setTextState(search)
     };
 
-
-    let PlantThaiName = (plantName) => {
+    let PlantThaiName = plantName => {
         switch (plantName) {
             case 'Musa Sapientum':
                 return 'กล้วยหอม'
@@ -216,7 +215,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#eee",
         overflow: "hidden",
         width: responsiveScreenWidth(82),
-        height: responsiveScreenHeight(25),
+        height: responsiveScreenHeight(28),
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,
         marginTop: '2%'
@@ -230,7 +229,7 @@ const styles = StyleSheet.create({
         marginBottom: '3%'
     },
     scientificName: {
-        fontSize: 15,
+        fontSize: 17,
         fontWeight: '500',
 
 
