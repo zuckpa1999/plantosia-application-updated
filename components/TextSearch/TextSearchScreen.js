@@ -75,17 +75,22 @@ export default function TextSearchScreen({ navigation }) {
         try {
             /* alert(plantName) */
             const response = await fetch(`http://192.168.1.102:3100/getPlantName/${plantName}`)
+            //172.27.146.76.
+            // 172.27.145.164
+            //old one  const response = await fetch(`http://192.168.1.102:3100/getPlantName/${plantName}`)
+            const plantAttribute = await response.json();
 
-            const jsonData = await response.json();
-
-            alert(jsonData)
+            /* alert(response) */
+            /*            alert(Object.keys(plantAttribute))
+                       alert(plantAttribute['Plant ID']) */
+            alert(plantAttribute['Plant Name'])
             /* setplantInfo(jsonData) */
             /*     let delayInMilliseconds = 1000; //1 second
     
                 setTimeout(function () {
                     //your code to be executed after 1 second
                 }, delayInMilliseconds); */
-            navigation.navigate('PlantInfo', { plantName: jsonData, plantNameThai: PlantThaiName(jsonData) })
+            navigation.navigate('PlantInfo', plantAttribute)
             alert('zxccz')
 
         } catch (err) {
