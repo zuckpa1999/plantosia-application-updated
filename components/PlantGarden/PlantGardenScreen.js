@@ -27,8 +27,8 @@ export default function PlantGardenScreen({ navigation }) {
                 <Image style={{ top: -15 }} source={require('../../asset/text_search/plantGardenBanner.png')} />
                 <View style={styles.upperBodyBackground}>
 
-                    <Image style={styles.spaceBackground} source={require('../../asset/text_search/sun.png')} />
-                    <Image source={require('../../asset/text_search/cloud.png')} />
+                    <Image style={styles.spaceBackground} source={require('../../asset/plant_garden/Sun.gif')} />
+                    <Image source={require('../../asset/plant_garden/Cloud.gif')} />
                 </View>
                 {/* <View >
                 <Draggable />
