@@ -50,7 +50,15 @@ export default function ImageSearchScreen3({ navigation }) {
     }
     const fetchInfo = async () => {
 
-        await axios.get(`http://192.168.1.102:3100/info`).then(res => { navigation.navigate('ImageSearch5', { plantName: res.data.title[0], confidence: res.data.title[1], fileName: fileName }) })
+        await axios.get(`http://192.168.1.102:3100/info`).then(res => {
+            /* alert(typeof res.data.title) */
+            /* alert(Object.leys(res.data.title)) */
+            /* alert(res.data.title) */
+            /* alert(res.data.title[0])
+            alert(res.data.title[1]) */
+            alert(res.data.title[1] === undefined)
+            navigation.navigate('ImageSearch5', { plantName: res.data.title[0], confidence: res.data.title[1] === undefined ? null : res.data.title[1] })
+        })
         /* const Data = res.data.title */
 
         /*   await axios.get(`http://192.168.1.102:3100/uploadedImage`)

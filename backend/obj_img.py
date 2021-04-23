@@ -126,15 +126,20 @@ def main():
 			indexes = cv2.dnn.NMSBoxes(boxes, confidences, 0.5, 0.4)
 			font = cv2.FONT_HERSHEY_PLAIN
 			colors = np.random.uniform(0, 255, size=(len(boxes), 3))
-			
-			for i in indexes.flatten():
-				x, y, w, h = boxes[i]
-				label = str(classes[class_ids[i]])
-				
-				confidence = str(round(confidences[i],2))
-				color = colors[i]
-				cv2.rectangle(img, (x,y), (x+w, y+h), color, 2)
-				cv2.putText(img, label + " " + confidence, (x, y+20), font, 2, (255,255,255), 2)
+			try:
+				for i in indexes.flatten():
+					x, y, w, h = boxes[i]
+					label = str(classes[class_ids[i]])
+					
+					confidence = str(round(confidences[i],2))
+					color = colors[i]
+					cv2.rectangle(img, (x,y), (x+w, y+h), color, 2)
+					cv2.putText(img, label + " " + confidence, (x, y+20), font, 2, (255,255,255), 2)
+			except AttributeError:
+				print("Attribute Error: The confidence is lower than 0.5")
+			except:
+				print('Error')
+    			# except AttributeError:	
 			count = count +1
 				#dict_occurance ={ ' Ixora Coccinea' : 0  , 'Bougainvillea' : 0, 'Cocos Nucifera' : 0, 'Mucuna Pruriens' : 0, 'Musa Sapientum' : 0, 'Oryza Sativa' : 0 }
 
@@ -237,26 +242,24 @@ def main():
 		font = cv2.FONT_HERSHEY_PLAIN
 		colors = np.random.uniform(0, 255, size=(len(boxes), 3))
 		
-		for i in indexes.flatten():
-			x, y, w, h = boxes[i]
-			label = str(classes[class_ids[i]])
-			
-			confidence = str(round(confidences[i],2))
-			color = colors[i]
-			cv2.rectangle(img, (x,y), (x+w, y+h), color, 2)
-			cv2.putText(img, label + " " + confidence, (x, y+20), font, 2, (255,255,255), 2)
 
-		print(label)
-		print(confidence)
+		try:
+			for i in indexes.flatten():
+				x, y, w, h = boxes[i]
+				label = str(classes[class_ids[i]])
+				
+				confidence = str(round(confidences[i],2))
+				color = colors[i]
+				cv2.rectangle(img, (x,y), (x+w, y+h), color, 2)
+				cv2.putText(img, label + " " + confidence, (x, y+20), font, 2, (255,255,255), 2)
+				print(label)
+				print(confidence)
+		except AttributeError:
+			print("Attribute Error: The confidence is lower than 0.5")
+		except:
+			print('Error')
+		
 	
-
-
-
-
-
-
-
-
 
 
 	# show  image 

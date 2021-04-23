@@ -13,7 +13,7 @@ export default function ImageSearchScreen5({ navigation, route }) {
     const [hasPermission, setHasPermission] = useState(null);
     const [cameraRef, setCameraRef] = useState(null)
     const [type, setType] = useState(Camera.Constants.Type.back);
-    const { plantName, confidence, fileName } = route.params
+    const { plantName, confidence } = route.params
 
     /*  useEffect(() => {
          (async () => {
@@ -120,27 +120,42 @@ export default function ImageSearchScreen5({ navigation, route }) {
                     source={require('../../asset/ผลลัพธ์.png')}
                 />
 
-
-                <View style={{ backgroundColor: "#eee", borderRadius: 20, overflow: "hidden", width: 340, height: 250, top: -48 }}>
-                    <View>
-                        <Image
-                            source={Images_plant_card_container[plantName]}
-                            style={styles.ImageDetail}
-                        />
-                    </View>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', padding: 15 }}>
-                        <View style={{ paddingRight: 60 }}>
-                            <Text style={styles.ThaiName}>{PlantThaiName(plantName)}</Text>
-                            <Text style={styles.EnglishName}>{plantName}</Text>
+                {plantName !== 'Attribute Error: The confidence is lower than 0.5' ?
+                    <View style={{ backgroundColor: "#eee", borderRadius: 20, overflow: "hidden", width: 340, height: 250, top: -48 }}>
+                        <View>
+                            <Image
+                                source={Images_plant_card_container[plantName]}
+                                style={styles.ImageDetail}
+                            />
                         </View>
-                        <View style={styles.similarColumn}>
-                            <Text style={styles.similarity}>ความคล้าย</Text>
-                            <Text style={styles.percentage}>{confidence}</Text>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', padding: 15 }}>
+                            <View style={{ paddingRight: 60 }}>
+                                <Text style={styles.ThaiName}>{PlantThaiName(plantName)}</Text>
+                                <Text style={styles.EnglishName}>{plantName}</Text>
+                            </View>
+                            <View style={styles.similarColumn}>
+                                <Text style={styles.similarity}>ความคล้าย</Text>
+                                <Text style={styles.percentage}>{confidence}</Text>
+                            </View>
                         </View>
-                    </View>
-                </View>
+                    </View> : <View style={{ backgroundColor: "#eee", borderTopLeftRadius: 20, borderTopRightRadius: 20, overflow: "hidden", width: 340, height: 200, top: -48 }}>
+                        <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: '7%' }}>
+                            <Text style={{ fontSize: responsiveScreenFontSize(3), fontWeight: '700', height: 80 }}>ไม่พบผลลัพธ์ของพืชชนิดนี้</Text></View>
+                        <View style={{ backgroundColor: '#FFED9E', height: 96 }}>
+                            <Text style={{ textAlign: 'center', marginTop: '3%', padding: '3%', fontWeight: '700', fontSize: responsiveScreenFontSize(1.9) }}>หมายเหตุ:  ชนิดของพืชนี้อาจจะไม่มีอยู่ในระบบ
+                            หรือ รูปภาพที่ถ่ายไม่ชัดเจนพอที่จะหา
+                            ชนิดของพืชได้</Text>
+                        </View>
+                    </View>}
 
+                {plantName === 'Attribute Error: The confidence is lower than 0.5' ? <TouchableOpacity
+                    activeOpacity={0.7}
+                    onPress={() => navigation.navigate('Home')}
+                    style={{ top: -35 }}
 
+                >
+                    <Image source={require('../../asset/gpBackAgain.png')} />
+                </TouchableOpacity> : null}
                 <TouchableOpacity
                     activeOpacity={0.7}
                     onPress={() => navigation.navigate('Home')}
@@ -261,7 +276,7 @@ const styles = StyleSheet.create({
         width: responsiveScreenWidth(85)
     },
     /*   top: {
-          flexDirection: 'row',
+                flexDirection: 'row',
           // justifyContent: 'center',
           justifyContent: 'space-between',
           marginBottom: '3%',

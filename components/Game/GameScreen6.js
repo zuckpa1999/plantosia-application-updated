@@ -81,7 +81,8 @@ export default function GameScreen6({ navigation }) {
 
 
         /*  alert('fe') */
-        alert(Data.data.data)
+        /*         alert(Data.data.data)
+                alert(typeof Data.data.data) */
         /*    alert(Data[0])
            alert(Data[1]) */
         /*   alert('bkabka')
@@ -94,6 +95,7 @@ export default function GameScreen6({ navigation }) {
                 plantName: plantNameAndConfidence[0], confidence: plantNameAndConfidence[1]
             })
         }
+        //(plantNameAndConfidence === 'Attribute Error: The confidence is lower than 0.5') 
         else {
             navigation.navigate('Game7_2')
         }

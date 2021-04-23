@@ -79,6 +79,7 @@ export default function GameScreen7_2({ navigation }) {
                     />
                 </TouchableOpacity>
 
+
             </View>
 
         </SafeAreaView >
@@ -201,7 +202,9 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         position: 'relative',
         top: -47,
-        backgroundColor: '#FFED9E'
+        backgroundColor: '#FFED9E',
+        flexDirection: 'row',
+        flexWrap: 'wrap'
 
     },
     box2: {
@@ -223,9 +226,9 @@ const styles = StyleSheet.create({
     },
     msg_yellow: {
         textAlign: 'center',
-        fontWeight: '700',
-        padding: 16,
-        fontSize: 13,
+        fontWeight: '800',
+        padding: 10,
+        fontSize: 15,
 
 
     },
