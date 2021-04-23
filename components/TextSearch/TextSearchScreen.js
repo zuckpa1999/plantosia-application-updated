@@ -29,6 +29,7 @@ export default function TextSearchScreen({ navigation }) {
             });
             setFilteredDataSource(newData);
             setSearch(text);
+            alert(newData)
         } else {
             // Inserted text is blank
             // Update FilteredDataSource with masterDataSource
@@ -66,7 +67,17 @@ export default function TextSearchScreen({ navigation }) {
         }
     }
 
+    const getPlantName = plantName => {
 
+        if (plantName === 'Banana' || plantName === 'Musa Sapientum' || plantName === PlantThaiName('Musa Sapientum')) { sendPlantName('Musa Sapientum') }
+        else if (plantName === 'Coconut' || plantName === 'Cocos Nucifera' || plantName === PlantThaiName('Cocos Nucifera')) { sendPlantName('Cocos Nucifera') }
+        else if (plantName === 'Paper' || plantName === 'Bougainvillea' || plantName === PlantThaiName('Bougainvillea')) { sendPlantName('Bougainvillea') }
+        else if (plantName === 'Rice' || plantName === 'Oryza Sativa' || plantName === PlantThaiName('Oryza Sativa')) { sendPlantName('Oryza Sativa') }
+        else if (plantName === 'Velvet Bean' || plantName === 'Mucuna Pruriens' || plantName === PlantThaiName('Mucuna Pruriens')) { sendPlantName('Mucuna Pruriens') }
+        else if (plantName === 'West Indian Jasmine' || plantName === 'Ixora Coccinea' || plantName === PlantThaiName('Ixora Coccinea')) { sendPlantName('Ixora Coccinea') }
+        else { alert('Sorry we currently do not have the plant you want to search in our database') }
+
+    }
     let sendPlantName = async (plantName) => {
 
 
@@ -113,7 +124,7 @@ export default function TextSearchScreen({ navigation }) {
                                 searchIcon={{ size: 24 }}
                                 /*            onChangeText={(text) => searchFilterFunction(text)} */
                                 /*  onClear={(text) => searchFilterFunction('')} */
-                                placeholder="Type Here..."
+                                placeholder="พิมพ์พืชที่ต้องการค้นหา..."
                                 onChangeText={updateSearch}
                                 containerStyle={{ backgroundColor: '#94F098' }}
                                 inputContainerStyle={{ backgroundColor: 'white' }}
@@ -123,7 +134,11 @@ export default function TextSearchScreen({ navigation }) {
                             />
                         </View>
                     </SafeAreaView>
-                    <Image source={require('../../asset/searchButton.png')} style={{ marginTop: '2%', width: 50, height: 50 }} />
+                    <TouchableOpacity onPress={() => {
+                        getPlantName(textState)
+                    }}>
+                        <Image source={require('../../asset/searchButton.png')} style={{ marginTop: '15%', width: 50, height: 50 }} />
+                    </TouchableOpacity>
                 </View>
                 <TouchableOpacity style={styles.plantCharacterContainer} onPress={() => navigation.navigate('PlantComponent')}>
                     <View>
@@ -134,7 +149,7 @@ export default function TextSearchScreen({ navigation }) {
                     </View>
                     <Text style={styles.plantCharacterText}>ส่วนประกอบของพืช</Text>
                 </TouchableOpacity>
-
+                <Text>{textState}</Text>
                 <Text style={styles.recommendText}>★แนะนำ★</Text>
                 {/*   <Text>{allPlant.length}</Text>
                 <Text>{Object.keys(allPlant)}</Text> */}

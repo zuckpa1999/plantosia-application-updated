@@ -43,6 +43,8 @@ export default function plantShopScreen({ navigation }) {
                 <Text>statePlant length : {statePlant.length}</Text>
                 <Text>Object.keys(PlantShop)  : {Object.keys(PlantShop).length}</Text>
                 <Text>{statePlant.length == Object.keys(PlantShop)}</Text>
+                <View style={{ width: responsiveScreenWidth(35), height: responsiveScreenHeight(5), borderRadius: 30, backgroundColor: 'white', marginBottom: '5%', flexDirection: 'row', justifyContent: 'center', marginBottom: '3%', paddingTop: '1%', borderColor: '#87D38A', borderWidth: '3%' }}>
+                    <Text style={{ fontWeight: '600', fontSize: responsiveScreenFontSize(2.4), }}><Image style={{ width: 25, height: 25 }} source={require('../../asset/dollar_tiny.png')} />  {stateQuestion.COIN}</Text></View>
                 <ScrollView>
                     {statePlant.length === 3 ?
                         <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginLeft: '10%' }}>

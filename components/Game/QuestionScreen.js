@@ -58,7 +58,7 @@ export default function QuestionScreen({ navigation }) {
                     <Text>{currentChoice}</Text>
                 </View>
                 <TouchableOpacity onPress={() => {
-                    setStateQuestion({ COIN: 0, XP: 0, countCorrectAnswer: 0, userAnswer: [null] })
+                    /*  setStateQuestion({ COIN: 0, XP: 0, countCorrectAnswer: 0, userAnswer: [null] }) */
                     navigation.navigate('Question2')
                 }}>
                     <Image

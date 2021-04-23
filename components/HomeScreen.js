@@ -6,16 +6,27 @@ import {
     responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
 export default function HomeScreen({ navigation }) {
+    /* setStateQuestion({ COIN: 800, XP: stateQuestion.XP, countCorrectAnswer: stateQuestion.countCorrectAnswer, userAnswer: stateQuestion.userAnswer }) */
     return (
         <SafeAreaView style={styles.container}>
+            {/*    <View style={{ width: responsiveScreenWidth(35), height: responsiveScreenHeight(5), borderRadius: 30, backgroundColor: 'white', marginBottom: '5%', flexDirection: 'row', justifyContent: 'center', marginBottom: '3%', paddingTop: '1%', borderColor: '#87D38A', borderWidth: '3%' }}>
+                <Text style={{ fontWeight: '600', fontSize: responsiveScreenFontSize(2.4) }}>Reset</Text>
+            </View> */}
+
+
             <Image
                 style={styles.plantosiaLogo}
                 source={require('../asset/PlantosiaLogo.png')}
             />
-            <Image
 
-                source={require('../asset/BrocMascot.png')}
-            />
+            <TouchableOpacity onPress={() => {
+                setStateQuestion({ XP: 0, COIN: 0, countCorrectAnswer: 0, userAnswer: [null] })
+            }}>
+                <Image
+
+                    source={require('../asset/BrocMascot.png')}
+                />
+            </TouchableOpacity>
             <TouchableOpacity
                 activeOpacity={0.7}
                 onPress={() => navigation.navigate('Game')}

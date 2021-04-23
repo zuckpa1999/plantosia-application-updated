@@ -66,6 +66,48 @@ export default function PlantInfoScreen({ navigation, route }) {
                 return 'No plant'
         }
     }
+    const getPlantName = plantName => {
+
+        if (plantName === 'Banana' || plantName === 'Musa Sapientum' || plantName === PlantThaiName('Musa Sapientum')) { sendPlantName('Musa Sapientum') }
+        else if (plantName === 'Coconut' || plantName === 'Cocos Nucifera' || plantName === PlantThaiName('Cocos Nucifera')) { sendPlantName('Cocos Nucifera') }
+        else if (plantName === 'Paper' || plantName === 'Bougainvillea' || plantName === PlantThaiName('Bougainvillea')) { sendPlantName('Bougainvillea') }
+        else if (plantName === 'Rice' || plantName === 'Oryza Sativa' || plantName === PlantThaiName('Oryza Sativa')) { sendPlantName('Oryza Sativa') }
+        else if (plantName === 'Velvet Bean' || plantName === 'Mucuna Pruriens' || plantName === PlantThaiName('Mucuna Pruriens')) { sendPlantName('Mucuna Pruriens') }
+        else if (plantName === 'West Indian Jasmine' || plantName === 'Ixora Coccinea' || plantName === PlantThaiName('Ixora Coccinea')) { sendPlantName('Ixora Coccinea') }
+        else { alert('Sorry we currently do not have the plant you want to search in our database') }
+
+
+    }
+    let sendPlantName = async (plantName) => {
+
+
+
+        try {
+            /* alert(plantName) */
+            const response = await fetch(`http://192.168.1.102:3100/getPlantName/${plantName}`)
+            //172.27.146.76.
+            // 172.27.145.164
+            //old one  const response = await fetch(`http://192.168.1.102:3100/getPlantName/${plantName}`)
+            const plantAttribute = await response.json();
+
+            /* alert(response) */
+            /*            alert(Object.keys(plantAttribute))
+                       alert(plantAttribute['Plant ID']) */
+            alert(plantAttribute['Plant Name'])
+            /* setplantInfo(jsonData) */
+            /*     let delayInMilliseconds = 1000; //1 second
+    
+                setTimeout(function () {
+                    //your code to be executed after 1 second
+                }, delayInMilliseconds); */
+            navigation.navigate('PlantInfo', plantAttribute)
+
+
+        } catch (err) {
+            alert(err.message);
+        }
+
+    }
     return (
         <SafeAreaView style={styles.container}>
             <TemplateTop navigation={navigation} />
@@ -80,7 +122,7 @@ export default function PlantInfoScreen({ navigation, route }) {
                             <SearchBar
                                 round
                                 searchIcon={{ size: 24 }}
-                                placeholder="Type Here..."
+                                placeholder="พิมพ์พืชที่ต้องการค้นหา..."
                                 onChangeText={updateSearch}
                                 containerStyle={{ backgroundColor: '#94F098' }}
                                 inputContainerStyle={{ backgroundColor: 'white' }}
@@ -89,7 +131,11 @@ export default function PlantInfoScreen({ navigation, route }) {
                             />
                         </View>
                     </SafeAreaView>
-                    <Image source={require('../../asset/searchButton.png')} style={{ marginTop: '2%', width: 50, height: 50 }} />
+                    <TouchableOpacity onPress={() => {
+                        getPlantName(textState)
+                    }}>
+                        <Image source={require('../../asset/searchButton.png')} style={{ marginTop: '2%', width: 50, height: 50 }} />
+                    </TouchableOpacity>
                 </View>
                 <Image
                     source={Images_plant_card_container[PlantScientificName(plantAttribute['Plant Name'])]}
