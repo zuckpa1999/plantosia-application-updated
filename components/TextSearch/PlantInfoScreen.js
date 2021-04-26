@@ -202,7 +202,7 @@ export default function PlantInfoScreen({ navigation, route }) {
                     </View>
                     <View style={styles.PlantCharacterContainer}>
                         <View style={styles.PlantCharacterContainerTop}>
-                            <Image source={require('../../asset/text_search/BrocMascotMini.png')} />
+                            <Image source={require('../../asset/text_search/ราก.png')} />
                             <Text style={styles.PlantCharacterContainerTopHeader} >ราก</Text>
                         </View>
                         <View style={{ padding: '3%' }}>
@@ -223,7 +223,7 @@ export default function PlantInfoScreen({ navigation, route }) {
                     </View>
                     <View style={styles.PlantCharacterContainer}>
                         <View style={styles.PlantCharacterContainerTop}>
-                            <Image source={require('../../asset/text_search/BrocMascotMini.png')} />
+                            <Image source={require('../../asset/text_search/ลำต้น.png')} />
                             <Text style={styles.PlantCharacterContainerTopHeader} >ลำต้น</Text>
                         </View>
                         <View style={{ padding: '3%' }}>
@@ -251,7 +251,7 @@ export default function PlantInfoScreen({ navigation, route }) {
 
                     <View style={styles.PlantCharacterContainer}>
                         <View style={styles.PlantCharacterContainerTop}>
-                            <Image source={require('../../asset/text_search/BrocMascotMini.png')} />
+                            <Image source={require('../../asset/text_search/ใบ.png')} />
                             <Text style={styles.PlantCharacterContainerTopHeader} >ใบ</Text>
                         </View>
                         <View style={{ padding: '3%' }}>
@@ -306,7 +306,7 @@ export default function PlantInfoScreen({ navigation, route }) {
 
                     <View style={styles.PlantCharacterContainer}>
                         <View style={styles.PlantCharacterContainerTop}>
-                            <Image source={require('../../asset/text_search/BrocMascotMini.png')} />
+                            <Image source={require('../../asset/text_search/ดอก.png')} />
                             <Text style={styles.PlantCharacterContainerTopHeader} >ดอก</Text>
                         </View>
                         <View style={{ padding: '3%' }}>
@@ -339,7 +339,7 @@ export default function PlantInfoScreen({ navigation, route }) {
 
                     <View style={styles.PlantCharacterContainer}>
                         <View style={styles.PlantCharacterContainerTop}>
-                            <Image source={require('../../asset/text_search/BrocMascotMini.png')} />
+                            <Image source={require('../../asset/text_search/ผล.png')} />
                             <Text style={styles.PlantCharacterContainerTopHeader} >ผล</Text>
                         </View>
                         <View style={{ padding: '3%' }}>
@@ -366,7 +366,7 @@ export default function PlantInfoScreen({ navigation, route }) {
 
                     <View style={styles.PlantCharacterContainer}>
                         <View style={styles.PlantCharacterContainerTop}>
-                            <Image source={require('../../asset/text_search/BrocMascotMini.png')} />
+                            <Image source={require('../../asset/text_search/สภาพเเวดล้อมที่เหมาะสม.png')} />
                             <Text style={styles.PlantCharacterContainerTopHeader} >สภาพแวดล้อมที่เหมาะสม</Text>
                         </View>
                         <View style={{ padding: '3%' }}>
