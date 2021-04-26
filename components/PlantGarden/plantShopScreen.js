@@ -26,6 +26,11 @@ export default function plantShopScreen({ navigation }) {
         }
 
     }
+    const getLevel = () => {
+        if (stateQuestion.XP >= 0 && stateQuestion.XP <= 300) return 1
+        else if (stateQuestion.XP >= 301 && stateQuestion.XP <= 600) return 2
+        else if (stateQuestion.XP >= 601) return 3
+    }
     return (
         <SafeAreaView style={styles.container}>
             {/* Group160 */}
@@ -44,7 +49,11 @@ export default function plantShopScreen({ navigation }) {
                 <Text>Object.keys(PlantShop)  : {Object.keys(PlantShop).length}</Text>
                 <Text>{statePlant.length == Object.keys(PlantShop)}</Text>
                 <View style={{ width: responsiveScreenWidth(35), height: responsiveScreenHeight(5), borderRadius: 30, backgroundColor: 'white', marginBottom: '5%', flexDirection: 'row', justifyContent: 'center', marginBottom: '3%', paddingTop: '1%', borderColor: '#87D38A', borderWidth: '3%' }}>
-                    <Text style={{ fontWeight: '600', fontSize: responsiveScreenFontSize(2.4), }}><Image style={{ width: 25, height: 25 }} source={require('../../asset/dollar_tiny.png')} />  {stateQuestion.COIN}</Text></View>
+                    <Text style={{ fontWeight: '600', fontSize: responsiveScreenFontSize(2.5), }}> เลเวล  {getLevel()}</Text>
+                </View>
+                <View style={{ width: responsiveScreenWidth(35), height: responsiveScreenHeight(5), borderRadius: 30, backgroundColor: 'white', marginBottom: '5%', flexDirection: 'row', justifyContent: 'center', marginBottom: '3%', paddingTop: '1%', borderColor: '#87D38A', borderWidth: '3%' }}>
+                    <Text style={{ fontWeight: '600', fontSize: responsiveScreenFontSize(2.4), }}><Image style={{ width: 25, height: 25 }} source={require('../../asset/dollar_tiny.png')} />  {stateQuestion.COIN}</Text>
+                </View>
                 <ScrollView>
                     {statePlant.length === 3 ?
                         <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginLeft: '10%' }}>
@@ -53,16 +62,19 @@ export default function plantShopScreen({ navigation }) {
                         </View> :
                         Object.keys(PlantShop).map((plant) => (
                             !statePlant.includes(plant) ?
-                                <TouchableOpacity onPress={() => clickCard(plant)}>
+
+                                <TouchableOpacity onPress={() => getLevel() >= PlantShop[plant].levelConstraint ? clickCard(plant) : alert('You cant buy this plant due to insufficient COIN or XP')}>
                                     <View style={styles.cardContainer}>
-                                        <View style={styles.cardContainerLeft}>
+
+                                        <View style={getLevel() >= PlantShop[plant].levelConstraint ? styles.cardContainerLeft : styles.cardContainerLeftcantBuy}>
                                             <Image style={{ marginTop: '45%', marginLeft: '10%' }} source={Images_plantShop[plant]} />
                                         </View>
-                                        <View style={styles.cardContainerRight}>
+                                        <View style={getLevel() >= PlantShop[plant].levelConstraint ? styles.cardContainerRight : styles.cardContainerRightcantBuy}>
 
                                             <Text style={styles.text1}>{plant}</Text>
                                             <Text style={styles.text2}><Image source={require('../../asset/plant_garden/coin.png')} />{PlantShop[plant].cost}</Text>
                                             <Text style={styles.text3}>{PlantShop[plant].description}</Text>
+                                            {getLevel() >= PlantShop[plant].levelConstraint ? null : <Text style={styles.text4}>เลเวล {PlantShop[plant].levelConstraint} เพื่อปลดล็อค</Text>}
                                         </View>
 
                                     </View>
@@ -98,11 +110,13 @@ const styles = StyleSheet.create({
     },
     cardContainer: {
         width: responsiveScreenWidth(82),
-        height: responsiveScreenHeight(21),
+        /* height: responsiveScreenHeight(21), */
         /* backgroundColor: 'white', */
         /* borderRadius: 20, */
         flexDirection: 'row',
-        marginBottom: '3%'
+        marginBottom: '8%',
+        flexWrap: 'wrap',
+
     },
     cardContainerLeft: {
         backgroundColor: '#FFED9E',
@@ -110,8 +124,27 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 20,
         borderBottomLeftRadius: 20
     },
+    cardContainerLeftcantBuy: {
+        backgroundColor: '#FFED9E',
+        opacity: 0.5,
+        flex: 1,
+        borderTopLeftRadius: 20,
+        borderBottomLeftRadius: 20
+    },
     cardContainerRight: {
         backgroundColor: 'white',
+        flex: 2,
+        borderTopRightRadius: 20,
+        borderBottomRightRadius: 20,
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
+        paddingLeft: '5%'
+
+    },
+    cardContainerRightcantBuy: {
+        backgroundColor: 'white',
+        opacity: 0.5,
         flex: 2,
         borderTopRightRadius: 20,
         borderBottomRightRadius: 20,
@@ -135,6 +168,10 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         fontSize: responsiveScreenFontSize(2),
 
+    },
+    text4: {
+        fontWeight: '800',
+        fontSize: responsiveScreenFontSize(2.5),
     }
 }
 )
