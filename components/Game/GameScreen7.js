@@ -43,7 +43,36 @@ export default function GameScreen7({ navigation, route }) {
                 return 'No plant'
         }
     }
+    let sendPlantName = async (plantName) => {
 
+
+
+        try {
+            /* alert(plantName) */
+            const response = await fetch(`http://192.168.1.102:3100/getPlantName/${plantName}`)
+            //172.27.146.76.
+            // 172.27.145.164
+            //old one  const response = await fetch(`http://192.168.1.102:3100/getPlantName/${plantName}`)
+            const plantAttribute = await response.json();
+
+            /* alert(response) */
+            /*            alert(Object.keys(plantAttribute))
+                       alert(plantAttribute['Plant ID']) */
+            alert(plantAttribute['Plant Name'])
+            /* setplantInfo(jsonData) */
+            /*     let delayInMilliseconds = 1000; //1 second
+    
+                setTimeout(function () {
+                    //your code to be executed after 1 second
+                }, delayInMilliseconds); */
+            navigation.navigate('PlantInfo', plantAttribute)
+            alert('zxccz')
+
+        } catch (err) {
+            alert(err.message);
+        }
+
+    }
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.top}>
@@ -71,27 +100,31 @@ export default function GameScreen7({ navigation, route }) {
                     source={require('../../asset/ผลลัพธ์.png')}
                     style={styles.result}
                 />
-                <View style={{ flex: 1 }}>
-                    <View style={{ backgroundColor: "#eee", borderRadius: 20, overflow: "hidden", marginBottom: 20, width: 340, height: 250 }}>
-                        <View>
-                            <Image
-                                source={Images_plant_card_container[stateAnswer.plantName]}
-                                style={styles.ImageDetail}
-                            />
-                        </View>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', padding: 15 }}>
-                            <View style={{ paddingRight: 60 }}>
-                                <Text style={styles.ThaiName}>{PlantThaiName()}</Text>
-                                <Text style={styles.EnglishName}>{plantName}</Text>
-                            </View>
-                            <View style={styles.similarColumn}>
-                                <Text style={styles.similarity}>ความคล้าย</Text>
-                                <Text style={styles.percentage}>{confidence}</Text>
-                            </View>
-                        </View>
 
-                    </View>
+                <View style={{ flex: 1 }}>
+                    <TouchableOpacity onPress={() => sendPlantName(plantName)}>
+                        <View style={{ backgroundColor: "#eee", borderRadius: 20, overflow: "hidden", marginBottom: 20, width: 340, height: 250 }}>
+                            <View>
+                                <Image
+                                    source={Images_plant_card_container[stateAnswer.plantName]}
+                                    style={styles.ImageDetail}
+                                />
+                            </View>
+                            <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', padding: 15 }}>
+                                <View style={{ paddingRight: 60 }}>
+                                    <Text style={styles.ThaiName}>{PlantThaiName()}</Text>
+                                    <Text style={styles.EnglishName}>{plantName}</Text>
+                                </View>
+                                <View style={styles.similarColumn}>
+                                    <Text style={styles.similarity}>ความคล้าย</Text>
+                                    <Text style={styles.percentage}>{confidence}</Text>
+                                </View>
+                            </View>
+
+                        </View>
+                    </TouchableOpacity>
                 </View>
+
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }} >
                     <TouchableOpacity onPress={() => {
                         setStateImage([])
