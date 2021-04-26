@@ -18,6 +18,7 @@ export default function TemplateAnswerScreen(props) {
     // let configQuestion = questions.easy[props.index].choices
     const [stateAnswer, setStateAnswer] = useContext(GlobalStateUserAnswer)
     let index = props.index
+    let configChoices = stateAnswer.difficulty === 'hard' ? questions.hard[stateAnswer.plantName][index].choices : questions.easy[index].choices
     const img = stateAnswer.difficulty === 'hard' ? Images_hard[stateAnswer.plantName] : Images[index];
     let question = stateAnswer.difficulty === 'hard' ? questions.hard[stateAnswer.plantName][index].question : questions.easy[props.index].question
     let answer = stateAnswer.difficulty === 'hard' ? questions.hard[stateAnswer.plantName][index].answers : questions.easy[props.index].answers
@@ -34,10 +35,9 @@ export default function TemplateAnswerScreen(props) {
                     <Text style={{
                         textAlign: 'center', fontSize: 23, fontWeight: '600', marginLeft: '9%'
                     }}>Questions {indexQuestion} / {numQuestion}</Text>
-                    {/* < TouchableOpacity onPress={() => navigation.navigate('TextSearch')}></TouchableOpacity> */}
                     < TouchableOpacity >
                         <Image
-                            style={{ width: 70, height: 70, marginBottom: "70%", marginLeft: '-6%' }}
+                            style={{ width: 50, height: 50, marginBottom: "100%", marginLeft: '-3%' }}
                             source={require('../../asset/searchButton.png')}
                         />
                     </TouchableOpacity>
@@ -60,7 +60,12 @@ export default function TemplateAnswerScreen(props) {
                     {/* <Text style={styles.choiceOption}>{configQuestion[key]}</Text> */}
                     <Text style={styles.choiceOption}>{answer}</Text>
                 </TouchableOpacity>
+                {answer === 'ถูกทุกข้อข้างต้น' ?
+                    Object.keys(configChoices).map((key) => (configChoices[key] !== 'ถูกทุกข้อข้างต้น' && configChoices[key] !== 'ผิดทุกข้อข้างต้น' ?
+                        <TouchableOpacity style={styles.answerContainer}>
+                            <Text key={key} style={{ marginLeft: '10%', fontSize: responsiveScreenFontSize(2), fontWeight: 'normal' }}>{configChoices[key]}</Text>
 
+                        </TouchableOpacity> : null)) : null}
                 {/*   <TouchableOpacity onPress={() => navigation.navigate('Test')}>
                     <Image
                         style={styles.nextButton}
@@ -68,7 +73,7 @@ export default function TemplateAnswerScreen(props) {
                     />
                 </TouchableOpacity> */}
             </View>
-
+            {/*   <Text>{answer}xxxxxx</Text> */}
 
 
         </SafeAreaView >
@@ -91,21 +96,29 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderColor: 'white',
         height: responsiveScreenHeight(9), // 50% of Screen height,
-        width: responsiveScreenWidth(45),// 50% of Screen width
-
+        width: responsiveScreenWidth(43),// 50% of Screen width
+        margin: '1%',
         marginTop: '5%'
     },
+    answerContainer: {
+        width: responsiveScreenWidth(42),
+
+        backgroundColor: '#FFED9E',
+        marginBottom: '1%',
+        flexWrap: 'wrap',
+        flexDirection: 'row',
+        borderRadius: 10
+
+    },
     choiceOption: {
-        alignItems: 'flex-start',
         textAlign: 'center',
         // flexDirection: 'column',
         // alignItems: 'flex-end'
-        marginTop: '13%',
+        marginTop: '17%',
         fontWeight: '600',
-        fontSize: responsiveScreenFontSize(2),
-
-
+        fontSize: 18,
     },
+
     greenArea: {
 
         backgroundColor: '#94F098',

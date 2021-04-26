@@ -44,7 +44,7 @@ export default function templateQuestion({ navigation, index, sendDataToParent }
                 }}>Questions {indexQuestion} / {numQuestion}</Text>
                 < TouchableOpacity onPress={() => navigation.navigate('TextSearch')}>
                     <Image
-                        style={{ width: 70, height: 70, marginBottom: "70%", marginLeft: '-6%' }}
+                        style={{ width: 70, height: 70, marginBottom: "0%", marginLeft: '-6%' }}
                         source={require('../../asset/searchButton.png')}
                     />
                 </TouchableOpacity>
@@ -103,7 +103,8 @@ const styles = StyleSheet.create({
         borderColor: 'white',
         height: responsiveScreenHeight(9), // 50% of Screen height,
         width: responsiveScreenWidth(43),// 50% of Screen width
-        margin: '1%'
+        margin: '1%',
+
     },
     choiceContainer2: {
         backgroundColor: 'white',
@@ -128,7 +129,7 @@ const styles = StyleSheet.create({
         marginTop: '12%',
         fontWeight: '400',
         fontSize: 17,
-        padding: 5
+        padding: 2
     },
 
     banner: {
