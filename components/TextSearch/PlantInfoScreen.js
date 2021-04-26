@@ -66,6 +66,30 @@ export default function PlantInfoScreen({ navigation, route }) {
                 return 'No plant'
         }
     }
+    let PlantThaiToScientificName = plantName => {
+        switch (plantName) {
+            case 'กล้วยหอม':
+                return 'Musa Sapientum'
+                break;
+            case 'มะพร้าว':
+                return 'Cocos Nucifera'
+                break;
+            case 'ดอกเฟื่องฟ้า':
+                return 'Bougainvillea'
+                break;
+            case 'ข้าว':
+                return 'Oryza Sativa'
+                break;
+            case 'หมามุ้ย':
+                return 'Mucuna Pruriens'
+                break;
+            case 'ดอกเข็ม':
+                return 'Ixora Coccinea'
+                break;
+            default:
+                return 'No plant'
+        }
+    }
     const getPlantName = plantName => {
 
         if (plantName === 'Banana' || plantName === 'Musa Sapientum' || plantName === PlantThaiName('Musa Sapientum')) { sendPlantName('Musa Sapientum') }
@@ -138,11 +162,11 @@ export default function PlantInfoScreen({ navigation, route }) {
                     </TouchableOpacity>
                 </View>
                 <Image
-                    source={Images_plant_card_container[PlantScientificName(plantAttribute['Plant Name'])]}
+                    source={Images_plant_card_container[PlantThaiToScientificName(plantAttribute['Plant Name'])]}
                     style={styles.ImageDetail}
                 />
-                <Text style={styles.plantThainame}>{PlantThaiName(PlantScientificName(plantAttribute['Plant Name']))}</Text>
-                <Text style={styles.plantScientificName}>{PlantScientificName(plantAttribute['Plant Name'])}</Text>
+                <Text style={styles.plantThainame}>{plantAttribute['Plant Name']}</Text>
+                <Text style={styles.plantScientificName}>{PlantThaiToScientificName(plantAttribute['Plant Name'])}</Text>
                 <ScrollView>
                     <View style={styles.PlantCharacterContainer}>
                         <View style={styles.PlantCharacterContainerTop}>
@@ -150,26 +174,30 @@ export default function PlantInfoScreen({ navigation, route }) {
                             <Text style={styles.PlantCharacterContainerTopHeader} >ลักษณะพื้นฐานของพืช</Text>
                         </View>
                         <View style={{ padding: '3%' }}>
-                            <Text style={styles.PlantCharacterHeader}>ความสูง:
+                            {plantAttribute['Plant Height'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>ความสูง:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Plant Height']}
-                                </Text>
-                            </Text>
-                            <Text style={styles.PlantCharacterHeader}>ถิ่นกำเนิด:
+                                        {plantAttribute['Plant Height']}
+                                    </Text>
+                                </Text> : null}
+                            {plantAttribute['Local Location'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>ถิ่นกำเนิด:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Local Location']}
-                                </Text>
-                            </Text>
-                            <Text style={styles.PlantCharacterHeader}>ราคาตลาด:
+                                        {plantAttribute['Local Location']}
+                                    </Text>
+                                </Text> : null}
+                            {plantAttribute['Market Price'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>ราคาตลาด:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Market Price']}
-                                </Text>
-                            </Text>
-                            <Text style={styles.PlantCharacterHeader}>ความเป็นพิษ:
+                                        {plantAttribute['Market Price']}
+                                    </Text>
+                                </Text> : null}
+                            {plantAttribute['Toxicity'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>ความเป็นพิษ:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Toxicity']}
-                                </Text>
-                            </Text>
+                                        {plantAttribute['Toxicity']}
+                                    </Text>
+                                </Text> : null}
                         </View>
                     </View>
                     <View style={styles.PlantCharacterContainer}>
@@ -178,16 +206,18 @@ export default function PlantInfoScreen({ navigation, route }) {
                             <Text style={styles.PlantCharacterContainerTopHeader} >ราก</Text>
                         </View>
                         <View style={{ padding: '3%' }}>
-                            <Text style={styles.PlantCharacterHeader}>ชนิดของราก:
+                            {plantAttribute['Root Type'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>ชนิดของราก:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Root Type']}
-                                </Text>
-                            </Text>
-                            <Text style={styles.PlantCharacterHeader}>สรรพคุณของราก:
+                                        {plantAttribute['Root Type']}
+                                    </Text>
+                                </Text> : null}
+                            {plantAttribute['Root Medical Property'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>สรรพคุณของราก:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Root Medical Property']}
-                                </Text>
-                            </Text>
+                                        {plantAttribute['Root Medical Property']}
+                                    </Text>
+                                </Text> : null}
 
                         </View>
                     </View>
@@ -197,21 +227,24 @@ export default function PlantInfoScreen({ navigation, route }) {
                             <Text style={styles.PlantCharacterContainerTopHeader} >ลำต้น</Text>
                         </View>
                         <View style={{ padding: '3%' }}>
-                            <Text style={styles.PlantCharacterHeader}>ชนิดของลำต้น:
+                            {plantAttribute['Stem Type'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>ชนิดของลำต้น:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Stem Type']}
-                                </Text>
-                            </Text>
-                            <Text style={styles.PlantCharacterHeader}>ประเภทของลำต้นใต้ดิน:
+                                        {plantAttribute['Stem Type']}
+                                    </Text>
+                                </Text> : null}
+                            {plantAttribute['Underground Stem Type'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>ประเภทของลำต้นใต้ดิน:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Underground Stem Type']}
-                                </Text>
-                            </Text>
-                            <Text style={styles.PlantCharacterHeader}>สรรพคุณของลำต้น:
+                                        {plantAttribute['Underground Stem Type']}
+                                    </Text>
+                                </Text> : null}
+                            {plantAttribute['Stem Medical Property'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>สรรพคุณของลำต้น:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Stem Medical Property']}
-                                </Text>
-                            </Text>
+                                        {plantAttribute['Stem Medical Property']}
+                                    </Text>
+                                </Text> : null}
 
                         </View>
                     </View>
@@ -222,44 +255,51 @@ export default function PlantInfoScreen({ navigation, route }) {
                             <Text style={styles.PlantCharacterContainerTopHeader} >ใบ</Text>
                         </View>
                         <View style={{ padding: '3%' }}>
-                            <Text style={styles.PlantCharacterHeader}>ชนิดของใบ:
+                            {plantAttribute['Leaf Type'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>ชนิดของใบ:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Leaf Type']}
-                                </Text>
-                            </Text>
-                            <Text style={styles.PlantCharacterHeader}>การเรียงตัวของใบ:
+                                        {plantAttribute['Leaf Type']}
+                                    </Text>
+                                </Text> : null}
+                            {plantAttribute['Leaf Phyllotaxy'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>การเรียงตัวของใบ:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Leaf Phyllotaxy']}
-                                </Text>
-                            </Text>
-                            <Text style={styles.PlantCharacterHeader}>ความยาวของใบ:
+                                        {plantAttribute['Leaf Phyllotaxy']}
+                                    </Text>
+                                </Text> : null}
+                            {plantAttribute['Leaf Length'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>ความยาวของใบ:
                            <Text style={styles.PlantCharacterText}>
 
-                                    {plantAttribute['Leaf Length']}
-                                </Text>
-                            </Text>
-                            <Text style={styles.PlantCharacterHeader}>การเรียงเส้นใบ:
+                                        {plantAttribute['Leaf Length']}
+                                    </Text>
+                                </Text> : null}
+                            {plantAttribute['Leaf Venetion'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>การเรียงเส้นใบ:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Leaf Venetion']}
+                                        {plantAttribute['Leaf Venetion']}
 
-                                </Text>
-                            </Text>
-                            <Text style={styles.PlantCharacterHeader}>รูปร่างใบ:
+                                    </Text>
+                                </Text> : null}
+                            {plantAttribute['Leaf Shape'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>รูปร่างใบ:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Leaf Shape']}
+                                        {plantAttribute['Leaf Shape']}
 
-                                </Text>
-                            </Text>
-                            <Text style={styles.PlantCharacterHeader}>ขอบใบ:
+                                    </Text>
+                                </Text> : null}
+                            {plantAttribute['Leaf Margin'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>ขอบใบ:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Leaf Margin']}
-                                </Text>
-                            </Text>
-                            <Text style={styles.PlantCharacterHeader}>สรรพคุณของใบ:
+                                        {plantAttribute['Leaf Margin']}
+                                    </Text>
+                                </Text> : null}
+                            {plantAttribute['Leaf Medical Property'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>สรรพคุณของใบ:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Leaf Medical Property']}
-                                </Text>
-                            </Text>
+                                        {plantAttribute['Leaf Medical Property']}
+                                    </Text>
+                                </Text> : null}
 
                         </View>
                     </View>
@@ -270,26 +310,30 @@ export default function PlantInfoScreen({ navigation, route }) {
                             <Text style={styles.PlantCharacterContainerTopHeader} >ดอก</Text>
                         </View>
                         <View style={{ padding: '3%' }}>
-                            <Text style={styles.PlantCharacterHeader}>ชนิดของดอก:
+                            {plantAttribute['Flower Type'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>ชนิดของดอก:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Flower Type']}
-                                </Text>
-                            </Text>
-                            <Text style={styles.PlantCharacterHeader}>ประเภทของดอกตามเพศ:
+                                        {plantAttribute['Flower Type']}
+                                    </Text>
+                                </Text> : null}
+                            {plantAttribute['Flower Sexuality Type'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>ประเภทของดอกตามเพศ:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Flower Sexuality Type']}
-                                </Text>
-                            </Text>
-                            <Text style={styles.PlantCharacterHeader}>สีกลีบดอก:
+                                        {plantAttribute['Flower Sexuality Type']}
+                                    </Text>
+                                </Text> : null}
+                            {plantAttribute['Petal Color'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>สีกลีบดอก:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Petal Color']}
-                                </Text>
-                            </Text>
-                            <Text style={styles.PlantCharacterHeader}>สรรพคุณของดอก:
+                                        {plantAttribute['Petal Color']}
+                                    </Text>
+                                </Text> : null}
+                            {plantAttribute['Flower Medical Property'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>สรรพคุณของดอก:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Flower Medical Property']}
-                                </Text>
-                            </Text>
+                                        {plantAttribute['Flower Medical Property']}
+                                    </Text>
+                                </Text> : null}
                         </View>
                     </View>
 
@@ -299,21 +343,24 @@ export default function PlantInfoScreen({ navigation, route }) {
                             <Text style={styles.PlantCharacterContainerTopHeader} >ผล</Text>
                         </View>
                         <View style={{ padding: '3%' }}>
-                            <Text style={styles.PlantCharacterHeader}>ชนิดของผล:
+                            {plantAttribute['Fruit Type by Characteristic'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>ชนิดของผล:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Fruit Type by Characteristic']}
-                                </Text>
-                            </Text>
-                            <Text style={styles.PlantCharacterHeader}>ประเภทของผลมีเนื้อสด:
+                                        {plantAttribute['Fruit Type by Characteristic']}
+                                    </Text>
+                                </Text> : null}
+                            {plantAttribute['Fruit Type by Creation Process'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>ประเภทของผลมีเนื้อสด:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Fruit Type by Creation Process']}
-                                </Text>
-                            </Text>
-                            <Text style={styles.PlantCharacterHeader}>สรรพคุณของผล:
+                                        {plantAttribute['Fruit Type by Creation Process']}
+                                    </Text>
+                                </Text> : null}
+                            {plantAttribute['Fruit Medical Property'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>สรรพคุณของผล:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Fruit Medical Property']}
-                                </Text>
-                            </Text>
+                                        {plantAttribute['Fruit Medical Property']}
+                                    </Text>
+                                </Text> : null}
                         </View>
                     </View>
 
@@ -323,31 +370,36 @@ export default function PlantInfoScreen({ navigation, route }) {
                             <Text style={styles.PlantCharacterContainerTopHeader} >สภาพแวดล้อมที่เหมาะสม</Text>
                         </View>
                         <View style={{ padding: '3%' }}>
-                            <Text style={styles.PlantCharacterHeader}>ความชื้น:
+                            {plantAttribute['Moisture'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>ความชื้น:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Moisture']}
-                                </Text>
-                            </Text>
-                            <Text style={styles.PlantCharacterHeader}>อุณหภูมิ:
+                                        {plantAttribute['Moisture']}
+                                    </Text>
+                                </Text> : null}
+                            {plantAttribute['Temperature'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>อุณหภูมิ:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Temperature']}
-                                </Text>
-                            </Text>
-                            <Text style={styles.PlantCharacterHeader}>ปริมาณแสง:
+                                        {plantAttribute['Temperature']}
+                                    </Text>
+                                </Text> : null}
+                            {plantAttribute['Illumination'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>ปริมาณแสง:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Illumination']}
-                                </Text>
-                            </Text>
-                            <Text style={styles.PlantCharacterHeader}>สารอาหารในดิน:
+                                        {plantAttribute['Illumination']}
+                                    </Text>
+                                </Text> : null}
+                            {plantAttribute['Soil Nutrition'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>สารอาหารในดิน:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Soil Nutrition']}
-                                </Text>
-                            </Text>
-                            <Text style={styles.PlantCharacterHeader}>ค่าความเป็นกรดในดิน:
+                                        {plantAttribute['Soil Nutrition']}
+                                    </Text>
+                                </Text> : null}
+                            {plantAttribute['Soil pH'] !== null ?
+                                <Text style={styles.PlantCharacterHeader}>ค่าความเป็นกรดในดิน:
                            <Text style={styles.PlantCharacterText}>
-                                    {plantAttribute['Soil pH']}
-                                </Text>
-                            </Text>
+                                        {plantAttribute['Soil pH']}
+                                    </Text>
+                                </Text> : null}
                         </View>
                     </View>
                 </ScrollView>

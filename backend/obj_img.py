@@ -161,7 +161,12 @@ def main():
 			elif(label == 'Oryza Sativa'):
 				dict_occurance['Oryza Sativa'] = dict_occurance['Oryza Sativa'] + 1
 				dict_accuracy['Oryza Sativa'].append(float(confidence))
-		
+			print('dict_occurance')
+			print(dict_occurance)
+			print('dict_accuracy')
+			print(dict_accuracy)
+
+
 			# return the key of dictionary that has highest the highest occurance
 		highestOccurance_Plant = max(dict_occurance, key=dict_occurance.get)
 			#print('highestOccurance_Plant')

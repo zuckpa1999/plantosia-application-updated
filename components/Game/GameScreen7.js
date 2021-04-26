@@ -8,6 +8,7 @@ import {
 
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
 import GlobalStateUserAnswer from '../../contexts/GlobalStateUserAnswer'
+import GlobalStateUserImage from '../../contexts/GlobalStateUserImage'
 import { Images_plant_card_container } from '../../Images_plant_card_container'
 // @material-ui/core
 
@@ -17,7 +18,7 @@ import { Images_plant_card_container } from '../../Images_plant_card_container'
 export default function GameScreen7({ navigation, route }) {
     const [stateAnswer, setStateAnswer] = useContext(GlobalStateUserAnswer)
     const { plantName, confidence } = route.params
-
+    const [stateImage, setStateImage] = useContext(GlobalStateUserImage)
     let PlantThaiName = () => {
         switch (plantName) {
             case 'Musa Sapientum':
@@ -92,7 +93,10 @@ export default function GameScreen7({ navigation, route }) {
                     </View>
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }} >
-                    <TouchableOpacity onPress={() => navigation.navigate('Game')}>
+                    <TouchableOpacity onPress={() => {
+                        setStateImage([])
+                        navigation.navigate('Game')
+                    }}>
                         <Image
                             style={styles.LeftButton}
                             source={require('../../asset/ถ่ายรูปอีกครั้ง.png')}
@@ -100,6 +104,7 @@ export default function GameScreen7({ navigation, route }) {
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
                         setStateAnswer({ plantName: plantName, difficulty: stateAnswer.difficulty })
+
                         navigation.navigate('Question')
 
                     }} style={{ marginBottom: '20l%' }}>

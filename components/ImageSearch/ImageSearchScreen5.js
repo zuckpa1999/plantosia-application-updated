@@ -154,7 +154,7 @@ export default function ImageSearchScreen5({ navigation, route }) {
                     style={{ top: -35 }}
 
                 >
-                    <Image source={require('../../asset/gpBackAgain.png')} />
+                    <Image source={require('../../asset/goBackAgain.png')} />
                 </TouchableOpacity> : null}
                 <TouchableOpacity
                     activeOpacity={0.7}

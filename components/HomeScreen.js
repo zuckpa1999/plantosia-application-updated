@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Button, Text, View, StyleSheet, SafeAreaView, Image, TouchableOpacity } from 'react-native';
 import {
     responsiveScreenHeight,
     responsiveScreenWidth,
     responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
+import GlobalStateUserImage from '../contexts/GlobalStateUserImage'
+import GlobalStateUserAnswer from '../contexts/GlobalStateUserAnswer'
+import GlobalStateImageSearch from '../contexts/GlobalStateImageSearch'
+import GlobalStateUserPlant from '../contexts/GlobalStateUserPlant'
+import GlobalStateUserQuestion from '../contexts/GlobalStateUserQuestion'
 export default function HomeScreen({ navigation }) {
     /* setStateQuestion({ COIN: 800, XP: stateQuestion.XP, countCorrectAnswer: stateQuestion.countCorrectAnswer, userAnswer: stateQuestion.userAnswer }) */
+    const [stateImage, setStateImage] = useContext(GlobalStateUserImage)
+    const [stateAnswer, setStateAnswer] = useContext(GlobalStateUserAnswer)
+    const [statePic, setPicstatePic] = useContext(GlobalStateImageSearch);
+    const [statePlant, setStatePlant] = useContext(GlobalStateUserPlant)
+    const [stateQuestion, setStateQuestion] = useContext(GlobalStateUserQuestion)
+
     return (
         <SafeAreaView style={styles.container}>
             {/*    <View style={{ width: responsiveScreenWidth(35), height: responsiveScreenHeight(5), borderRadius: 30, backgroundColor: 'white', marginBottom: '5%', flexDirection: 'row', justifyContent: 'center', marginBottom: '3%', paddingTop: '1%', borderColor: '#87D38A', borderWidth: '3%' }}>
@@ -20,6 +31,10 @@ export default function HomeScreen({ navigation }) {
             />
 
             <TouchableOpacity onPress={() => {
+                setStateImage([])
+                setStateAnswer({ plantName: null, difficulty: null })
+                setPicstatePic(null)
+                setStatePlant(null)
                 setStateQuestion({ XP: 0, COIN: 0, countCorrectAnswer: 0, userAnswer: [null] })
             }}>
                 <Image

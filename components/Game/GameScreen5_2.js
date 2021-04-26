@@ -31,6 +31,7 @@ export default function GameScreen5_2({ navigation }) {
             return
         }
         setSelectedImage(pickerResult)
+        setStateImage([...stateImage, pickerResult])
     }
 
     /*  const uploadImage = async (selectedImage) => {
@@ -51,8 +52,15 @@ export default function GameScreen5_2({ navigation }) {
  
  
      } */
-    let storeImageAndGoNext = async (selectedImage) => {
-        if (selectedImage !== null) setStateImage([...stateImage, selectedImage])
+    let notStoreImageAndGoNext = async () => {
+        /*   if (selectedImage !== null) {
+              await setStateImage([...stateImage, selectedImage])
+              var delayInMilliseconds = 1000; //1 second
+              setTimeout(function () {
+  
+                  //your code to be executed after 1 second
+              }, delayInMilliseconds);
+          } */
         /* setStateImage([...stateImage, selectedImage]) */
         let imagesWithBase64 = []
         for (let i = 0; i < stateImage.length; i++) {
@@ -193,17 +201,20 @@ export default function GameScreen5_2({ navigation }) {
                             source={require('../../asset/uploadCloud.png')}
 
                         />
-                    </TouchableOpacity>
-                    <Image
 
-                        source={require('../../asset/camera_2.png')}
-                    />
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => alert(stateImage.length)}>
+                        <Image
+
+                            source={require('../../asset/camera_2.png')}
+                        />
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.box2}>
                     <Text style={styles.msg2}>ถ้าพืชต้นนี้  <Text style={{ color: 'red' }}>ไม่มีส่วนผล </Text>
 สามารถกดถัดไปเพื่อ <Text style={{ color: 'red' }}>ข้าม</Text> ได้เลย</Text>
                 </View>
-                <TouchableOpacity onPress={() => storeImageAndGoNext(selectedImage)}>
+                <TouchableOpacity onPress={() => notStoreImageAndGoNext()}>
                     <Image
                         style={styles.nextButton}
                         source={require('../../asset/nextButton.png')}

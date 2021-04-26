@@ -56,7 +56,7 @@ export default function ImageSearchScreen3({ navigation }) {
             /* alert(res.data.title) */
             /* alert(res.data.title[0])
             alert(res.data.title[1]) */
-            alert(res.data.title[1] === undefined)
+            /* alert(res.data.title[1] === undefined) */
             navigation.navigate('ImageSearch5', { plantName: res.data.title[0], confidence: res.data.title[1] === undefined ? null : res.data.title[1] })
         })
         /* const Data = res.data.title */
