@@ -93,7 +93,7 @@ export default function TextSearchScreen({ navigation }) {
             /* alert(response) */
             /*            alert(Object.keys(plantAttribute))
                        alert(plantAttribute['Plant ID']) */
-            alert(plantAttribute['Plant Name'])
+            /*    alert(plantAttribute['Plant Name']) */
             /* setplantInfo(jsonData) */
             /*     let delayInMilliseconds = 1000; //1 second
     
@@ -101,7 +101,7 @@ export default function TextSearchScreen({ navigation }) {
                     //your code to be executed after 1 second
                 }, delayInMilliseconds); */
             navigation.navigate('PlantInfo', plantAttribute)
-            alert('zxccz')
+            /* alert('zxccz') */
 
         } catch (err) {
             alert(err.message);

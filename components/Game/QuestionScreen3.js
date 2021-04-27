@@ -108,10 +108,10 @@ export default function QuestionScreen3({ navigation }) {
                                 <Text style={{ textAlign: 'center', fontSize: 25, fontWeight: '700', marginBottom: '11%' }}> XP + {xpText}</Text>
 
                             </View>
-                            <Text>XP :{stateQuestion.XP}</Text>
+                            {/*   <Text>XP :{stateQuestion.XP}</Text>
                             <Text>COIN:{stateQuestion.COIN}</Text>
                             <Text>countCorrectAnswer:{stateQuestion.countCorrectAnswer}</Text>
-                            <Text>userAnswer:{stateQuestion.userAnswer}</Text>
+                            <Text>userAnswer:{stateQuestion.userAnswer}</Text> */}
                             <TouchableOpacity style={styles.solutionContainer} onPress={() => {
                                 setModalVisible(!modalVisible)
                                 navigation.navigate('Solution3')

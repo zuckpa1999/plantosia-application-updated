@@ -34,7 +34,7 @@ export default function HomeScreen({ navigation }) {
                 setStateImage([])
                 setStateAnswer({ plantName: null, difficulty: null })
                 setPicstatePic(null)
-                setStatePlant(null)
+                setStatePlant([null])
                 setStateQuestion({ XP: 0, COIN: 0, countCorrectAnswer: 0, userAnswer: [null] })
             }}>
                 <Image

@@ -6,6 +6,7 @@ import {
     responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
 import { Camera } from 'expo-camera';
+import axios from 'axios'
 import GlobalStateImageSearch from '../../contexts/GlobalStateImageSearch.js'
 export default function ImageSearchScreen2({ navigation }) {
     const [hasPermission, setHasPermission] = useState(null);
@@ -24,7 +25,30 @@ export default function ImageSearchScreen2({ navigation }) {
     if (hasPermission === false) {
         return <Text>No access to camera</Text>;
     }
+    const fetchInfo = async () => {
 
+        await axios.get(`http://192.168.1.102:3100/info`).then(res => {
+            /* alert(typeof res.data.title) */
+            /* alert(Object.leys(res.data.title)) */
+            /* alert(res.data.title) */
+            /* alert(res.data.title[0])
+            alert(res.data.title[1]) */
+            /* alert(res.data.title[1] === undefined) */
+            navigation.navigate('ImageSearch5', { plantName: res.data.title[0], confidence: res.data.title[1] === undefined ? null : res.data.title[1] })
+        })
+        /* const Data = res.data.title */
+
+        /*   await axios.get(`http://192.168.1.102:3100/uploadedImage`)
+              .then(res => {
+  
+                  fileName = res.data.uploadImageName
+              }) */
+        /*   alert(data) */
+        /* alert(fileName) */
+        /*   alert('bkabka')
+          alert(Object.keys(data)) */
+        /*  alert(Object.keys(data)) */
+    }
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.top}>
@@ -69,7 +93,7 @@ export default function ImageSearchScreen2({ navigation }) {
                     />
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => navigation.navigate('ImageSearch5')}>
+                <TouchableOpacity onPress={() => fetchInfo()}>
                     <Image
                         style={styles.nextButton}
                         source={require('../../asset/nextButton.png')}

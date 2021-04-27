@@ -43,7 +43,12 @@ export default function GameScreen({ navigation }) {
 
                 {/* <Text>{state.a}</Text> */}
 
-                <TouchableOpacity onPress={() => navigation.navigate('Game2')}>
+                <TouchableOpacity onPress={() => {
+                    resetGlobalStateUserImage()
+                    navigation.navigate('Game2')
+                }
+
+                }>
                     <Image
                         style={styles.nextButton}
                         source={require('../../asset/nextButton.png')}
@@ -121,6 +126,6 @@ const styles = StyleSheet.create({
     nextButton: {
 
         left: 120,
-        top: 150,
+        top: 95,
     }
 });

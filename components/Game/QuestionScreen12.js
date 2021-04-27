@@ -129,7 +129,13 @@ export default function QuestionScreen12({ navigation }) {
                         ))}
                     </View>
                 </ScrollView>
-                <TouchableOpacity onPress={() => navigation.navigate('congrats')}>
+                {/* const [stateQuestion, setStateQuestion] = useState({ XP: 0, COIN: 0, countCorrectAnswer: 0, userAnswer: [null] }); */}
+                <TouchableOpacity onPress={() => {
+                    navigation.navigate('congrats')
+                    setStateQuestion({ XP: stateQuestion.XP, COIN: stateQuestion.COIN, countCorrectAnswer: 0, userAnswer: [null] })
+
+                }
+                }>
 
                     <Image source={require('../../asset/goNext.png')} />
                 </TouchableOpacity>

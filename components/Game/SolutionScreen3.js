@@ -12,13 +12,15 @@ import TemplateQuestion from './templateQuestion.js'
 import TemplateTop from './templateTop.js'
 import TemplateAnswerScreen from './templateAnswer.js'
 import GlobalStateUserQuestion from '../../contexts/GlobalStateUserQuestion'
+import GlobalStateUserAnswer from '../../contexts/GlobalStateUserAnswer'
 //+1
 export default function SolutionScreen3({ navigation }) {
     /*   const [stateQuestion, setStateQuestion] = useState({ XP: 0, COIN: 0, countCorrectAnswer: 0, userAnswer: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'] }); */
     const [stateQuestion, setStateQuestion] = useContext(GlobalStateUserQuestion)
+    const [stateAnswer, setStateAnswer] = useContext(GlobalStateUserAnswer)
     // assumer we get props
     //+1
-    let answerToQuestion = questions.easy[1].answers
+    let answerToQuestion = stateAnswer.difficulty === 'hard' ? questions.hard[stateAnswer.plantName][1].answers : questions.easy[1].answers
     /* let answer */
     const [answer, setAnswer] = useState(false)
     // 2 version 

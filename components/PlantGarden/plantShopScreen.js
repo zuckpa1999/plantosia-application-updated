@@ -37,7 +37,7 @@ export default function plantShopScreen({ navigation }) {
             <TemplateTop navigation={navigation} />
             <View style={styles.greenArea}>
                 <Image source={require('../../asset/plant_garden/plantShopBanner.png')} />
-                <Text>Your Coin : {stateQuestion.COIN}</Text>
+                {/*      <Text>Your Coin : {stateQuestion.COIN}</Text>
                 <Text>statePlant 0: {statePlant[0]}</Text>
                 <Text>statePlant 1: {statePlant[1]}</Text>
                 <Text>statePlant 2: {statePlant[2]}</Text>
@@ -47,7 +47,7 @@ export default function plantShopScreen({ navigation }) {
                 }}>Click me to change COIN</Text>
                 <Text>statePlant length : {statePlant.length}</Text>
                 <Text>Object.keys(PlantShop)  : {Object.keys(PlantShop).length}</Text>
-                <Text>{statePlant.length == Object.keys(PlantShop)}</Text>
+                <Text>{statePlant.length == Object.keys(PlantShop)}</Text> */}
                 <View style={{ width: responsiveScreenWidth(35), height: responsiveScreenHeight(5), borderRadius: 30, backgroundColor: 'white', marginBottom: '5%', flexDirection: 'row', justifyContent: 'center', marginBottom: '3%', paddingTop: '1%', borderColor: '#87D38A', borderWidth: '3%' }}>
                     <Text style={{ fontWeight: '600', fontSize: responsiveScreenFontSize(2.5), }}> เลเวล  {getLevel()}</Text>
                 </View>

@@ -126,7 +126,7 @@ export default function GameScreen6({ navigation }) {
                 <View style={styles.box}>
                     <Text style={styles.msg}>เย่! ถ่ายรูปพืชเสร็จแล้ว</Text>
                 </View>
-                <Text>{stateImage.length}</Text>
+                {/*          <Text>{stateImage.length}</Text> */}
                 {/* <Text>{JSON.stringify({ stateImage })}</Text> */}
                 {/* <Text>{stateImage}</Text> */}
 

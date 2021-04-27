@@ -55,7 +55,7 @@ export default function QuestionScreen({ navigation }) {
 
                     </Pressable>
 
-                    <Text>{currentChoice}</Text>
+                    {/* <Text>{currentChoice}</Text> */}
                 </View>
                 <TouchableOpacity onPress={() => {
                     /*  setStateQuestion({ COIN: 0, XP: 0, countCorrectAnswer: 0, userAnswer: [null] }) */
