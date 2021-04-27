@@ -164,9 +164,7 @@ const styles = StyleSheet.create({
         marginTop: '-5%'
     },
     nextButton: {
-
-        left: 120,
-        top: 80,
+        marginLeft: '60%'
     },
     cameraArea: {
         marginTop: '10%',

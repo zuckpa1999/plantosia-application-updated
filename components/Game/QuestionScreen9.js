@@ -137,7 +137,7 @@ export default function QuestionScreen9({ navigation }) {
                     style={styles.confirmButtonContainer}
                     onPress={() => confirm()}
                 >
-                    <Text style={styles.confirmButton}>Confirm</Text>
+                    <Text style={styles.confirmButton}>ยืนยัน</Text>
                 </Pressable>
 
             </View>
