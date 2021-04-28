@@ -28,7 +28,7 @@ export default function ImageSearchScreen3({ navigation }) {
         })
 
         if (pickerResult.cancelled === true) {
-            alert('fe')
+            alert('Canceled the camera')
             return
         }
         setSelectedImage(pickerResult)

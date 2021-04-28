@@ -60,7 +60,36 @@ export default function ImageSearchScreen5({ navigation, route }) {
                 return 'No plant'
         }
     }
+    let sendPlantName = async (plantName) => {
 
+
+
+        try {
+            /* alert(plantName) */
+            const response = await fetch(`http://192.168.1.102:3100/getPlantName/${plantName}`)
+            //172.27.146.76.
+            // 172.27.145.164
+            //old one  const response = await fetch(`http://192.168.1.102:3100/getPlantName/${plantName}`)
+            const plantAttribute = await response.json();
+
+            /* alert(response) */
+            /*            alert(Object.keys(plantAttribute))
+                       alert(plantAttribute['Plant ID']) */
+            /*    alert(plantAttribute['Plant Name']) */
+            /* setplantInfo(jsonData) */
+            /*     let delayInMilliseconds = 1000; //1 second
+    
+                setTimeout(function () {
+                    //your code to be executed after 1 second
+                }, delayInMilliseconds); */
+            navigation.navigate('PlantInfo', plantAttribute)
+            /* alert('zxccz') */
+
+        } catch (err) {
+            alert(err.message);
+        }
+
+    }
 
 
     return (
@@ -121,7 +150,8 @@ export default function ImageSearchScreen5({ navigation, route }) {
                 />
 
                 {plantName !== 'Attribute Error: The confidence is lower than 0.5' ?
-                    <View style={{ backgroundColor: "#eee", borderRadius: 20, overflow: "hidden", width: 340, height: 250, top: -48 }}>
+                    <TouchableOpacity style={{ backgroundColor: "#eee", borderRadius: 20, overflow: "hidden", width: 340, height: 250, top: -48 }}
+                        onPress={() => sendPlantName(plantName)}>
                         <View>
                             <Image
                                 source={Images_plant_card_container[plantName]}
@@ -138,7 +168,7 @@ export default function ImageSearchScreen5({ navigation, route }) {
                                 <Text style={styles.percentage}>{confidence}</Text>
                             </View>
                         </View>
-                    </View> : <View style={{ backgroundColor: "#eee", borderTopLeftRadius: 20, borderTopRightRadius: 20, overflow: "hidden", width: 340, height: 200, top: -48 }}>
+                    </TouchableOpacity> : <View style={{ backgroundColor: "#eee", borderTopLeftRadius: 20, borderTopRightRadius: 20, overflow: "hidden", width: 340, height: 200, top: -48 }}>
                         <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: '7%' }}>
                             <Text style={{ fontSize: responsiveScreenFontSize(3), fontWeight: '700', height: 80 }}>ไม่พบผลลัพธ์ของพืชชนิดนี้</Text></View>
                         <View style={{ backgroundColor: '#FFED9E', height: 96 }}>
