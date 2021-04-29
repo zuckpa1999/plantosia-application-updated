@@ -22,7 +22,7 @@ export default function plantShopScreen({ navigation }) {
             else setStatePlant([...statePlant, plant])
         }
         else {
-            alert('You broke bitches')
+            alert('ไม่สามารถซื้อพืชนี้ได้เนื่องจากเหรียญไม่เพียงพอ')
         }
 
     }
@@ -63,7 +63,7 @@ export default function plantShopScreen({ navigation }) {
                         Object.keys(PlantShop).map((plant) => (
                             !statePlant.includes(plant) ?
 
-                                <TouchableOpacity onPress={() => getLevel() >= PlantShop[plant].levelConstraint ? clickCard(plant) : alert('You cant buy this plant due to insufficient COIN or XP')}>
+                                <TouchableOpacity onPress={() => getLevel() >= PlantShop[plant].levelConstraint ? clickCard(plant) : alert('ไม่สามารถซื้อพืชนี้ได้เนื่องจากเลเวลไม่เพียงพอ')}>
                                     <View style={styles.cardContainer}>
 
                                         <View style={getLevel() >= PlantShop[plant].levelConstraint ? styles.cardContainerLeft : styles.cardContainerLeftcantBuy}>

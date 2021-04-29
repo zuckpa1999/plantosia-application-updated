@@ -76,14 +76,14 @@ export default function HomeScreen({ navigation }) {
                         source={require('../asset/plantGarden.png')}
                     />
                 </TouchableOpacity>
-                <TouchableOpacity
+                {/*         <TouchableOpacity
                     activeOpacity={0.7}
                     onPress={() => navigation.navigate('Setting')}
                 >
                     <Image
                         source={require('../asset/setting.png')}
                     />
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </View>
 
             {/* <Text>Home Screen</Text>

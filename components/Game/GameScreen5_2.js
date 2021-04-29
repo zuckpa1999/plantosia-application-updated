@@ -210,10 +210,10 @@ export default function GameScreen5_2({ navigation }) {
                         />
                     </TouchableOpacity>
                 </View>
-                <View style={styles.box2}>
+                {/*  <View style={styles.box2}>
                     <Text style={styles.msg2}>ถ้าพืชต้นนี้  <Text style={{ color: 'red' }}>ไม่มีส่วนผล </Text>
 สามารถกดถัดไปเพื่อ <Text style={{ color: 'red' }}>ข้าม</Text> ได้เลย</Text>
-                </View>
+                </View> */}
                 <TouchableOpacity onPress={() => notStoreImageAndGoNext()}>
                     <Image
                         style={styles.nextButton}

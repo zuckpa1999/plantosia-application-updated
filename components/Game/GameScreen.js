@@ -34,11 +34,15 @@ export default function GameScreen({ navigation }) {
 
                     <Image
                         style={styles.mascot}
-                        source={require('../../asset/BrocMascotArtboard3.png')}
+                        source={require('../../asset/cameraBroc.png')}
                     />
                 </TouchableOpacity>
                 <View style={styles.box}>
-                    <Text style={styles.msg}>มาถ่ายรูปพืชเพื่อนเริ่มเล่นเกมกันเถอะ!</Text>
+                    <Text style={styles.msg}>เลือกพืชมา 1 ต้น
+                    แล้วมาถ่ายรูปพืช
+                    เพื่อ
+                    เริ่มเล่นเกมกันเถอะ!
+!</Text>
                 </View>
 
                 {/* <Text>{state.a}</Text> */}

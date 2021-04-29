@@ -97,7 +97,7 @@ export default function GameScreen4({ navigation }) {
                     />
                 </View>
                 <View style={styles.box2}>
-                    <Text style={styles.msg2}>ถ้าพืชต้นนี้  <Text style={{ color: 'red' }}>ไม่มีส่วนผล </Text>
+                    <Text style={styles.msg2}>ถ้าพืชต้นนี้  <Text style={{ color: 'red' }}>ไม่มีส่วนดอก </Text>
 สามารถกดถัดไปเพื่อ <Text style={{ color: 'red' }}>ข้าม</Text> ได้เลย</Text>
                 </View>
                 <TouchableOpacity onPress={() => storeImageAndGoNext(selectedImage)}>
