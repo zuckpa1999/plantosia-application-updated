@@ -52,19 +52,21 @@ A simple way to run Python scripts from Node.js with basic but efficient inter-p
 ## Setup
 
 ```
-x. install Xcode ( If you want to run IOS version)
+1.a Install Xcode ( If you want to run IOS version)
 -  download via App store ( Mac)
 ### Only Applicable for Macbook, Imac or apple computer
-x. install android studio 
+1.b Install android studio 
 - https://developer.android.com/studio
 ### Viable for both Mac and PC (Window)
-x. install postresql
+2. Install postresql
 - https://www.postgresql.org/docs/
-x. open cmd (Window) or terminal( MacOS)
-x. navigate to XXX/plantosia-application_updated
-1. npm install 
-2. npm install --global yarn
-x. Adding Plant's info into our postgresql database
+3. Open cmd (Window) or terminal( MacOS)
+4. Navigate to XXX/plantosia-application_updated
+5. npm install 
+- to install all the dependecies by npm
+6. npm install --global yarn
+- to install all the dependecies by yarn
+7. Adding Plant's info into our postgresql database
   1. start postgres server by  executing command 'postgres sql' in the cmd or terminal
   2. create 'plantosia' database in postgres server by executing sql queries from all the files in plantosia-application-updated/postgresql/
 by the following orders
@@ -73,10 +75,10 @@ by the following orders
     3. PlantosiaDB_Insertion.sql
     4. PlantosiaDB_Insertion_Thai.sql
   ### Copy all the queries in each file and place them in cmd or terminal then press 'enter', do this for all the .sql files
-x. navigate to XXX/plantosia-application_updated/backend
-x. npx nodemon server.js
-x. navigate back to XXX/plantosia-application_updated
-x. expo start
+8. navigate to XXX/plantosia-application_updated/backend
+9. npx nodemon server.js
+10. navigate back to XXX/plantosia-application_updated
+11. expo start
 After executing a command 'expo start', the expo page will pop up in your browser, you can choose how you want to run your application web/ android/ ios there.
 
 
