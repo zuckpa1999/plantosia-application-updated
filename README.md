@@ -94,6 +94,8 @@ Ref
 - https://www.postgresqltutorial.com/psql-commands/
 - https://dataschool.com/learn-sql/how-to-start-a-postgresql-server-on-mac-os-x/
 
+For more information, Check out : https://github.com/zuckpa1999/plantosia-application-updated
+
 ```
 
 
