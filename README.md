@@ -77,9 +77,10 @@ by the following orders
   ### Copy all the queries in each file and place them in cmd or terminal then press 'enter', do this for all the .sql files
 8. navigate to XXX/plantosia-application_updated/backend
 9. npx nodemon server.js
+- This command enables the terminal / cmd to keep running the sever file concurrently.
 10. navigate back to XXX/plantosia-application_updated
 11. expo start
-After executing a command 'expo start', the expo page will pop up in your browser, you can choose how you want to run your application web/ android/ ios there.
+- After executing a command 'expo start', the expo page will pop up in your browser, you can choose how you want to run your application web/ android/ ios there.
 
 
 ## Basic postresql command
