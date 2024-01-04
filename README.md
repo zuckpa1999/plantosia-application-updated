@@ -45,7 +45,7 @@ A simple way to run Python scripts from Node.js with basic but efficient inter-p
 - Darknet 53
 
 
-## Preview
+## Thesis
 http://bit.ly/plantosia
 
 
